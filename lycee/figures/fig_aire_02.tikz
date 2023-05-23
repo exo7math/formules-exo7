@@ -1,0 +1,7 @@
+﻿\begin{tikzpicture}[scale=1]
+
+\draw[very thick, blue] (0,0) rectangle (4,2);
+\node at (2,0) [below] {$L$};
+\node at (4,1) [right] {$\ell$};
+
+\end{tikzpicture}

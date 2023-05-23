@@ -1,0 +1,17 @@
+﻿\begin{tikzpicture}[scale=1]
+
+\coordinate (A) at (0,0);
+\coordinate (B) at (3,0);
+\coordinate (C) at (3,2);
+
+\draw[double, red] (0.5,0)  arc (0:35:0.5) node[midway, right] {$\alpha$};
+
+\draw[very thick, blue] (A) -- (B) -- (C) -- cycle;
+
+\draw (2.8,0) -- ++ (0,0.2) -- ++ (0.2,0);
+
+\draw[very thick, blue] (A) -- (B) node[midway, below, sloped] {adjacent};
+\draw[very thick, blue] (B) -- (C) node[midway, below, sloped] {opposé};
+\draw[very thick, blue] (A) -- (C) node[midway, above, sloped] {hypoténuse};
+
+\end{tikzpicture}

@@ -1,0 +1,503 @@
+\documentclass[10pt,class=article,crop=false]{standalone}
+\usepackage{../exo7formules}
+
+
+\begin{document}
+	
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section{Matrices et applications linéaires}
+
+\begin{multicols}{2}
+	
+
+
+%-----------------------------------------
+\subsection{Rang d'une famille de vecteurs}
+
+$E$ est un $\Kk$-espace vectoriel.
+
+
+\textbf{Rang d'une famille de vecteurs}
+
+Soit $\{v_1, \ldots ,v_p\}$ une famille finie de vecteurs de $E$.
+Le \defi{rang}\index{rang!d une famille@d'une famille}\index{famille!rang} de la famille $\{v_1, \ldots ,v_p\}$
+est la dimension du sous-espace vectoriel $\Vect(v_1, \ldots ,v_p)$
+engendré par les vecteurs $v_1, \dots ,v_p$ :
+\mybox{$\rg(v_1, \dots ,v_p) = \dim \Vect(v_1, \ldots ,v_p)$}
+
+
+\begin{proposition}
+	Soient $E$ un $\Kk$-espace vectoriel et $\{v_1, \ldots ,v_p\}$
+	une famille de $p$ vecteurs de $E$. Alors :
+	\begin{enumerate}
+		\item $0 \le \rg (v_1, \ldots ,v_p) \le p$ : le rang est inférieur ou égal au nombre d'éléments dans la famille.
+		
+		\item Si $E$ est de dimension finie alors $\rg (v_1, \ldots ,v_p) \le \dim E$ :
+		le rang est inférieur ou égal à la dimension de l'espace ambiant $E$.
+	\end{enumerate}
+\end{proposition}
+
+
+
+Exemple. Le rang d'une famille $\{v_1, \ldots ,v_p\}$ vaut $p$ si et seulement si
+la famille $\{v_1, \ldots ,v_p\}$ est libre.
+
+
+
+\textbf{Rang d'une matrice}
+
+Le \defi{rang}\index{rang!d une matrice@d'une matrice} d'une matrice est le rang de ses vecteurs colonnes.
+
+\begin{proposition}
+	\label{prop:rangmatech}
+	Le rang d'une matrice échelonnée par colonnes est égal au nombre
+	de colonnes non nulles.
+\end{proposition}
+
+Voici un exemple d'une matrice $6\times6$ échelonnée par colonnes ;
+les $*$ désignent des coefficients quelconques, les $+$ des coefficients non nuls.
+Cette matrice est de rang $4$.
+{\small
+$$
+\begin{pmatrix}
+	+ & 0 & 0 & 0 & 0 & 0 \\
+	* & 0 & 0 & 0 & 0 & 0 \\
+	* & + & 0 & 0 & 0 & 0 \\
+	* & * & + & 0 & 0 & 0 \\
+	* & * & * & 0 & 0 & 0 \\
+	* & * & * & + & 0 & 0 \\
+\end{pmatrix}
+$$
+}
+
+
+\begin{proposition}
+	\label{prop:opcolonnes}
+	Le rang d'une matrice ayant les colonnes $C_1, C_2, \ldots, C_p$
+	n'est pas modifié par les trois opérations élémentaires\index{operation elementaire@opération élémentaire} suivantes sur les
+	vecteurs :
+	\begin{enumerate}
+		\item $C_i \leftarrow \lambda C_i$ avec $\lambda \neq 0$ :
+		on peut multiplier une colonne par un scalaire non nul.
+		
+		\item $C_i \leftarrow C_i+\lambda C_j$ avec $\lambda \in \Kk$ (et $j\neq i$) :
+		on peut ajouter à la colonne $C_i$ un multiple d'une autre colonne $C_j$.
+		
+		\item $C_i \leftrightarrow C_j$ : on peut échanger deux colonnes.
+	\end{enumerate}
+\end{proposition}
+
+Plus généralement, l'opération
+$C_i \leftarrow C_i + \sum_{i\neq j} \lambda_j C_j$
+conserve le rang de la matrice.
+
+\textbf{Méthodologie.} Comment calculer le rang d'une matrice ou d'un système de vecteurs ?
+
+Il s'agit d'appliquer la méthode de Gauss sur les colonnes de la matrice $A$
+(considérée comme une juxtaposition de vecteurs colonnes).
+Le principe de la méthode de Gauss affirme que par les opérations élémentaires
+$C_i \leftarrow \lambda C_i$,
+$C_i \leftarrow C_i+\lambda C_j$,
+$C_i \leftrightarrow C_j$, on transforme la matrice $A$ en une matrice échelonnée
+par rapport aux colonnes.
+Le rang de la matrice est alors le nombre de colonnes non nulles.
+
+\begin{theoreme}[Matrice inversible et rang]
+	Une matrice carrée de taille $n$ est inversible si et seulement si elle
+	est de rang $n$.
+\end{theoreme}
+
+
+L'espace vectoriel engendré par les vecteurs colonnes $(v_i)_{1 \le i \le p}$
+	et l'espace vectoriel engendré par les vecteurs lignes $(w_i)_{1 \le i \le n}$ sont de même dimension :
+\begin{proposition}
+	$\rg A = \dim \Vect (w_1,\ldots,w_n)$
+\end{proposition}
+
+Autrement dit le rang d'une matrice égale le rang de sa transposée :
+\mybox{$\rg A = \rg A^T$}
+
+Attention ! Les dimensions $\dim \Vect (v_1,\ldots,v_p)$ et $\dim \Vect (w_1,\ldots,w_n)$
+sont égales, mais les espaces vectoriels $\Vect (v_1,\ldots,v_p)$ et $\Vect (w_1,\ldots,w_n)$
+ne sont pas les mêmes.
+
+
+%-----------------------------------------
+\subsection{Applications linéaires en dimension finie}
+
+$E$ et $F$ sont deux $\Kk$-espace vectoriels.
+
+\begin{theoreme}[Construction d'une application linéaire]
+Si $E$ est de dimension finie $n$
+et $(e_1,\dots,e_n)$ est une base de $E$,
+alors pour tout choix $(v_1, \ldots ,v_n)$
+de $n$ vecteurs de $F$, il existe une et une seule application linéaire $f : E \to F$
+telle que, pour tout $i=1,\ldots,n$ :
+$$f(e_i)=v_i.$$
+\end{theoreme}
+
+%-------------------------------------------------------
+\textbf{Rang d'une application linéaire}
+
+Soit $f : E \to F$ une application linéaire et $E$ est de dimension finie.
+\begin{itemize}
+	\item $\Im f = f(E) = \big\{ f(x) | x \in E \big\}$ est un espace vectoriel de dimension finie.
+	\item Si $(e_1,\ldots,e_n)$ est une base de $E$, alors
+	$\Im f = \Vect \big( f(e_1),\ldots,f(e_n) \big)$.
+\end{itemize}
+La dimension de cet espace vectoriel $\Im f$ est appelée \defi{rang de $f$}\index{rang!d une application lineaire@d'une application linéaire} :
+\mybox{$\rg (f) = \dim \Im f = \dim \Vect \big( f(e_1),\ldots,f(e_n) \big)$}
+
+Le rang est plus petit que la dimension de $E$ et aussi plus petit
+que la dimension de $F$, si $F$ est de dimension finie.
+
+
+%-------------------------------------------------------
+\textbf{Théorème du rang}
+\index{theoreme@théorème!du rang}
+
+On rappelle que le \defi{noyau} de $f$ est $\Ker f=\big\{x \in E \mid f(x)=0_{F}\big\}$,  c'est un sous-espace vectoriel de $E$.
+	
+\begin{theoreme}[Théorème du rang]
+Soit $f : E \to F$ une application linéaire,
+$E$ étant de dimension finie.
+\mybox{$\dim E =\dim \Ker f + \dim \Im f$}
+\end{theoreme}
+
+Autrement dit : \myboxinline{$\dim E = \dim \Ker f + \rg f$}
+
+Cette formule sert à déterminer la dimension du noyau
+connaissant le rang, ou bien le rang connaissant la dimension du noyau.
+
+
+
+%-------------------------------------------------------
+\textbf{Application linéaire entre deux espaces de même dimension}
+
+
+$f : E \to F$ est un \defi{isomorphisme}\index{isomorphisme} si $f$ est une application linéaire bijective. La bijection réciproque est aussi une application linéaire.
+\begin{proposition}
+	Soit $f : E \to F$ un isomorphisme d'espaces vectoriels.
+	Si $E$ (respectivement $F$) est de dimension finie, alors
+	$F$ (respectivement $E$) est aussi de dimension finie
+	et on a $\dim E =\dim F$.
+\end{proposition}
+
+
+
+Voici une sorte de réciproque extrêmement utile :
+\begin{theoreme}
+	\label{th:eqapplinbij}
+	Soit $f : E \to F$ une application linéaire avec  $\dim E = \dim F$. 
+	Les assertions suivantes sont équivalentes :
+	\begin{itemize}
+		\item[(i)] $f$ est bijective
+		\item[(ii)] $f$ est injective
+		\item[(iii)] $f$ est surjective
+	\end{itemize}
+\end{theoreme}
+
+Ainsi, si $\dim E=\dim F$, pour montrer 
+que $f$ bijective, il suffit de démontrer $f$ injective ou bien $f$ surjective.
+
+%-----------------------------------------
+\subsection{Matrice d'une application linéaire}
+
+
+
+
+\begin{itemize}
+	\item Soit $E$ un espace vectoriel de dimension $p$ et $\mathcal{B}=(e_1, \dots ,e_p)$ une base de $E$
+	\item Soit $F$ un espace vectoriel de dimension $n$ et $\mathcal{B}'=(f_1, \dots ,f_n)$ une base de $F$.
+	\item Soit $f : E \to F$ une application linéaire.
+	\item Pour $j \in \{1,\ldots,p\}$, $f(e_j)$
+	s'écrit de manière dans la base $\mathcal{B}'$ :
+	$$f (e_j)=a_{1j}f_1+a_{2j}f_2+\dots +a_{nj}f_n = \left(\begin{smallmatrix}a_{1j}\\a_{2j}\\ \vdots \\a_{nj}\end{smallmatrix}\right)_{\!\!\mathcal{B}'}.$$
+\end{itemize}
+
+La \defi{matrice de l'application linéaire}\index{matrice!d une application lineaire@d'une application linéaire} $f$ par
+rapport aux bases ${\color{blue}\mathcal{B}}$ et ${\color{Green4}\mathcal{B}'}$ est la matrice $(a_{i,j}) \in M_{n,p}(\Kk)$
+dont la $j$-ème colonne est constituée par les coordonnées du vecteur
+$f({\color{blue}e_j})$ dans la base
+$\mathcal{B}'=({\color{Green4}f_1}, {\color{Green4}f_2}, \ldots ,{\color{Green4}f_n})$ :
+$$\Mat_{\mathcal{B},\mathcal{B}'}(f) = \bordermatrix{    & f({\color{blue}e_1})& \ldots & f({\color{blue}e_j})  &\ldots  & f({\color{blue}e_p})\cr
+{\color{Green4}f_1} & a_{11} &        & a_{1j} & \ldots & a_{1p}\cr
+{\color{Green4}f_2} & a_{21} &        & a_{2j} & \ldots & a_{2p}\cr
+\vdots & \vdots & \vdots & \vdots &        & \vdots\cr
+{\color{Green4}f_n} & a_{n1} &        & a_{nj} & \ldots & a_{np}}$$
+
+
+\mybox{Les vecteurs colonnes sont l'image par $f$ des vecteurs de la base de départ $\mathcal{B}$, exprimée dans la base d'arrivée $\mathcal{B}'$.}
+
+
+
+\textbf{Matrice d'une composition.}
+
+La matrice
+associée à la composition de deux applications linéaires est le
+produit des matrices associées à chacune d'elles, dans le même ordre.
+
+
+\begin{proposition}
+	\label{prop:multmatlin}
+	Soient $f : E \to F$  et $g : F \to G$ deux applications linéaires et soient
+	$\mathcal{B}$ une base de $E$, $\mathcal{B}'$ une base de $F$
+	et $\mathcal{B}''$ une base de $G$.
+	Si on note :
+	$$A = \Mat_{\mathcal{B},\mathcal{B}'} (f)
+	\qquad
+	B = \Mat_{\mathcal{B}',\mathcal{B}''} (g)
+	\qquad
+	C = \Mat_{\mathcal{B},\mathcal{B}''} (g \circ f)$$
+	Alors
+	$$C = B\times A$$
+\end{proposition}
+
+
+
+%-------------------------------------------------------
+\textbf{Matrice d'un endomorphisme}
+
+Soit $E$ un espace vectoriel de dimension $n$.
+$f : E \to E$ est un \defi{endomorphisme} (l'espace vectoriel de départ est égal à celui d'arrivée). On choisit généralement la même base $\mathcal{B}$ au départ et à l'arrivée, et on note simplement $\Mat_{\mathcal{B}} (f)$ la matrice associée à $f$, c'est une matrice carrée de taille $n\times n$.
+
+\begin{exemple}
+	\sauteligne
+	\begin{itemize}
+		\item Cas de l'identité : $\id : E \to E$, $\id(x)=x$.		
+		Quelle que soit la base $\mathcal{B}$ de $E$, $\Mat_{\mathcal{B}} (\id) = I_n$. 		
+		\item Cas d'une homothétie $h_\lambda : E \to E$, $h_\lambda(x) = \lambda \cdot x$ :
+		$\Mat_{\mathcal{B}} (h_\lambda) = \lambda I_n$.
+		
+		\item Cas d'une symétrie centrale $s : E \to E$, $s(x) = - x$ :
+		$\Mat_{\mathcal{B}} (s) = - I_n$.
+		
+		\item Cas de $r_\theta : \Rr^2 \longrightarrow \Rr^2$ la rotation d'angle $\theta$,
+		centrée à l'origine, dans l'espace vectoriel $\Rr^2$ muni de la base canonique $\mathcal{B}$ :
+		$\Mat_{\mathcal{B}} (r_\theta) =
+		\begin{pmatrix}
+			\cos\theta & -\sin\theta\\
+			\sin\theta & \cos\theta
+		\end{pmatrix}.$
+	
+	\end{itemize}
+	
+\end{exemple}
+
+Si $A$ est la matrice associée à $f$, alors
+la matrice associée à $f^p = f \circ f \circ\cdots \circ f$
+est $A^p = A \times A \times \cdots \times A$.
+
+%-------------------------------------------------------
+\textbf{Matrice d'un isomorphisme}
+
+Soit $f : E \to F$ un \defi{isomorphisme} c'est-à-dire une application linéaire bijective. En dimension finie, on a $\dim E = \dim F$.
+On note $A = \Mat_{\mathcal{B},\mathcal{B}'} (f)$.
+
+\begin{theoreme}[Caractérisation de la matrice d'un isomorphisme]
+\sauteligne	
+	\begin{enumerate}
+		\item $f$ est bijective si et seulement si la matrice $A$ est inversible.
+		
+		\item Dans ce cas, la matrice de l'application linéaire
+		$f^{-1} : F \to E$ est la matrice $A^{-1}$.
+	\end{enumerate}
+\end{theoreme}
+
+
+C'est valable pour le cas particulier important d'un endomorphisme $f : E \to E$ où
+$E$ est muni de la même base $\mathcal{B}$ au départ et à l'arrivée
+et $A = \Mat_{\mathcal{B}}(f)$.
+% \begin{corollaire}
+% 	\sauteligne
+% 	\begin{itemize}
+% 		\item $f$ est bijective si et seulement si $A$ est inversible.
+		
+% 		\item Si $f$ est bijective, alors la matrice associée à $f^{-1}$ dans la base $\mathcal{B}$ est $A^{-1}$.
+% 	\end{itemize}
+% \end{corollaire}
+
+
+
+%-----------------------------------------
+\subsection{Changement de bases}
+
+
+\textbf{Coordonnées}
+
+Soit $E$ un espace vectoriel de base $\mathcal{B} = (e_1,e_2, \dots ,e_p )$.
+Pour chaque $x \in E$, il existe un $p$-uplet unique d'éléments de $\Kk$
+$(x_1, x_2, \dots ,x_p)$ tel que
+$$x=x_1e_1+x_2e_2+\dots +x_p e_p.$$
+On note 
+
+La matrice  des coordonnées de $x$ est un vecteur colonne, noté 
+$\Mat_\mathcal{B} (x) = \left(\begin{smallmatrix}x_1\cr x_2\cr \vdots \cr x_p\end{smallmatrix}\right)_{\!\!\mathcal{B}}$.
+Si $\mathcal{B}$ on omet de mentionner la base.
+
+
+\textbf{Image}
+
+Soit $f : E \to F$ une application linéaire, $\mathcal{B}$ une base de $E$ et
+$\mathcal{B}'$ une base de $F$.
+	\begin{itemize}
+	\item Soit $A = \Mat_{\mathcal{B},\mathcal{B}'} (f)$.
+	
+	\item Pour $x \in E$, notons $X = \Mat_{\mathcal{B}} (x) =
+	\left(\begin{smallmatrix}x_1\cr x_2\cr \vdots \cr x_p\end{smallmatrix}\right)_{\!\!\mathcal{B}}$.
+	
+	\item Pour $y \in F$, notons $Y = \Mat_{\mathcal{B}'} (y) =
+	\left(\begin{smallmatrix}y_1\cr y_2\cr \vdots \cr y_n\end{smallmatrix}\right)_{\!\!\mathcal{B}'}$.
+\end{itemize}
+\begin{proposition}
+	\label{prop:matetapplin}
+	Si $y = f(x)$, alors on a
+	\myboxinline{$Y = AX$}.
+\end{proposition}
+
+
+
+%-------------------------------------------------------
+\textbf{Matrice de passage d'une base à une autre}
+
+
+Soient $\mathcal{B}$ et $\mathcal{B}'$ deux bases de $E$. 
+La \defi{matrice de passage}\index{matrice!de passage} de la base $\mathcal{B}$ vers la base $\mathcal{B}'$, notée $\Pass_{\mathcal{B},\mathcal{B'}}$, est la matrice carrée de taille $n \times n$ dont la $j$-ème colonne
+est formée des coordonnées du $j$-ème vecteur de la base $\mathcal{B}'$,
+par rapport à la base $\mathcal{B}$.
+
+On résume :
+\mybox{
+	\begin{minipage}{0.8\textwidth}
+		\center
+		La matrice de passage $\Pass_{\mathcal{B},\mathcal{B'}}$ contient - en colonnes - les
+		coordonnées des vecteurs de la nouvelle base $\mathcal{B}'$
+		exprimés dans l'ancienne base $\mathcal{B}$.
+	\end{minipage}
+}
+
+\begin{proposition}
+	La matrice de passage $\Pass_{\mathcal{B},\mathcal{B}'}$
+	de la base $\mathcal{B}$ vers la base $\mathcal{B}'$
+	est la matrice associée à l'identité $\id_E :  (E, \mathcal{B}') \to (E,\mathcal{B})$ :
+	\mybox{$\Pass_{\mathcal{B},\mathcal{B'}} = \Mat_{\mathcal{B}',\mathcal{B}} (\id_E) $}
+\end{proposition}
+Faites bien attention à l'inversion de l'ordre des bases !
+
+
+
+\begin{proposition}
+	\label{prop:chgtbase}
+	\sauteligne
+	\begin{enumerate}
+		\item La matrice de passage d'une base $\mathcal{B}$ vers une base $\mathcal{B}'$
+		est inversible et son inverse est égale à la matrice de passage de la base $\mathcal{B}'$
+		vers la base $\mathcal{B}$ :
+		\myboxinline{ $\Pass_{\mathcal{B}',\mathcal{B}} = \big( \Pass_{\mathcal{B},\mathcal{B}'} \big)^{-1}$}
+		
+		
+		\item Si $\mathcal{B}$, $\mathcal{B}'$ et $\mathcal{B}''$ sont trois bases, alors
+		\myboxinline{ $\Pass_{\mathcal{B},\mathcal{B}''} = \Pass_{\mathcal{B},\mathcal{B}'}
+			\times \Pass_{\mathcal{B}',\mathcal{B}''}$}
+	\end{enumerate}
+\end{proposition}
+
+
+\textbf{Changement de coordonnées}
+
+
+\begin{itemize}
+	\item Soient $\mathcal{B}$ et
+	$\mathcal{B}'$ deux bases d'un même $\Kk$-espace vectoriel $E$.
+	
+	\item Soit $\Pass_{\mathcal{B},\mathcal{B}'}$ la matrice de passage de
+	$\mathcal{B}$ vers $\mathcal{B}'$.
+	
+	\item Pour $x \in E$, on note $X = \Mat_\mathcal{B} (x) =
+	\left(\begin{smallmatrix}x_1\cr x_2\cr \vdots \cr x_n
+	\end{smallmatrix}\right)_{\!\!\mathcal{B}}$.
+	
+	\item Pour ce même $x \in E$, on note $X' = \Mat_{\mathcal{B}'} (x) =
+	\left(\begin{smallmatrix}x'_1\cr x'_2\cr \vdots \cr x'_n
+	\end{smallmatrix}\right)_{\!\!\!\mathcal{B}'}$.
+\end{itemize}
+
+\begin{proposition}
+	\sauteligne
+	\mybox{$X = \Pass_{\mathcal{B},\mathcal{B}'} \; X'$}
+\end{proposition}
+Notez bien l'ordre !
+
+
+%-------------------------------------------------------
+\textbf{Formule de changement de base}
+
+\begin{itemize}
+	\item Soient $E$ et $F$ deux $\Kk$-espaces vectoriels de dimension finie.
+	
+	\item Soit $f : E \to F$ une application linéaire.
+	
+	\item Soient $\mathcal{B}_E$, $\mathcal{B}'_E$ deux bases de $E$.
+	
+	\item Soient $\mathcal{B}_F$, $\mathcal{B}'_F$ deux bases de $F$.
+	
+	\item Soit $P = \Pass_{\mathcal{B}_E,\mathcal{B}'_E}$ la matrice de passage de $\mathcal{B}_E$
+	à $\mathcal{B}'_E$.
+	
+	\item Soit $Q = \Pass_{\mathcal{B}_F,\mathcal{B}'_F}$ la matrice de passage de $\mathcal{B}_F$
+	à $\mathcal{B}_F'$.
+	
+	\item Soit $A = \Mat_{\mathcal{B}_E,\mathcal{B}_F} (f)$ la matrice de  $f$ de 
+	$\mathcal{B}_E$ vers l$\mathcal{B}_F$.
+	
+	\item Soit $B = \Mat_{\mathcal{B}'_E,\mathcal{B}'_F} (f)$ la matrice de  $f$ de 	$\mathcal{B}'_E$ vers $\mathcal{B}'_F$.
+\end{itemize}
+
+
+\begin{theoreme}[Formule de changement de base]
+	\index{formule!de changement de base}
+	\label{th:changementbase}
+	\sauteligne
+	\mybox{$B = Q^{-1} A P$}
+\end{theoreme}
+
+
+\textbf{Cas particulier de $f : E \to E$ endomorphisme.}
+\begin{itemize}
+	\item Soient $\mathcal{B}$, $\mathcal{B}'$ deux bases de $E$.
+	
+	\item Soit $P = \Pass_{\mathcal{B},\mathcal{B}'}$ la matrice de passage de $\mathcal{B}$
+	à $\mathcal{B}'$.
+	
+	\item Soit $A = \Mat_{\mathcal{B}} (f)$ la matrice de $f$ dans la base
+	$\mathcal{B}$.
+	
+	\item Soit $B = \Mat_{\mathcal{B}'} (f)$ la matrice de $f$ dans	la base $\mathcal{B}'$.
+\end{itemize}
+	\mybox{$B = P^{-1} A P$}
+
+
+
+
+%-------------------------------------------------------
+\textbf{Matrices semblables}
+
+Soient $A$ et $B$ deux matrices carrées de $M_n(\Kk)$.
+Elles sont \defi{semblables}\index{matrice!semblable} s'il existe une
+matrice inversible $P \in M_n(\Kk)$ telle que
+$B=P^{-1}AP$.
+
+\begin{corollaire}
+Deux matrices semblables représentent le même endomorphisme, mais exprimé dans des bases différentes.
+\end{corollaire}
+
+
+
+
+
+
+\end{multicols}
+
+\end{document}
+
+

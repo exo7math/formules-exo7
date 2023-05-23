@@ -1,0 +1,212 @@
+\documentclass[10pt,class=article,crop=false]{standalone}
+\usepackage{../exo7formules}
+
+
+\begin{document}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section{Systèmes linéaires}
+
+\begin{multicols}{2}
+	
+
+%-----------------------------------------
+\subsection{Introduction aux systèmes d'équations linéaires}
+
+
+%---------------------------------------------------------------
+\textbf{Deux droites dans le plan}
+
+Calculer l'intersection de deux droites $D_1$ et $D_2$ du plan équivaut à résoudre le système :
+\begin{equation}
+	\left\{\begin{array}{rcl}
+		a x + b y & = & e\\
+		c x + d y & = & f
+	\end{array}\right.
+	\tag{$S$}
+	\label{eq:syslin1}
+\end{equation}
+
+
+Trois cas :
+\begin{enumerate}
+	\item Les droites $D_1$ et $D_2$ se coupent en un seul point :	
+	le système (\ref{eq:syslin1}) a une seule solution.
+	
+	
+	\item Les droites $D_1$ et $D_2$ sont parallèles : le système
+	(\ref{eq:syslin1}) n'a pas de solution.
+	
+	
+	
+	\item Les droites $D_1$ et $D_2$ sont confondues : le système  (\ref{eq:syslin1}) a une infinité de solutions.
+\end{enumerate}
+
+
+\myfigure{0.4}{
+	\tikzinput{fig_syslin01}
+	\ \ 
+	\tikzinput{fig_syslin02}
+	\ \ 
+	\tikzinput{fig_syslin03}
+}
+
+
+
+
+%---------------------------------------------------------------
+\textbf{Résolution par la méthode de Cramer}
+
+\index{regle@règle!de Cramer}
+
+On note $\left| \begin{smallmatrix} a & b \\ c & d \end{smallmatrix}\right|=ad-bc$
+le \defi{déterminant}\index{determinant@déterminant}. 
+Si $ad-bc\neq 0$, on trouve une unique solution à (\ref{eq:syslin1}) dont les coordonnées $(x,y)$ sont :
+$$x = \frac{\begin{vmatrix} e & b \\ f & d \end{vmatrix}}{\begin{vmatrix} a & b \\ c & d \end{vmatrix}} \qquad
+y = \frac{\begin{vmatrix} a & e \\ c & f \end{vmatrix}}{\begin{vmatrix} a & b \\ c & d \end{vmatrix}}$$
+
+
+
+
+
+%---------------------------------------------------------------
+\textbf{Résolution par inversion de matrice}
+
+%Pour ceux qui connaissent les matrices,
+En termes matriciels, le système linéaire(\ref{eq:syslin1})
+est équivalent à
+$$AX = Y \quad \text{ où } \quad A = \begin{pmatrix} a & b \\ c & d \end{pmatrix},
+\quad  X = \begin{pmatrix} x \\ y \end{pmatrix}, \quad Y = \begin{pmatrix} e \\ f \end{pmatrix}.$$
+
+Si le déterminant de la matrice $A$ est non nul
+alors la matrice $A$ est inversible et
+$$A^{-1} = \frac{1}{ad-bc} \begin{pmatrix} d & -b \\ -c & a \end{pmatrix}$$
+et l'unique solution $X=\left( \begin{smallmatrix} x \\ y \end{smallmatrix}\right)$
+du système est donnée par
+$$X = A^{-1} Y.$$
+
+
+%-----------------------------------------
+\subsection{Théorie des systèmes linéaires}
+
+
+
+	On appelle \defi{équation linéaire}\index{equation lineaire@équation linéaire} dans les variables (ou \defi{inconnues})
+	$x_1,\ldots,x_p$ toute relation de la forme
+	\begin{equation}
+		a_1 x_1 + \cdots + a_p x_p = b,
+	\end{equation}
+	où $a_1, \ldots, a_p $ et $b$ sont des nombres réels donnés.
+
+
+
+Forme générale d'un \defi{système de $n$ équations linéaires à $p$ inconnues} :
+$$\left\{
+\begin{array}{cccccccc}
+	a_{11}x_1 & +a_{12}x_2  &+a_{13}x_3&+&\cdots&+a_{1p}x_p&=&b_1   \\
+	a_{21}x_1 & +a_{22}x_2  &+a_{23}x_3&+&\cdots&+a_{2p}x_p&=&b_2   \\
+	\vdots &  \vdots  & \vdots&&& \vdots&=& \vdots   \\
+	a_{i1}x_1 & +a_{i2}x_2  &+a_{i3}x_3&+&\cdots&+a_{ip}x_p&=&b_i  \\
+	\vdots &  \vdots  & \vdots&&& \vdots&=& \vdots   \\
+	a_{n1}x_1 & +a_{n2}x_2  &+a_{n3}x_3&+&\cdots&+a_{np}x_p&=&b_n   \\
+\end{array}
+\right.
+$$
+
+\begin{itemize}
+	\item Les nombres $a_{ij}$, $i=1,\ldots, n$, $j=1,\ldots, p$, sont les \defi{coefficients} du système.
+Ce sont des données. Les nombres $b_{i}$, $i=1,\ldots, n$, constituent le
+\defi{second membre}\index{second membre} du système et sont également des données.
+
+
+	\item 	Une \defi{solution} du système linéaire est une liste de
+	$p$ nombres réels $(s_1,s_2,\ldots,s_p)$ (un $p$-uplet) tels que si
+	l'on substitue $s_1$ pour $x_1$, $s_2$ pour $x_2$, etc., dans le système
+	linéaire, on obtient une égalité. L'\,\defi{ensemble des solutions du système}
+	est l'ensemble de tous ces $p$-uplets.
+
+
+	\item 	\label{systemes equivalents}
+	On dit que deux systèmes linéaires sont \defi{équivalents}\index{systeme@système!équivalent}
+	s'ils ont le même ensemble de solutions.
+\end{itemize}
+
+
+
+\begin{theoreme}
+	Un système d'équations linéaires n'a soit aucune solution,
+	soit une seule solution, soit une infinité de solutions.
+\end{theoreme}
+
+\begin{itemize}
+	\item Un système linéaire qui n'a aucune solution est dit \defi{incompatible}\index{systeme@système!incompatible}.
+
+
+	\item Un \defi{système homogène}\index{systeme@système!homogène}
+ c'est lorsque le second membre est nul : $b_1=b_2=\cdots=b_n=0$.
+De tels systèmes sont toujours compatibles car ils admettent toujours
+la \emph{solution triviale} $s_1=s_2=\cdots=s_p=0$. 
+\end{itemize}
+
+%-----------------------------------------
+\subsection{Résolution par la méthode du pivot de Gauss}
+
+
+	Un système est \defi{échelonné}\index{systeme@système!échelonné} si :
+	\begin{itemize}
+		\item le nombre de coefficients nuls commençant une ligne croît strictement ligne après ligne.
+	\end{itemize}
+	
+	Il est \defi{échelonné réduit}\index{systeme@système!réduit} si en plus :
+	\begin{itemize}
+		\setcounter{enumi}{1}
+		\item le premier coefficient non nul d'une ligne vaut $1$ ;
+		
+		\item et c'est le seul élément non nul de sa colonne.
+	\end{itemize}
+
+
+
+
+%---------------------------------------------------------------
+\textbf{Opérations sur les équations d'un système}
+
+Les trois opérations élémentaires sur les équations sont :
+\begin{enumerate}
+	\item $L_i \leftarrow \lambda L_i$ avec $\lambda \neq 0$ :
+	on peut multiplier une équation par un réel non nul.
+	
+	\item $L_i \leftarrow L_i+\lambda L_j$ avec $\lambda \in \Rr$ (et $j\neq i$) :
+	on peut ajouter à l'équation $L_i$ un multiple d'une autre équation $L_j$.
+	
+	\item $L_i \leftrightarrow L_j$ : on peut échanger deux équations.
+\end{enumerate}
+
+Ces trois opérations élémentaires ne changent pas les solutions d'un système linéaire ;
+autrement dit ces opérations transforment un système linéaire en un système linéaire équivalent.
+
+
+%---------------------------------------------------------------
+\textbf{Méthode du pivot de Gauss}
+
+La méthode du pivot de Gauss permet de trouver les solutions de n'importe
+quel système linéaire par des opérations élémentaires sur les lignes. Les étapes sont :
+\begin{enumerate}
+	\item Passage à une forme échelonnée.
+	\item Passage à une forme réduite.
+    \item Solutions.
+\end{enumerate}
+
+
+
+\begin{theoreme}
+	Tout système homogène d'équations linéaires dont le nombre d'inconnues est
+	strictement plus grand que le nombre d'équations a une infinité de solutions.
+\end{theoreme}
+
+
+
+\end{multicols}
+
+\end{document}	
+

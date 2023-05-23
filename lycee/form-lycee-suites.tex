@@ -1,0 +1,46 @@
+\documentclass[10pt,class=article,crop=false]{standalone}
+\usepackage{../exo7formules}
+
+
+\begin{document}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section{Suites}
+
+\begin{multicols}{2}
+	
+%-----------------------------------------
+\subsection{Suites arithmétiques}
+
+Soit $u_0$ un \defi{terme initial} et $a$ une \defi{raison}, la \defi{suite arithmétique} $(u_n)$ est définie par:
+$$u_n = a n + u_0$$
+
+La formule de récurrence est :
+$$u_{n+1} = u_n + a$$
+
+Ainsi la raison se calcule par $a = u_{n+1} - u_n$ pour n'importe quel $n \ge 0$. 
+Par exemple $a = u_1 - u_0$.
+
+Somme des $n$ premiers entiers :
+$$1+2+3+\cdots+n = \frac{n(n+1)}{2}$$
+
+
+%-----------------------------------------
+\subsection{Suites géométriques}
+
+Soit $u_0$ un \defi{terme initial} et $q$ une \defi{raison}, la \defi{suite géométrique} $(u_n)$ est définie par:
+$$u_n = u_0 \cdot q^n$$
+
+La formule de récurrence est :
+$$u_{n+1} = q \cdot u_n$$
+
+Ainsi la raison se calcule par $q = \frac{u_{n+1}}{u_n}$ pour n'importe quel $n \ge 0$ (avec $u_n \neq 0$).
+Par exemple $q = \frac{u_1}{u_0}$.
+
+Somme des $n$ premiers termes d'une suite géométrique  de raison $q$ :
+$$1+q+q^2+\cdots+q^n = \frac{1-q^{n+1}}{1-q}$$
+
+
+\end{multicols}
+
+\end{document}	

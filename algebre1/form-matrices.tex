@@ -1,0 +1,428 @@
+\documentclass[10pt,class=article,crop=false]{standalone}
+\usepackage{../exo7formules}
+
+
+\begin{document}
+	
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section{Matrices}
+
+\begin{multicols}{2}
+
+
+%-----------------------------------------
+\subsection{Définition}
+
+
+Un matrice de \defi{taille} $n \times p$ ($n$ lignes et $p$ colonnes) : 
+$$A=\begin{pmatrix}
+	a_{1,1}& a_{1,2}& \dots & a_{1,j}& \dots & a_{1,p}\cr
+	a_{2,1}& a_{2,2}& \dots & a_{2,j}& \dots &a_{2,p}\cr
+	\dots & \dots & \dots & \dots & \dots & \dots \cr
+	a_{i,1}& a_{i,2} & \dots & a_{i,j}& \dots &a_{i,p} \cr
+	\dots & \dots & \dots & \dots & \dots & \dots \cr
+	a_{n,1}& a_{n,2}& \dots & a_{n,j}& \dots & a_{n,p}\cr
+\end{pmatrix}
+\quad \text{ ou } \quad
+A= \big(a_{i,j}\big)_{\substack{1\leq i \leq n \\ 1\leq j \leq p}}
+$$
+
+
+L'ensemble de telles matrices est noté $M_{n,p}(\Kk)$.
+
+
+
+\begin{itemize}
+	\item Si $n=p$ (même nombre de lignes que de colonnes), la matrice est dite 
+	\defi{matrice carrée}\index{matrice!carrée}.
+	On note $M_{n}(\Kk)$ au lieu de $M_{n,n}(\Kk)$.
+	
+	\[
+	\begin{pmatrix}
+		{\color{myred}a_{1,1}} & a_{1,2} & \dots & a_{1,n}\\
+		a_{2,1} & {\color{myred}a_{2,2}} & \dots & a_{2,n}\\
+		\vdots& \vdots & {\color{myred}\ddots}  & \vdots\\
+		a_{n,1} & a_{n,2} & \dots & {\color{myred}a_{n,n}}
+	\end{pmatrix}
+	\]
+	
+	Les éléments $a_{1,1}, a_{2,2}, \ldots, a_{n,n}$ forment la \defi{diagonale principale}\index{diagonale}.
+	
+
+	\item La matrice (de taille $n\times p$) dont tous les coefficients sont des zéros
+	est appelée la \defi{matrice nulle} et est notée $0_{n,p}$ ou plus simplement $0$.
+	
+\end{itemize}
+
+
+
+\begin{definition}[Somme de deux matrices]
+	Soient $A$ et $B$ deux matrices ayant la même taille $n\times p$.
+	Leur \defi{somme} $C=A+B$ est la matrice de taille $n\times p$ définie par
+	\[c_{ij}=a_{ij}+b_{ij}.\]
+\end{definition}
+
+
+
+\begin{definition}[Produit d'une matrice par un scalaire]
+	Le produit d'une matrice $A=\big(a_{ij}\big)$ de $M_{n,p}(\Kk)$
+	par un scalaire $\alpha \in \Kk$ est la matrice
+	$\big(\alpha a_{ij}\big)$ formée en
+	multipliant chaque coefficient de $A$ par $\alpha$. Elle est notée $\alpha \cdot A$ (ou simplement $\alpha A$).
+\end{definition}
+
+
+%-----------------------------------------
+\subsection{Multiplication de matrices}
+
+
+Le produit $AB$ de deux matrices $A$ et $B$ est défini si et seulement si le nombre de colonnes de
+$A$ est égal au nombre de lignes de $B$.
+
+\begin{definition}[Produit de deux matrices]
+	\index{matrice!produit}
+	Soient $A=(a_{ij})$ une matrice $n\times p$ et $B=(b_{ij})$ une matrice $p\times q$.
+	Alors le produit $C=AB$ est une matrice $n\times q$ dont les coefficients $c_{ij}$
+	sont définis par :
+	
+	\mybox{$\displaystyle
+		c_{ij} = \sum_{k=1}^p a_{ik}b_{kj}
+		$}
+\end{definition}
+
+$$c_{ij}=a_{i1}b_{1j}+a_{i2}b_{2j}+ \dots +
+a_{ik}b_{kj}+ \dots + a_{ip}b_{pj}.$$
+
+
+
+\begin{proposition}
+	\sauteligne
+	\begin{enumerate}
+		\item $A (BC) = (AB) C$ : associativité,
+		
+		\item $A(B+C) = AB + AC$ \quad et \quad  $(B+C) A = BA + CA$ : distributivité,
+		
+		\item $A\cdot 0 = 0$ \quad et \quad $0\cdot A= 0$.
+	\end{enumerate}
+\end{proposition}
+
+%---------------------------------------------------------------
+\textbf{Pièges à éviter}
+
+\begin{itemize}
+	\item Premier piège. Le produit de matrices n'est pas commutatif en général.
+    \item Deuxième piège. $AB=0$ n'implique pas $A=0$ ou $B=0$.
+    \item Troisième piège. $AB=AC$ n'implique pas $B=C$.
+\end{itemize}
+
+
+
+La matrice carrée suivante est la \defi{matrice identité}\index{matrice!identité} :
+\[
+I_n = \left(
+\begin{array}{cccc}
+	1 & 0 & \dots & 0\\
+	0& 1& \dots & 0\\
+	\vdots& \vdots & \ddots  & \vdots\\
+	0 & 0 & \dots &1
+\end{array}
+\right)
+\]
+
+\begin{proposition}
+	Si $A$ est une matrice $n \times p$, alors
+	$$ I_n \cdot A = A \qquad \text{et} \qquad A \cdot I_p = A.$$
+\end{proposition}
+
+
+%---------------------------------------------------------------
+\textbf{Puissance}
+
+Si $A \in M_n(\Kk)$ est une matrice carrée, on peut multiplier une matrice carrée par elle-même : on note $A^2 = A \times A$, $A^3 = A \times A \times A$.
+La formule de récurrence est $A^0=I_n$ et $A^{p+1}=A^p \times A$ pour tout $p\in\Nn$.
+
+
+%-----------------------------------------
+\subsection{Inverse d'une matrice : définition}
+
+\begin{definition}[Matrice inverse]
+	\index{matrice!inverse}
+	Soit $A$ une matrice  carrée de taille $n \times n$. S'il existe une matrice carrée
+	$B$ de taille $n \times n$ telle que
+	$$ AB = I\qquad \text{et} \qquad BA = I, $$
+	on dit que $A$ est \defi{inversible}. On appelle $B$ l'\defi{inverse de $A$}
+	et on la note $A^{-1}$.
+\end{definition}
+
+Il suffit en fait de vérifier une seule des
+conditions $AB=I$ ou bien $BA=I$.
+
+L'ensemble des matrices inversibles de $M_{n}(\Kk)$ est noté
+$GL_{n}(\Kk)$.
+
+
+\begin{proposition}
+\sauteligne
+\begin{itemize}
+	\item Si $A$ est inversible, alors son inverse est unique.
+	
+	\item Soit $A$ une matrice inversible. Alors
+	$A^{-1}$ est aussi inversible et on a :
+	\myboxinline{$(A^{-1})^{-1}=A$}.
+	
+	\item Soient $A$ et $B$ deux matrices inversibles de même taille. Alors
+	$AB$ est inversible et
+	\myboxinline{$(AB)^{-1} = B^{-1} A^{-1}$}.
+	Il faut bien faire attention à l'inversion de l'ordre !
+	
+	\item Soient $A$ et $B$ deux matrices de $M_{n}(\Kk)$ et $C$ une matrice
+	inversible de $M_{n}(\Kk)$.
+	Alors l'égalité $AC=BC$ implique l'égalité $A=B$.
+	
+\end{itemize}
+\end{proposition}
+
+
+
+%-----------------------------------------
+\subsection{Inverse d'une matrice : calcul}
+
+Considérons la matrice $2\times 2$ :
+$A = \begin{pmatrix}
+	a & b\\
+	c & d
+\end{pmatrix}.
+$
+\begin{proposition}
+	
+	Si $ad - bc \not= 0$,  alors $A$ est inversible et
+	\mybox{$A^{-1} = \frac{1}{ad-bc} \begin{pmatrix}
+			d & -b\\
+			-c & a
+		\end{pmatrix}$}
+\end{proposition}
+
+
+%---------------------------------------------------------------
+\textbf{Méthode de Gauss pour inverser les matrices}
+
+La méthode pour inverser une matrice $A$
+consiste à faire des opérations élémentaires sur les lignes de la matrice $A$
+jusqu'à la transformer en la matrice identité $I$.
+En pratique,
+à côté de la matrice $A$ que l'on veut inverser, on rajoute la matrice identité
+pour former un tableau $(A\ |\ I)$.
+Sur les lignes de cette matrice augmentée, on effectue des opérations
+élémentaires jusqu'à obtenir
+le tableau $(I\ |\ B)$. Et alors $B=A^{-1}$.
+
+Ces opérations élémentaires sur les lignes sont :
+\begin{enumerate}
+	\item $L_i \leftarrow \lambda L_i$ avec $\lambda \neq 0$ :
+	on peut multiplier une ligne par un réel non nul (ou un élément de $\Kk\setminus\{0\}$).
+	
+	\item $L_i \leftarrow L_i+\lambda L_j$ avec $\lambda \in \Kk$ (et $j\neq i$) :
+	on peut ajouter à la ligne $L_i$ un multiple d'une autre ligne $L_j$.
+	
+	\item $L_i \leftrightarrow L_j$ : on peut échanger deux lignes.
+\end{enumerate}
+
+
+
+%-----------------------------------------
+\subsection{Inverse d'une matrice : systèmes linéaires}
+
+\begin{equation*}\begin{array}{cccc}
+		\underbrace{
+			\left(
+			\begin{array}{ccc}
+				a_{11} & \dots & a_{1n}\\
+				a_{21} & \dots & a_{2n}\\
+				\vdots &&\vdots\\
+				a_{n1} &\dots & a_{nn}
+			\end{array}
+			\right)
+		}
+		&
+		\underbrace{
+			\left(
+			\begin{array}{c}
+				x_1\\
+				x_2\\
+				\vdots\\
+				x_n
+			\end{array}
+			\right)
+		}
+		& = &
+		\underbrace{
+			\left(
+			\begin{array}{c}
+				b_1\\
+				b_2\\
+				\vdots\\
+				b_n
+			\end{array}
+			\right).
+		}
+		\\
+		A & X & & B
+\end{array}\end{equation*}
+
+
+\begin{proposition}
+	Si la matrice $A$ est inversible, alors
+	la solution du système linéaire $AX=B$ est unique et est :
+	\mybox{$X = A^{-1}B$}
+\end{proposition}
+
+
+
+
+
+%-----------------------------------------
+\subsection{Matrices triangulaires, transposée...}
+
+
+Soit $A$ une matrice de taille $n \times n$. On dit que $A$ est \defi{triangulaire inférieure}
+si ses éléments au-dessus de la diagonale sont nuls, autrement dit :
+$$
+i < j \  \Longrightarrow \ a_{ij} = 0.$$
+
+Une matrice triangulaire inférieure a la forme suivante:
+$$\begin{pmatrix}
+	a_{11} & 0 &\cdots&\cdots& 0\\
+	a_{21}&a_{22}&\ddots&&\vdots\\
+	\vdots&\vdots&\ddots&\ddots&\vdots\\
+	\vdots & \vdots &&\ddots&0\\
+	a_{n1}&a_{n2}&\cdots&\cdots&a_{nn}
+\end{pmatrix}
+$$
+
+\bigskip
+
+On dit que $A$ est \defi{triangulaire supérieure} si ses éléments en-dessous
+de la diagonale sont nuls,  autrement dit :
+$$
+i > j \ \Longrightarrow \ a_{ij} = 0. $$
+
+Une matrice triangulaire supérieure a la forme suivante:
+$$\begin{pmatrix}
+	a_{11} & a_{12} &\dots&\dots&\dots & a_{1n}\\
+	0&a_{22}&\dots&\dots&\dots&a_{2n}\\
+	\vdots&\ddots&\ddots&&&\vdots\\
+	\vdots&&\ddots&\ddots&&\vdots\\
+	\vdots & &&\ddots&\ddots&\vdots\\
+	0&\dots&\dots&\dots&0&a_{nn}
+\end{pmatrix}
+$$
+
+
+Une matrice qui est triangulaire inférieure \evidence{et} triangulaire supérieure
+est dite \defi{diagonale}\index{matrice!diagonale}.
+Autrement dit : $i\neq j \ \Longrightarrow \ a_{ij} = 0$.
+
+
+
+\begin{theoreme}
+	Une matrice $A$ de taille $n\times n$, triangulaire, est inversible
+	si et seulement si ses éléments diagonaux sont tous non nuls.
+\end{theoreme}
+
+
+%---------------------------------------------------------------
+%\subsection{La transposition}
+
+Soit $A$ la matrice de taille $n\times p$
+$$
+A = \left(
+\begin{array}{cccc}
+	a_{11} & a_{12} & \dots & a_{1p}\\
+	a_{21} & a_{22} & \dots & a_{2p}\\
+	\vdots & \vdots &&\vdots\\
+	a_{n1} & a_{n2} & \dots & a_{np}
+\end{array}\right).
+$$
+
+\begin{definition}
+	On appelle \defi{matrice transposée}\index{matrice!transposee@transposée}\index{transposee@transposée} de $A$ la matrice $A^T$ de taille $p \times n$
+	définie par :
+	$$
+	A^T = \left(
+	\begin{array}{cccc}
+		a_{11} & a_{21} & \dots & a_{n1}\\
+		a_{12} & a_{22} & \dots & a_{n2}\\
+		\vdots & \vdots &&\vdots\\
+		a_{1p} & a_{2p} &\dots & a_{np}
+	\end{array}\right)\, .
+	$$
+\end{definition}
+
+Autrement dit : le coefficient à la place $(i,j)$ de $A^T$  est $a_{ji}$.
+Ou encore la $i$-ème ligne de $A$ devient la $i$-ème colonne de $A^{T}$
+(et réciproquement la $j$-ème colonne de $A^T$ est la $j$-ème ligne de $A$).
+
+\bigskip
+
+{\bf Notation :} La transposée de la matrice $A$ se note aussi souvent $^{t\!}A$.
+
+
+\begin{theoreme}
+	\sauteligne
+	\begin{enumerate}
+		\item $(A + B)^T = A^T + B^T$
+		\item $(\alpha A)^T = \alpha A^T $
+		\item $(A^T)^T = A$
+		\item \myboxinline{$(AB)^T = B^T A^T$}
+		\item Si $A$ est inversible, alors $A^T$ l'est aussi et on a $(A^T)^{-1}=(A^{-1})^T$.
+	\end{enumerate}
+	\label{theotranspo}
+\end{theoreme}
+
+Notez bien l'inversion : $(AB)^T = B^T A^T$.
+
+
+
+\begin{definition}
+	La \defi{trace}\index{trace}\index{matrice!trace} d'une matrice carrée $A \in M_n(\Kk)$ est
+	le nombre obtenu en additionnant les éléments diagonaux de $A$.
+	Autrement dit,
+	\mybox{$\tr A = a_{11} + a_{22} + \cdots +a_{nn}.$}
+\end{definition}
+
+
+\begin{theoreme}
+	Soient $A$ et $B$ deux matrices $n \times n$. Alors :
+	\begin{enumerate}
+		\item $\tr(A + B)$ = $\tr A$ + $\tr B$,
+		\item $\tr(\alpha A)$ = $\alpha$ $\tr A$ pour tout $\alpha \in \Kk$,
+		\item $\tr(A^T)$ = $\tr A $,
+		\item \myboxinline{$\tr(AB)$ = $\tr(BA)$}.
+	\end{enumerate}
+\end{theoreme}
+
+
+
+
+\begin{definition}
+	Une matrice $A$ de taille $n \times n$ est \defi{symétrique}\index{matrice!symetrique@symétrique} si elle est égale
+	à sa transposée, c'est-à-dire si
+	$A = A^T,$
+	ou encore si $a_{ij}=a_{ji}$ pour tout $i,j=1, \ldots, n$.
+	Les coefficients sont donc symétriques par rapport à la diagonale.
+\end{definition}
+
+
+
+\begin{definition}
+	Une matrice $A$ de taille $n \times n$ est \defi{antisymétrique}\index{matrice!antisymetrique@antisymétrique} si
+	$A^T = -A,$
+	c'est-à-dire si $a_{ij} = -a_{ji}$ pour tout $i,j=1, \ldots, n.$
+\end{definition}
+
+
+
+\end{multicols}
+
+\end{document}
+

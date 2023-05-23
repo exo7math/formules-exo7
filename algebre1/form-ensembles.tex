@@ -1,0 +1,536 @@
+\documentclass[10pt,class=article,crop=false]{standalone}
+\usepackage{../exo7formules}
+
+
+\begin{document}
+
+\newcommand{\assertion}[1]{{\og\emph{#1}\fg}} % pour chapitre logique
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section{Ensembles et applications}
+
+\begin{multicols}{2}
+	
+
+%-----------------------------------------
+\subsection{Ensembles}
+
+
+\begin{itemize}
+	\item Un \defi{ensemble}\index{ensemble} est une collection d'éléments.
+
+	\item L'\defi{ensemble vide}\index{ensemble vide}, $\varnothing$\index{$\varnothing$}
+	est l'ensemble ne contenant aucun élément.
+	\item On note
+	\mybox{$x \in E$}
+	\index{$\in$}
+	si $x$ est un élément de $E$, et $x \notin E$\index{$\notin$} dans le cas contraire.
+\end{itemize}
+
+
+
+
+\begin{itemize}
+	
+	\item L'\defi{inclusion}\index{inclusion}. $E \subset F$\index{$\subset$} si tout élément de $E$ est aussi un élément de $F$.
+	Autrement dit: $\forall x \in E \; (x \in F)$. On dit alors que $E$ est un \defi{sous-ensemble}\index{sous-ensemble} de $F$
+	ou une \defi{partie}\index{partie} de $F$.
+	
+	\item L'\defi{égalité}. $E = F$ si et seulement si $E \subset F$ et $F \subset E$.
+	
+	\item \defi{Ensemble des parties} de $E$. On note $\mathcal{P}(E)$\index{$\mathcal{P}(E)$} l'ensemble des parties de $E$.
+	Par exemple si $E= \{1,2,3\}$ :
+	$$\mathcal{P}(\{1,2,3\}) =
+	\big\{ \varnothing, \{1\}, \{2\}, \{3\}, \{1,2\}, \{1,3\}, \{2,3\}, \{1,2,3\} \big\}.$$
+	
+	\item \defi{Complémentaire}\index{complementaire@complémentaire}. Si $A \subset E$,
+	\mybox{$\complement_E A = \big\{ x \in E \mid x \notin A \big\}$}
+	On le note aussi $E \setminus A$\index{$E \setminus A$} et juste $\complement A$\index{$\complement$}
+	s'il n'y a pas d'ambigu\"ité (et parfois aussi $A^c$ ou $\overline{A}$).
+	
+	
+	\item \defi{Union}\index{union}\index{$\cup$}. Pour $A, B \subset E$,
+	\mybox{$A \cup B = \big\{ x \in E \mid x \in A \text{ ou } x \in B \big\}$}
+	Le \emph{\og ou \fg} n'est pas exclusif : $x$ peut appartenir à $A$ et à $B$ en même temps.
+
+	
+	\item \defi{Intersection}\index{intersection}\index{$\cap$}.
+	\mybox{$A \cap B = \big\{ x \in E \mid x \in A \text{ et } x \in B \big\}$}
+	
+\end{itemize}
+
+
+\myfigure{0.7}{
+	\tikzinput{fig_ensembles01} \quad
+	\tikzinput{fig_ensembles02} \quad
+	\tikzinput{fig_ensembles03}
+}
+%---------------------------------------------------------------
+\textbf{Règles de calculs}
+
+Soient $A, B, C$ des parties d'un ensemble $E$.
+
+\begin{itemize}
+	\item $A\cap B = B \cap A$
+	\item $A \cap (B \cap C) = (A \cap B) \cap C$
+	\qquad (on peut écrire $A\cap B \cap C$ sans ambigüité)
+	\item $A \cap \varnothing = \varnothing$, \quad $A \cap A= A$,  \quad $A \subset B \Longleftrightarrow A\cap B = A$
+\end{itemize}
+
+\medskip
+
+\begin{itemize}
+	\item $A\cup B = B \cup A$
+	\item $A \cup (B \cup C) = (A \cup B) \cup C$
+	\qquad (on peut écrire $A\cup B \cup C$ sans ambiguïté)
+	\item $A \cup \varnothing = A$, \quad  $A \cup A= A$, \quad  $A \subset B \Longleftrightarrow A\cup B = B$
+\end{itemize}
+
+\medskip
+
+\begin{itemize}
+	\item \myboxinline{$A \cap (B \cup C) = (A \cap B) \cup (A \cap C)$}
+	\item \myboxinline{$A \cup (B \cap C) = (A \cup B) \cap (A \cup C)$}
+\end{itemize}
+
+\medskip
+
+\begin{itemize}
+	\item $\complement \left( \complement A \right) = A$ \quad et donc
+	\quad $A \subset B \Longleftrightarrow \complement B \subset \complement A$
+	\item $\complement \left( A \cap B \right) = \complement A \cup \complement B$
+	\item $\complement \left( A \cup B \right) = \complement A \cap \complement B$
+\end{itemize}
+
+
+
+%---------------------------------------------------------------
+\textbf{Produit cartésien}
+
+Soient $E$ et $F$ deux ensembles.
+Le \defi{produit cartésien}\index{produit cartesien@produit cartésien}, noté $E \times F$, est l'ensemble des couples $(x,y)$ où $x \in E$ et $y \in F$.
+
+
+
+%-----------------------------------------
+\subsection{Applications}
+
+\begin{itemize}
+	\item Une \defi{application}\index{application} (ou une \defi{fonction}\index{fonction}) $f : E \to F$,
+	c'est la donnée pour chaque élément $x \in E$ d'un unique élément de $F$ noté $f(x)$.
+	
+	
+
+	
+	\myfigure{0.6}{
+		\tikzinput{fig_ensembles07a}\qquad 
+		\tikzinput{fig_ensembles07b}
+	}
+	
+	\item \defi{Égalité}. Deux applications $f,g : E \to F$ sont égales si et seulement
+	si pour tout $x \in E$, $f(x)=g(x)$. On note alors $f=g$.
+	
+	\item Le \defi{graphe}\index{graphe} de $f : E \to F$ est
+	
+	\begin{minipage}{0.22\textwidth}
+	\mybox{$\Gamma_f = \Big\{ \big(x,f(x)\big) \in E \times F  \mid x \in E \Big\}$}
+	\end{minipage}
+	\begin{minipage}{0.25\textwidth}	
+	\myfigure{0.6}{
+		\tikzinput{fig_ensembles08}
+	}
+	\end{minipage}
+	\item \defi{Composition}\index{composition}. Soient $f : E \to F$ et $g : F \to G$ alors $g \circ f : E \to G$ est l'application définie par $g \circ f (x) = g\big( f(x) \big)$.
+	$$
+	\begin{tikzpicture}[node distance=2cm, every edge/.style={draw,thick,->},scale=0.7, transform shape]
+		\node(E){$E$};
+		\node[right of=E](F){$F$};
+		\node[right of=F](G){$G$};
+		\draw (E) edge (F);\draw (E) edge[myred, bend left=45] node[above]{$f$} (F);
+		\draw (F) edge (G);\draw (F) edge[myred, bend left=45] node[above]{$g$} (G);
+		\draw (E) edge[myred, bend right] node[below]{$g\circ f$} (G);
+	\end{tikzpicture}
+	$$
+	
+	\item \defi{Restriction}\index{restriction}. Soient $f : E \to F$ et $A\subset E$ alors la restriction de $f$ à $A$ est l'application 
+	$\begin {array}{rccc}
+	f_{|_A}\ : \ & A &\longrightarrow& F \\
+	&x & \longmapsto & f(x)\\
+\end{array}$.
+
+
+\end{itemize}
+
+
+
+%---------------------------------------------------------------
+
+\textbf{Image directe, image réciproque}
+
+Soient $E, F$ deux ensembles.
+
+\begin{definition}
+Soit $A \subset E$ et $f : E \to F$, l'\defi{image directe}\index{image directe} de $A$ par $f$ est l'ensemble
+\mybox{$f(A) = \big\{ f(x) \mid x \in A \big\}$}
+\end{definition}
+\myfigure{0.6}{
+\tikzinput{fig_ensembles09a}
+\qquad \qquad
+\tikzinput{fig_ensembles09b}
+}
+
+\begin{definition}
+Soit $B \subset F$ et $f : E \to F$, l'\defi{image réciproque}\index{image reciproque@image réciproque} de $B$ par $f$ est l'ensemble
+\mybox{$f^{-1}(B) = \big\{ x \in E \mid f(x) \in B \big\}$}
+\end{definition}
+
+\myfigure{0.6}{
+\tikzinput{fig_ensembles10a}
+\qquad \qquad
+\tikzinput{fig_ensembles10b}
+}
+
+
+Fixons $y \in F$. Tout élément $x\in E$ tel que $f(x)=y$ est un \defi{antécédent}\index{antecedent@antécédent}
+de $y$.
+En termes d'image réciproque l'ensemble des antécédents de $y$ est $f^{-1}(\{y\})$.
+
+
+
+
+%-----------------------------------------
+\subsection{Injection, surjection, bijection}
+
+
+%---------------------------------------------------------------
+\textbf{Injection, surjection}
+
+Soit $E, F$ deux ensembles et $f : E \to F$ une application.
+
+\begin{definition}
+	$f$ est \defi{injective}\index{injection} si pour tout $x,x' \in E$ avec $f(x)=f(x')$ alors $x=x'$.
+	Autrement dit :
+	\mybox{$\forall x, x' \in E \quad \big( f(x)=f(x') \implies x=x'\big)$}
+\end{definition}
+
+
+
+Les applications $f$ représentées sont injectives :
+\myfigure{0.6}{
+	\tikzinput{fig_ensembles11a}
+	\qquad \qquad
+	\tikzinput{fig_ensembles11b}
+}
+
+
+\begin{definition}
+	$f$ est \defi{surjective}\index{surjection} si pour tout $y \in F$, il existe $x \in E$ tel que $y=f(x)$.
+	Autrement dit :
+	\mybox{$\forall y \in F \quad \exists x \in E \quad \big( y = f(x) \big)$}
+\end{definition}
+
+Une autre formulation : $f$ est surjective si et seulement si $f(E)=F$.
+
+Les applications $f$ représentées sont surjectives :
+\myfigure{0.6}{
+	\tikzinput{fig_ensembles11c}
+	\qquad
+	\tikzinput{fig_ensembles11d}
+}
+
+
+\begin{itemize}
+	\item $f$ est injective si et seulement si tout élément $y$ de $F$ a \emph{au plus} un antécédent (et éventuellement aucun).
+	\item $f$ est surjective si et seulement si tout élément $y$ de $F$ a \emph{au moins} un antécédent.
+\end{itemize}
+
+
+
+%---------------------------------------------------------------
+\textbf{Bijection}
+
+\begin{definition}
+	$f$ est \defi{bijective}\index{bijection} si elle est injective et surjective. Cela équivaut à :
+	pour tout $y \in F$ il existe un unique $x \in E$ tel que $y=f(x)$.
+	Autrement dit :
+	\mybox{$\forall y \in F \quad \exists! x \in E \quad \big( y = f(x) \big)$}
+\end{definition}
+
+Autrement dit, tout élément de $F$ a un unique antécédent par $f$.
+
+\myfigure{0.6}{
+	\tikzinput{fig_ensembles13a}
+	\qquad \qquad
+	\tikzinput{fig_ensembles13b}
+}
+\begin{proposition}
+	\label{prop:bij1}
+	Soit $E, F$ des ensembles et $f : E \to F$ une application.
+	\begin{enumerate}
+		\item L'application $f$ est bijective si et seulement si il existe une application $g : F \to E$
+		telle que $f \circ g = \id_F$ et $g \circ f = \id_E$.
+		\item Si $f$ est bijective alors l'application $g$ est unique et elle aussi est bijective.
+		L'application $g$ s'appelle la \defi{bijection réciproque}\index{bijection reciproque@bijection réciproque} de $f$ et est notée $f^{-1}$.
+		De plus $\left( f^{-1} \right)^{-1} = f$.
+	\end{enumerate}
+\end{proposition}
+
+
+
+
+
+\begin{proposition}
+	\label{prop:bij2}
+	Soient $f : E \to F$ et $g : F \to G$ des applications bijectives.
+	L'application $g \circ f$ est bijective et sa bijection réciproque est
+	\mybox{$(g\circ f)^{-1} = f^{-1} \circ g^{-1}$}
+\end{proposition}
+
+
+
+%-----------------------------------------
+\subsection{Ensembles finis}
+
+
+\begin{definition}
+	Un ensemble $E$ est \defi{fini} s'il existe un entier $n\in \Nn$ et
+	une bijection de $E$ vers $\{1,2,\ldots,n\}$.
+	Cet entier $n$ est unique et s'appelle le \defi{cardinal}\index{cardinal} de $E$ (ou le \defi{nombre d'éléments})
+	et est noté $\Card E$. Le cardinal de l'ensemble vide est $0$.
+\end{definition}
+
+
+
+Quelques propriétés :
+\begin{itemize}
+	\item Si $A$ est un ensemble fini et $B \subset A$ alors $B$ est aussi un ensemble fini et $\Card B \le \Card A$.
+	\item Si $A, B$ sont des ensembles finis disjoints (c'est-à-dire $A \cap B = \varnothing$) alors
+	$\Card (A \cup B) = \Card A + \Card B$.
+	\item Si $A$ est un ensemble fini et $B \subset A$ alors $\Card (A \setminus B) = \Card A - \Card B$.
+	En particulier si $B \subset A$ et  $\Card A = \Card B$ alors $A=B$.
+	\item Enfin pour $A,B$ deux ensembles finis quelconques :
+	\mybox{$\Card (A \cup B) = \Card A + \Card B - \Card (A\cap B)$}
+\end{itemize}
+
+
+
+%---------------------------------------------------------------
+\textbf{Injection, surjection, bijection}
+
+\begin{proposition}
+	Soit $E,F$ deux ensembles finis et $f : E \to F$ une application.
+	\begin{enumerate}
+		\item \label{it:bij1} Si $f$ est injective alors $\Card E \le \Card F$.
+		\item \label{it:bij2} Si $f$ est surjective alors $\Card E \ge \Card F$.
+		\item \label{it:bij3} Si $f$ est bijective alors $\Card E = \Card F$.
+	\end{enumerate}
+\end{proposition}
+
+
+
+\begin{proposition}
+	Soit $E,F$ deux ensembles finis et $f : E \to F$ une application.
+	Si
+	$\Card E = \Card F$
+	alors les assertions suivantes sont équivalentes :
+	\begin{enumerate}
+		\item[i.] $f$ est injective,
+		\item[ii.] $f$ est surjective,
+		\item[iii.] $f$ est bijective.
+	\end{enumerate}
+\end{proposition}
+
+
+\begin{proposition}[Principe des tiroirs]
+	Si l'on range dans $k$ tiroirs, $n > k$ paires de chaussettes
+	alors il existe (au moins) un tiroir contenant (au moins) deux paires
+	de chaussettes.
+\end{proposition}
+
+
+
+%---------------------------------------------------------------
+\textbf{Nombres d'applications}
+
+Soient $E,F$ des ensembles finis, non vides. On note $\Card E=n$ et $\Card F=p$.
+
+\begin{proposition}
+	Le nombre d'applications différentes de $E$ dans $F$ est :
+	\myboxinline{$p^n$}
+\end{proposition}
+
+Autrement dit c'est \myboxinline{$(\Card F)^{\Card E}$}.
+
+
+\begin{proposition}
+	\label{prop:nbinj}
+	Le nombre d'injections de $E$ dans $F$ est :
+	$$p\times(p-1)\times\cdots\times(p-(n-1)).$$
+\end{proposition}
+
+
+Notation \defi{factorielle}\index{factorielle}\index{$n"!"$} : $n! = 1\times 2 \times 3 \times \cdots \times n$.
+Avec $1!=1$ et par convention $0!=1$.
+
+\begin{proposition}
+	Le nombre de bijections d'un ensemble $E$ de cardinal $n$ dans lui-même est :
+	\myboxinline{$n!$}
+\end{proposition}
+
+
+
+
+
+
+
+
+%---------------------------------------------------------------
+\textbf{Coefficients du binôme de Newton}
+
+Soit $E$ un ensemble fini de cardinal $n$.
+
+\begin{proposition}
+	Il y a $2^{\Card E}$ sous-ensembles de $E$ :
+	\myboxinline{$\Card \mathcal{P}(E) = 2^n$}
+\end{proposition}
+
+
+\begin{definition}
+	Le nombre de parties à $k$ éléments d'un ensemble à $n$ éléments est
+	noté $\binom{n}{k}$ ou $C_n^k$.\index{$\binom{n}{k}$}\index{$C_n^k$}
+\end{definition}
+
+
+\begin{proposition}
+	\sauteligne
+	\begin{itemize}
+		\item $\binom{n}{0}=1$, $\binom{n}{1}=n$, $\binom{n}{n}=1$. \\
+		\item \myboxinline{$\binom{n}{n-k} = \binom{n}{k}$} \\
+		\item \myboxinline{$\binom{n}{0}+\binom{n}{1}+\cdots+\binom{n}{k}+\cdots+\binom{n}{n} = 2^n$}
+	\end{itemize}
+\end{proposition}
+
+\begin{proposition}\ \\[-2em]
+	\label{prop:bin}
+	\mybox{$\displaystyle \binom n k = \binom{n-1}{k} + \binom{n-1}{k-1} \qquad (0<k<n)$}
+\end{proposition}
+
+
+Le triangle de Pascal\index{triangle de Pascal} est un algorithme pour calculer ces coefficients $\binom{n}{k}$.
+Chaque élément est obtenu en ajoutant les deux nombres qui lui sont
+juste au-dessus et au-dessus à gauche.
+
+$$\small\begin{array}{cccccc}
+1  &&&&&\\
+1 & 1 &&&&\\	
+1 & 2 & 1 &&&\\
+1 & 3 & 3 & 1 &&\\
+1 & 4 & 6 & 4 & 1 &\\
+1 & 5 & 10 & 10 & 5 & 1 \\
+\end{array}$$
+
+\begin{proposition}\
+	\mybox{$\displaystyle \binom n k = \frac{n!}{k!(n-k)!}$}
+\end{proposition}
+
+
+
+%---------------------------------------------------------------
+\textbf{Formule du binôme de Newton}
+\index{formule!du binôme de Newton}
+
+\begin{theoreme}
+	Soient $a,b \in\Rr$ (ou $\Cc$) et $n$ un entier positif alors:
+	\mybox{$\displaystyle (a+b)^n = \sum_{k=0}^n \binom{n}{k} \ a^{n-k} \cdot b^{k}$}
+\end{theoreme}
+
+Autrement dit :
+{\small
+	$$(a+b)^n = \binom{n}{0}\ a^n\cdot b^0 + \binom{n}{1}\ a^{n-1}\cdot b^{1}
+	+ \cdots + \binom{n}{k} \ a^{n-k} \cdot b^{k}+\cdots + \binom{n}{n}\ a^0\cdot b^n$$
+}
+
+
+
+
+%-----------------------------------------
+\subsection{Relation d'équivalence}
+
+
+Une \defi{relation} sur un ensemble $E$, c'est la donnée pour tout couple
+$(x,y)\in E \times E$ de \og Vrai \fg{} (s'ils sont en relation), ou de \og Faux \fg{} sinon.
+
+
+\begin{definition}
+	Soit $E$ un ensemble et $\mathcal{R}$ une relation, c'est une
+	\defi{relation d'équivalence}\index{relation d equivalence@relation d'équivalence} si :
+	\begin{itemize}
+		\item $\forall x \in E$, $x \mathcal{R}x$, \quad  (\defi{réflexivité}\index{reflexivite@réflexivité})
+
+		\item $\forall x,y \in E$, $x \mathcal{R}y \implies y\mathcal{R}x$, \quad  (\defi{symétrie}\index{symetrie@symétrie})
+
+		\item $\forall x,y,z \in E$, $x \mathcal{R}y \text{ et }  y\mathcal{R}z \implies x\mathcal{R}z$, \quad
+		(\defi{transitivité}\index{transitivite@transitivité})
+
+	\end{itemize}
+\end{definition}
+
+
+
+\begin{definition}
+	Soit $\mathcal{R}$ une relation d'équivalence sur un ensemble $E$.
+	Soit $x\in E$, la \defi{classe d'équivalence}\index{classe d equivalence@classe d'équivalence} de $x$ est
+	\mybox{$\text{cl}(x) = \big\{ y  \in E \mid y\mathcal{R}x \big\}$}
+\end{definition}
+
+
+$\text{cl}(x)$ est donc un sous-ensemble de $E$, on le note aussi $\overline{x}$.
+Si $y \in \text{cl}(x)$, on dit que $y$ un \defi{représentant}\index{representant@représentant} de $\text{cl}(x)$.
+
+
+\begin{proposition}
+\sauteligne
+	\begin{enumerate}
+		\item $\text{cl}(x)=\text{cl}(y) \Longleftrightarrow x\mathcal{R}y$.
+		\item Pour tout $x,y \in E$, $\text{cl}(x)=\text{cl}(y)$ ou $\text{cl}(x) \cap \text{cl}(y) = \varnothing$.
+		\item Soit $C$ un ensemble de représentants de toutes les classes alors $\big\{ \text{cl}(x) \mid x \in C \big\}$
+		constitue une partition de $E$.
+	\end{enumerate}
+\end{proposition}
+
+Une \defi{partition}\index{partition} de $E$ est un ensemble $\{E_i\}$ de parties de $E$ tel que
+$E = \bigcup_i E_i$ et $E_i\cap E_j = \varnothing$ (si $i\neq j$).
+\myfigure{0.6}{
+	\tikzinput{fig_ensembles21}
+}
+
+
+
+%---------------------------------------------------------------
+\textbf{L'ensemble $\Zz/n\Zz$}
+
+Soit $n\ge 2$ un entier fixé.
+La relation suivante sur l'ensemble $E = \Zz$ est une relation d'équivalence:
+\mybox{$a \equiv b \pmod n \quad \Longleftrightarrow \quad a-b \text{ est un multiple de } n$}
+
+
+La classe d'équivalence de $a\in\Zz$ est notée $\overline a$ :
+$$\overline a = \text{cl}(a) = \big\{ b \in \Zz \mid b \equiv a \pmod n \big\}.$$
+Comme un tel $b$ s'écrit $b=a+kn$ pour un certain $k\in \Zz$ alors :
+$$\overline a = a + n\Zz = \big\{ a+kn \mid k\in \Zz \big\}.$$
+
+L'ensemble des classes d'équivalence est l'ensemble
+\mybox{$\Zz/n\Zz = \big\{ \overline 0, \overline 1, \overline 2, \ldots, \overline{n-1} \big\}$}
+qui contient exactement $n$ éléments.
+
+
+
+
+\end{multicols}
+
+\end{document}	
+
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section{Applications}

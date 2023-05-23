@@ -1,0 +1,235 @@
+\documentclass[10pt,class=article,crop=false]{standalone}
+\usepackage{../exo7formules}
+
+
+\begin{document}
+
+\newcommand{\GL}{\mathcal{G}\!\ell}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section{Groupes}
+
+\begin{multicols}{2}
+	
+
+%-----------------------------------------
+\subsection{Définition}
+
+
+Un \defi{groupe}\index{groupe} $(G,\star)$ est un ensemble $G$ auquel est associé une opération $\star$
+(la \defi{loi de composition}\index{loi de composition}) vérifiant les quatre propriétés suivantes :
+\begin{enumerate}
+	\item \label{it:groupei} pour tout $x,y \in G$, \quad $x \star y \in G$
+	\quad  ($\star$ est une \defi{loi de composition interne})
+	
+	\item \label{it:groupeii} pour tout $x,y,z \in G$, \quad $(x \star y) \star z = x \star (y \star z)$
+	\quad (la loi est \defi{associative}\index{associativite@associativité})
+	
+	\item \label{it:groupeiii} il existe $e \in G$ tel que \quad $\forall x \in G$, $x \star e = x$ \  et \  $e \star x = x$
+	\quad ($e$ est l'\defi{élément neutre}\index{element neutre@élément neutre})
+	
+	\item \label{it:groupeiv} pour tout $x \in G$ il existe $x' \in G$ tel que \quad  $x \star x' = x' \star x = e$
+	\quad ($x'$ est l'\defi{inverse} de $x$ et est noté $x^{-1}$)
+\end{enumerate}
+
+Si de plus l'opération vérifie
+$$ \text{pour tout } x,y \in G,\qquad x \star y = y \star x,$$
+on dit que $G$ est un groupe \defi{commutatif}\index{commutatif} (ou \defi{abélien}).
+
+
+\textbf{Exemples.}
+
+\begin{itemize}
+	\item $(\Rr^*,\times)$, $(\Qq^*,\times)$, $(\Cc^*, \times)$ sont des groupes commutatifs.
+		
+	\item $(\Zz,+)$, $(\Qq,+)$, $(\Rr,+)$, $(\Cc,+)$ sont des groupes commutatifs.
+	
+	\item L'ensemble des matrices $n\times n$ inversibles,
+	muni de la multiplication des matrices $\times$, forme un groupe $(\GL_2,\times)$, il est non-commutatif car en général $M\times M' \neq M'\times M$.
+	
+	
+	
+\end{itemize}
+
+
+
+\textbf{Puissance.} Soit un groupe $(G,\star)$ et $x \in G$.
+\begin{itemize}
+	\item $x^{n} = \underbrace{x\star x \star \cdots \star x}_{n \text{ fois}}$,
+	\item $x^0 = e$,
+	\item $x^{-n} = \underbrace{x^{-1}\star \cdots \star x^{-1}}_{n \text{ fois}}$.
+\end{itemize}
+
+Pour $x,y \in G$ et $m,n \in\Zz$ nous avons :
+\begin{itemize}
+	\item $x^m \star x^n = x^{m+n}$,
+	\item $(x^m)^n = x^{mn}$,
+	\item $(x \star y)^{-1} = y^{-1} \star x^{-1}$, \quad attention à l'ordre !
+	\item \textbf{Si} $(G,\star)$ est \textbf{commutatif} alors $(x\star y)^n = x^n \star y^n$.
+\end{itemize}
+
+
+
+
+%-----------------------------------------
+\subsection{Sous-groupes}
+
+Soit $(G,\star)$ un groupe.	Une partie $H \subset G$ est un  \defi{sous-groupe}\index{sous-groupe} de $G$ si :
+	\begin{enumerate}
+		\item $e \in H$,
+		\item pour tout $x, y \in H$, on a $x \star y \in H$,
+		\item pour tout $x \in H$, on a $x^{-1} \in H$.
+	\end{enumerate}
+
+Notez qu'un sous-groupe $H$ est aussi un groupe $(H,\star)$.
+La façon la plus rapide de montrer que $(H,\star)$ est un groupe est donc de montrer que c'est un sous-groupe d'un groupe $(G,\star)$.
+
+Critère pratique pour prouver que $H$ est un sous-groupe de $G$ est:
+	\begin{itemize}
+		\item $H$ contient au moins un élément,
+		\item et pour tout $x,y \in H$, $x \star y^{-1} \in H$.
+	\end{itemize}
+
+Exemples :
+\begin{itemize}
+	\item $(\Rr^*_+,\times)$ est un sous-groupe de $(\Rr^*,\times)$.
+	\item $(\mathbb{U},\times)$ est un sous-groupe de $(\Cc^*,\times)$, où
+	$\mathbb{U} = \{ z \in \Cc \mid |z|=1 \}$.
+	\item $(\Zz,+)$ est un sous-groupe de $(\Rr,+)$.
+	\item $\{e\}$ et $G$ sont les \defi{sous-groupes triviaux}\index{sous-groupe!trivial} du groupe $G$.
+\end{itemize}
+
+\begin{proposition}
+Les sous-groupes de $(\Zz,+)$ sont les $n\Zz$, pour $n\in \Zz$.
+\end{proposition}
+
+L'ensemble $n\Zz$ désigne l'ensemble des multiples de $n$ : $n\Zz = \bigg\{ k\cdot n \mid  k \in \Zz \bigg\}$.
+
+
+Soit $(G,\star)$ un groupe et $E \subset G$ un sous-ensemble de $G$.
+Le \defi{sous-groupe engendré}\index{sous-groupe!engendré} par $E$ est le plus petit sous-groupe de
+$G$ contenant $E$.
+
+Exemple : dans $(\Zz,+)$ et $E = \{a,b\}$, le sous-groupe engendré est $H = n\Zz$ où $n=\pgcd(a,b)$.
+
+%-----------------------------------------
+\subsection{Morphismes de groupes}
+
+
+Soient $(G,\star)$ et $(G',\diamond)$ deux groupes. Une application
+$f : G \longrightarrow G'$ est un \defi{morphisme de groupes}\index{morphisme} si :
+\mybox{$\text{pour tout } x,x' \in G  \qquad f(x \star x') = f(x) \diamond f(x')$}
+
+
+Exemple : $\exp : (\Rr,+) \to (\Rr_+^*,\times)$, $\exp(x+x')= \exp(x) \times \exp(x')$.
+
+Pour un morphisme
+\begin{itemize}
+	\item $f(e_G) = e_{G'}$,
+	\item pour tout $x \in G$, $f(x^{-1}) = \big(f(x)\big)^{-1}$.
+\end{itemize}
+
+
+Un morphisme bijectif est un \defi{isomorphisme}\index{isomorphisme}. Deux groupes $G, G'$ sont \defi{isomorphes} s'il existe un morphisme bijectif $f : G \longrightarrow G'$.
+
+Exemple : $\exp : (\Rr,+) \to (\Rr_+^*,\times)$ est un isomorphisme bijectif, sa bijection réciproque étant le morphisme : $\ln : (\Rr_+^*,\times) \to (\Rr,+)$ avec $\ln(x \times x') = \ln(x) + \ln(x')$.
+
+
+\textbf{Noyau et image}
+
+Soit $f: G \longrightarrow G'$ un morphisme de groupes.
+
+\begin{itemize}
+	\item Le \defi{noyau}\index{noyau} de $f$ est
+	\mybox{$\Ker f = \big\{ x \in G \mid f(x) = e_{G'} \big\}$}
+	
+Le noyau est donc l'ensemble des éléments de $G$ qui s'envoient
+par $f$ sur l'élément neutre de $G'$.
+
+    \item L'\defi{image}\index{image} de $f$ est
+	\mybox{$\Im f = \big\{ f(x)  \mid x \in G \big\}$}
+	
+	Ce sont les éléments de $G'$ qui ont (au moins) un antécédent par $f$.
+\end{itemize}	
+	
+\begin{proposition}
+	Soit $f: G \longrightarrow G'$ un morphisme de groupes.
+	\begin{enumerate}
+		\item $\Ker f$ est un sous-groupe de $G$.
+		\item $\Im f$ est un sous-groupe de $G'$.
+		\item \myboxinline{$f$ est injectif si et seulement si $\Ker f = \{ e_G \}$}
+		\item $f$ est surjectif si et seulement si $\Im f = G'$.
+	\end{enumerate}
+\end{proposition}
+
+
+
+
+%-----------------------------------------
+\subsection{Le groupe $\Zz/n\Zz$}
+
+
+Fixons $n \ge 1$. $\Zz/n\Zz$
+est l'ensemble
+$$\Zz/n\Zz =\left\{ \overline{0}, \overline{1}, \overline{2},\ldots, \overline{n-1} \right\}$$
+où $\overline p$ désigne la classe d'équivalence de $p$ modulo $n$.
+
+\mybox{$\overline p = \overline q \Longleftrightarrow p \equiv q \pmod n$}
+ou encore
+$\overline p = \overline q \Longleftrightarrow \exists k \in \Zz \quad p = q + kn$.
+
+
+L'\defi{addition} sur $\Zz/n\Zz$ est définie par : $\overline p + \overline q = \overline{p+q}$.
+
+
+
+\begin{proposition}
+$(\Zz/n\Zz,+)$ est un groupe commutatif de cardinal $n$
+\end{proposition}
+
+L'élément neutre est $\overline{0}$.
+L'opposé de $\overline k$ est $-\overline{k}=\overline{-k}=\overline{n-k}$.
+
+
+\textbf{Groupes cycliques de cardinal fini}
+
+
+Un groupe $(G,\star)$ est un groupe \defi{cyclique}\index{groupe!cyclique} s'il existe un élément $a \in G$ tel que :
+$$\text{pour tout } x \in G, \text{ il existe } k \in \Zz \text{ tel que } x = a^k$$
+
+
+Autrement dit le groupe $G$ est engendré par un seul élément $a$.
+
+Le groupe $(\Zz/n\Zz,+)$ est un groupe cyclique. En effet il est engendré par $a=\overline 1$,
+car tout élément $\overline k$ s'écrit $\overline k =
+\underbrace{\overline 1 + \overline 1 + \cdots \overline 1}_{k \text{ fois}} = k\cdot \overline 1$.
+
+\begin{theoreme}
+	\label{prop:cyclique}
+	Si $(G,\star)$ un groupe cyclique de cardinal $n$, alors
+	$(G,\star)$ est isomorphe à $(\Zz/n\Zz,+)$.
+\end{theoreme}
+
+
+
+%-----------------------------------------
+\subsection{Le groupe des permutations}
+
+Fixons un entier $n\ge 2$.
+\begin{proposition}
+	L'ensemble des bijections de $\{1,2,\ldots,n\}$ dans lui-même, muni de la composition
+	des fonctions est un groupe, noté $(\mathcal{S}_n,\circ)$.
+	Le cardinal de $\mathcal{S}_n$ est $n!$~.
+\end{proposition}
+
+Une bijection de $\{1,2,\ldots,n\}$ (dans lui-même) s'appelle une \defi{permutation}\index{permutation}.
+Le groupe $(\mathcal{S}_n,\circ)$ s'appelle le \defi{groupe des permutations}
+(ou le \defi{groupe symétrique}).
+
+L'élément neutre du groupe est l'identité $\id$, le produit est ici la composition et l'inverse correspond à la bijection réciproque.
+
+
+
+\end{multicols}
+
+\end{document}	

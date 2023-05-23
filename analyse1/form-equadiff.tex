@@ -1,0 +1,252 @@
+\documentclass[10pt,class=article,crop=false]{standalone}
+\usepackage{../exo7formules}
+
+
+\begin{document}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section{Équations différentielles}
+
+\begin{multicols}{2}
+
+%-----------------------------------------
+\subsection{Définitions}
+
+\begin{itemize}
+	\item Une \defi{équation différentielle}\index{equation differentielle@équation différentielle} d'ordre $n$ est une équation de la forme
+	\begin{equation}
+		F\left(x,y,y',\dots ,y^{(n)}\right)=0
+		\label{eq:eqdiff}
+		\tag{$E_{\text{diff}}$}
+	\end{equation}
+	où $F$ est une fonction de $(n+2)$ variables.
+	
+	\item Une \defi{solution} d'une telle équation sur un intervalle $I\subset \Rr$
+	est une fonction $y :I \to \Rr$ qui est $n$ fois dérivable
+	et qui vérifie l'équation (\ref{eq:eqdiff}). Si on change d'intervalle, on peut très bien obtenir d'autres solutions.
+
+
+	\item  \emph{Exemple.} Une équation différentielle 
+\defi{à variables séparées}\index{equation differentielle@équation différentielle!a variables separees@à variables séparées}
+est une équation du type $y'=g(x)/f(y)$ ou $y'f(y)=g(x)$.
+Une telle équation se résout par calcul de primitives de part et d'autre de l'égalité $y'f(y)=g(x)$.
+
+
+	\item Une équation différentielle \defi{linéaire} est de la forme
+	\begin{equation}
+	a_0(x)y+a_1(x)y'+\dots +a_n(x)y^{(n)} = g(x)
+	\label{eq:eqdifflinscnd}
+	\tag{$E$}
+	\end{equation}	
+	où les $a_i$ et $g$ sont des fonctions continues sur un intervalle $I\subset \Rr$.
+	
+	\item Une équation différentielle linéaire est 
+	\defi{homogène}\index{equation differentielle@équation différentielle!homogene@homogène}, ou 
+	\defi{sans second membre}\index{equation differentielle@équation différentielle!sans second membre},
+	si la fonction $g$ est nulle :
+	\begin{equation}
+	a_0(x)y+a_1(x)y'+\dots +a_n(x)y^{(n)} = 0
+	\label{eq:eqdiffhomog}
+	\tag{$E_h$}
+    \end{equation}	
+
+	
+	\item Une équation différentielle linéaire est \defi{à coefficients constants} si
+	les fonctions $a_i$ ci-dessus sont constantes :
+	$$a_0y+a_1y'+\dots +a_ny^{(n)} = g(x)$$
+	où les $a_i$ sont des constantes réelles et $g$ une fonction continue.
+\end{itemize}
+
+\begin{proposition}[Principe de linéarité]
+	Si $y_1$ et $y_2$ sont solutions de l'équation différentielle linéaire homogène
+	\eqref{eq:eqdiffhomog}
+	alors, quels que soient $\lambda,\mu \in \Rr$, $\lambda y_1 + \mu y_2$ est aussi solution de cette équation.
+\end{proposition}
+
+\text{Méthode} pour résoudre une équation différentielle linéaire \eqref{eq:eqdifflinscnd} avec second membre ;
+\begin{enumerate}
+	\item Trouver une solution particulière $y_p$ de l'équation \eqref{eq:eqdifflinscnd}.
+	\item Trouver l'ensemble $\mathcal{S}_h$ des solutions $y_h$ de l'équation homogène associée \eqref{eq:eqdiffhomog}.
+    \item Conclure par le principe de linéarité : les solutions de \eqref{eq:eqdifflinscnd} sont les 
+    $$y = y_p + y_h \quad \text{ avec } \quad  y_h \in \mathcal{S}_h.$$
+\end{enumerate}
+
+
+
+%-----------------------------------------
+\subsection{Équation différentielle linéaire du premier ordre}
+
+Une équation différentielle \defi{linéaire du premier ordre} est une équation du type $y'=a(x)y + b(x)$ où $a$ et $b$ sont des fonctions définies sur un intervalle ouvert $I$ de $\Rr$.
+
+\begin{theoreme}[$y' = a y$]
+	\label{th:eqdifflinordre1cst}
+	Les solutions de $y' = a y$ où $a \in \Rr$ est une constante sont les fonctions $y$ définies sur $\Rr$ par :
+	\mybox{$y(x) = k e^{ax}$}
+	où $k\in \Rr$ est une constante quelconque.
+\end{theoreme}
+
+Preuve rapide : on intègre à gauche et à droite l'équation $\frac{y'}{y} =  a$
+pour trouver : $\ln |y(x)| = ax+b$.
+Donc $|y(x)| = e^{ax+b}$. Ainsi $y(x) = \pm e^b e^{ax}$.
+
+Exemple : $3y' - 5y = 0$ a pour solution 
+$y(x) = k e^{\frac53x}$, où $k \in \Rr$.
+
+
+\begin{theoreme}[$y' = a(x) y$]
+	\label{th:eqdifflinordre1}
+	Soit $a : I \to \Rr$ une fonction continue. Soit $A : I \to \Rr$ une primitive de $a$. Les solutions de $y' = a(x) y$
+	sont les fonctions $y$ définies par :
+	\mybox{$y(x) = k e^{A(x)}$}
+	où $k\in \Rr$ est une constante quelconque.
+\end{theoreme}
+
+Exemple : $x^2y'=y$ sur $I=\,]0,+\infty[$.
+L'équation est $y'= \frac{1}{x^2}y$, donc $a(x)=\frac{1}{x^2}$, dont une primitive est $A(x)=-\frac1x$. Les solutions sont $y(x) = k e^{-\frac1x}$, où $k\in\Rr$.
+
+\begin{theoreme}[$y' = a(x) y + b(x)$]
+Soit l'équation $y' = a(x) y + b(x)$
+où $a,b  : I \to \Rr$.
+Soit $y_p$ une solution particulière et
+$y_h(x)$ les solutions de l'équation homogène $y' = a(x) y$.
+Les solutions sont les $y = y_p + y_h$.
+\end{theoreme}
+
+
+
+
+\textbf{Recherche d'une solution particulière : méthode de variation de la constante.}
+\index{variation de la constante}
+\begin{itemize}
+	\item On trouve les solutions $y(x)=ke^{A(x)}$ de l'équation homogène $y' = a(x) y$ où $k$ est une constante.
+	\item On cherche une solution particulière de $y' = a(x) y + b(x)$
+	sous la forme $y_p(x)=k(x)e^{A(x)}$, où $k$ est maintenant une fonction.
+	\item L'équation $y_p' = a(x) y_p + b(x)$ permet de déterminer $k'(x)$, puis $k(x)$.
+\end{itemize}
+
+	
+\textbf{Recherche d'une solution particulière : cas des coefficients constants.}
+$y' = ax + g(x)$, où $a \in \Rr^*$ est une constante.
+Le principe est de chercher une solution particulière de la même forme que le second membre.
+\begin{itemize}
+	\item Si $g(x) = P(x)$ est un polynôme de degré $n$, on cherche une solution particulière sous la forme $y_p(x) = Q(x)$ où $Q$ est aussi un polynôme de degré $n$.
+	\item Si $g(x) = ce^{\beta x}$, on cherche une solution particulière sous la forme $y_p(x) =de^{\beta x}$.
+	
+	\item Si $g(x) = c_1\cos(\beta x) + c_2 \sin(\beta x)$,  on cherche une solution particulière sous la forme $y_p(x) = d_1\cos(\beta x) + d_2 \sin(\beta x)$,	
+\end{itemize}	
+
+
+\begin{theoreme}[de Cauchy-Lipschitz]
+	\index{theoreme@théorème!de Cauchy-Lipschitz}
+	\label{th:cauchylipschitzord1}	
+	Soit $y'=a(x)y + b(x)$ une équation différentielle linéaire du premier ordre,
+	où $a,b : I \to \Rr$ sont des fonctions continues sur un intervalle ouvert $I$.
+	Pour tout $x_0 \in I$ et pour tout $y_0 \in \Rr$, il existe une et une
+	seule solution $y$ telle que $y'=a(x)y + b(x)$ et $y(x_0)=y_0$.
+\end{theoreme}
+
+
+%-----------------------------------------
+\subsection{Équation différentielle linéaire du second ordre à coefficients constants}
+
+\begin{equation}
+	ay''+by'+cy=g(x)
+	\label{eq:linscd}
+	\tag{$E$}
+\end{equation}
+où $a,b,c \in \Rr$, $a \neq 0$ et $g$ continue sur $I$
+ intervalle ouvert.
+
+L'équation homogène associée
+\begin{equation}
+	ay''+by'+cy=0
+	\label{eq:linscdhom}
+	\tag{$E_h$}
+\end{equation}
+
+L'\defi{équation caractéristique} est $ar^2+br+c=0$, de discriminant $\Delta= b^2-4ac$.
+
+\begin{theoreme}
+	\sauteligne
+	\begin{enumerate}
+		
+		\item Si $\Delta >0$, l'équation caractéristique a deux racines réelles distinctes
+		$r_1\neq r_2$ et les solutions de (\ref{eq:linscdhom}) sont les
+		\mybox{$y(x) = \lambda e^{r_1x}+ \mu e^{r_2x} \quad \text{ où } \lambda, \mu \in \Rr.$}
+		
+		\item Si $\Delta=0$, l'équation caractéristique a une racine double $r_0$
+		et les solutions de (\ref{eq:linscdhom}) sont les
+		\mybox{$y(x) = (\lambda+\mu x)e^{r_0 x} \quad \text{ où } \lambda, \mu \in \Rr.$}
+		
+		\item Si $\Delta<0$, l'équation caractéristique a deux racines complexes
+		conjuguées $r_1=\alpha+\ii \beta$, $r_2=\alpha-\ii \beta$ et les solutions de (\ref{eq:linscdhom}) sont les
+		\mybox{$y(x) = e^{\alpha x}\big(\lambda\cos (\beta x)+\mu\sin (\beta x)\big) \quad \text{ où }
+			\lambda, \mu \in \Rr.$}
+		
+	\end{enumerate}
+\end{theoreme}
+
+(Attention ! $y''+y=0$ a pour équation caractéristique $r^2+1=0$.)
+
+%---------------------------------------------------------------
+\textbf{Équation avec second membre}
+
+
+\begin{equation}
+	ay''+by'+cy=g(x)
+	%\label{eq:linscd}
+	\tag{$E$}
+\end{equation}
+
+\begin{theoreme}[Théorème de Cauchy-Lipschitz]
+	\index{theoreme@théorème!de Cauchy-Lipschitz}
+	Pour chaque $x_0\in I$ et chaque couple $(y_0,y_1) \in \Rr^2$,
+	l'équation (\ref{eq:linscd}) admet une \evidence{unique}
+	solution $y$ sur $I$ satisfaisant aux conditions initiales :
+	\mybox{$y(x_0) = y_0$ \quad et \quad $y'(x_0) = y_1$}
+\end{theoreme}
+
+
+
+\textbf{Second membre $g(x)=e^{\alpha x}P(x)$.} $\alpha \in \Rr$ et $P\in \Rr[X]$
+
+Cela comprend le cas $g(x) = e^{\alpha x}$ (donc $P(x)=1$ et alors $Q(x)$ est une constante ci-dessous) et le cas $g(x) = P(x)$ (donc $\alpha=0$).
+
+On cherche une solution particulière sous la forme
+$y_p(x)=e^{\alpha x}x^{m}Q(x)$, où $Q$ est un polynôme de
+même degré que $P$ avec :
+\begin{itemize}
+	\item $y_p(x)=e^{\alpha x}Q(x)$ ($m=0$), si $\alpha$ n'est pas une racine de l'équation caractéristique,
+	\item $y_p(x)=xe^{\alpha x}Q(x)$ ($m=1$), si $\alpha$ est une racine simple de l'équation caractéristique,
+	\item $y_p(x)=x^2e^{\alpha x}Q(x)$ ($m=2$), si $\alpha$ est une racine double de l'équation caractéristique.
+\end{itemize}
+
+\textbf{Second membre du type $e^{\alpha x}\big(P_1(x)\cos (\beta x)+P_2(x)\sin (\beta x)\big)$.}
+
+Cela comprend le cas $g(x) = c_1\cos(\beta x) + c_2 \sin(\beta x)$ (donc $\alpha=0$ et $P_1$ et $P_2$ polynômes constants).
+
+Si $g(x)=e^{\alpha x} \big(P_1(x)\cos (\beta x)+P_2(x)\sin (\beta x)\big)$,
+où $\alpha ,\beta \in \Rr$ et $P_1,P_2\in\Rr[X]$, on cherche une solution particulière sous la forme :
+\begin{itemize}
+	\item $y_p(x)=e^{\alpha x} \big( Q_1(x)\cos (\beta x)+Q_2(x)\sin (\beta x) \big)$,
+	si $\alpha +\ii \beta$ n'est pas une racine de l'équation caractéristique,
+	
+	\item $y_p(x)=xe^{\alpha x}  \big( Q_1(x)\cos (\beta x)+Q_2(x)\sin (\beta x) \big)$,
+	si $\alpha +\ii \beta$ est une racine de l'équation caractéristique.
+\end{itemize}
+Dans les deux cas, $Q_1$ et $Q_2$ sont deux polynômes
+de degré $n=\max\{\deg P_1,\deg P_2\}$.
+
+
+\textbf{Méthode de variation des constantes.}
+\index{variation de la constante}
+
+Si $\{y_1,y_2\}$ est une base de solutions de l'équation homogène (\ref{eq:linscdhom}),
+on cherche une solution particulière sous la forme
+$y_p = \lambda y_1 + \mu y_2$, mais cette fois $\lambda$ et $\mu$ sont deux fonctions.
+
+
+
+\end{multicols}
+
+\end{document}	

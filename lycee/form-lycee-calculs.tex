@@ -1,0 +1,184 @@
+\documentclass[10pt,class=article,crop=false]{standalone}
+\usepackage{../exo7formules}
+
+
+\begin{document}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section{Calculs algébriques}
+
+% Niveau collège
+
+\begin{multicols}{2}
+	
+	
+%-----------------------------------------
+\subsection{Identités remarquables}
+
+$$(a+b) ^2 = a^2 + 2ab + b^2$$
+
+$$(a-b) ^2 = a^2 - 2ab + b^2$$
+
+$$(a-b)(a+b) = a^2-b^2$$
+
+%-----------------------------------------
+\subsection{Fractions}
+
+Une \defi{fraction} est $\frac{a}{b}$ avec $a,b$ des nombres réels.
+$a$ est le \defi{numérateur}, $b$ est le \defi{dénominateur}.
+Ce dénominateur ne doit pas être nul : $b \neq 0$.
+
+$$\frac{a}{b} \times \frac{c}{d} = \frac{ac}{bd}$$
+
+$$\frac{a}{b} + \frac{c}{b} = \frac{a+ c}{b}$$
+
+$$\frac{a}{b} + \frac{c}{d} = \frac{ad + bc}{bd}$$
+
+
+$$\frac{1}{\frac{1}{a}} = a$$
+
+$$\frac{\frac{a}{b}}{\frac{c}{d}} = \frac{a}{b} \times \frac{d}{c}$$ 
+
+$$\frac{a}{b} = \frac{c}{d} \iff ad=bc$$
+
+$$\frac{a}{1} = a \qquad \frac{0}{b} = 0 \qquad \frac{ka}{kb} = \frac{a}{b}$$
+
+
+%-----------------------------------------
+\subsection{Puissances}
+
+Pour $x \in \Rr$ et $n \in \Nn$.
+$$x^n = \underbrace{x \times x \times \cdots \times x}_{n \text{ termes}}$$
+
+$$\text{convention : } x^0 = 1 \qquad x^1 = x \qquad x^2 = x \times x \quad \cdots$$
+
+Pour $x\neq 0$, on pose $x^{-1} = \frac 1x$.
+Et $x^{-n} = \frac{1}{x^n}$.
+
+Pour $n,a,b \in \Zz$ :
+
+
+$$x^a \times x^b = x^{a+b}$$
+
+
+
+
+
+$$(xy)^n = x^n y^n$$
+
+$$\left( \frac{x}{y} \right)^n = \frac{x^n}{y^n}$$
+
+$$\frac{x^a}{x^b} = x^{a-b}$$
+
+$$(x^a)^b = x^{ab}$$
+
+${x}^{a^b}$ signifie $x^{(a^b)}$
+
+\medskip
+
+\textbf{Puissances de $10$}
+
+$$
+\begin{array}{*{8}{c}}	
+	10^0 & 10^1 & 10^2 & 10^3 & 10^4    & 10^5     & 10^6 & 10^9 \\\hline
+	1    & 10   & 100  & 1000 & 10\,000 & 100\,000 & \text{un million} & \text{un milliard} \\ \hline
+	    &    &   & \text{kilo} &  &  & \text{mega} & \text{giga} \\	
+\end{array}
+$$ 
+$$
+\begin{array}{*{8}{c}}	
+	10^0 & 10^{-1} & 10^{-2} & 10^{-3} & 10^{-4}  & 10^{-6} & 10^{-9} \\\hline
+	1    & 0,1   & 0,01  & 0,001 & 0,0001  & \text{un millionième} & \text{un milliardième} \\ \hline
+	&    &   & \text{milli} &  &   \text{micro} & \text{nano} \\	
+\end{array}
+$$ 
+
+Pour les puissances positives l'exposant $n$ est le nombre de zéros du nombre : par exemple $10\,000 = 10^4$ car $10\,000$ a $4$ zéros.
+
+ Pour les puissances négatives l'exposant est $n$ est aussi le nombre de zéros du nombre, en comptant le zéro avant la virgule : par exemple $0,001 = 10^{-3} $ car $0, 001$  a un total de $3$ zéros ($1$ avant la virgule et $2$ après).
+
+ \medskip 
+
+ \textbf{Puissances de $2$}
+$$
+\begin{array}{*{11}{c}}	
+	2^0 & 2^1 & 2^2 & 2^3 & 2^4 & 2^5 & 2^6 & 2^7 & 2^8 & 2^9 & 2^{10} \\ \hline
+	1   & 2   & 4  & 8 & 16 & 32 & 64 & 128 & 256 & 512 & 1024 \\ 
+
+\end{array}
+$$ 
+
+\medskip
+
+\textbf{Carrés}
+
+$$\small
+\begin{array}{*{14}{c}}	
+	2^2 & 3^2 & 4^2 & 5^2 & 6^2 & 7^2 & 8^2 & 9^2 & 10^2 & 11^2 & 12^2 & 13^2 & 14^2 & 15^2 \\ \hline
+	4 & 9 & 16 & 25 & 36 & 49 & 64 & 81 & 100 & 121 & 144 & 169 & 196 & 225 \\ 	
+\end{array}
+$$ 
+
+
+%-----------------------------------------
+\subsection{Racine carrée}
+
+La \defi{racine carrée} d'un réel $x \ge 0$ est le réel $\sqrt{x} \ge 0$ tel que $\left( \sqrt x \right)^2 = x$.
+
+Pour $x, y \ge 0$.
+
+$$\sqrt{xy} = \sqrt{x} \sqrt{y} \qquad x, y \ge 0$$
+$$\sqrt{\frac xy} = \frac{\sqrt{x}}{\sqrt{y}} \qquad x \ge 0,  y > 0$$
+
+Pour $x > 0$, 
+
+$$\frac{1}{\sqrt x} = \frac{\sqrt{x}}{x}$$
+Par exemple : $\frac{1}{\sqrt 2} = \frac{\sqrt{2}}{2}$.
+
+
+Pour $x \ge 0$, 
+
+$$\left( \sqrt x \right)^2 = x$$
+
+$$\sqrt{x^2} = x$$
+
+(Attention pour $x < 0$, $\sqrt{x^2} = -x$ !)
+
+Pour $x \ge 0$, $n \in \Zz$ :
+
+$$\left( \sqrt x \right)^n = \sqrt{x^n}$$
+
+Pour $x, y \ge 0$ :
+$$y = \sqrt x \iff y^2 = x$$
+
+Attention ! $\sqrt{a+b}$ n'est pas égal à $\sqrt{a} + \sqrt{b}$.
+
+%-----------------------------------------
+\subsection{Inégalités}
+
+{Définitions.} $a \le b \iff b - a \in [0,+\infty[$.
+$a < b \iff b - a \in {}]0,+\infty[$.
+
+{Addition.} Si $a \le b$ et $k \in \Rr$ alors $a + k \le b + k$.
+
+{Multiplication par un réel positif.} 
+Si $a \le b$ et $k \ge 0$ alors $ka \le kb$.
+
+{Multiplication par un réel négatif.} 
+Attention ! Si $a \le b$ et $k < 0$ alors $ka \ge kb$.
+En particulier si $a \le b$ alors $-a \ge -b$. 
+Par exemple $2 \le 3$ et $-2 \ge -3$.
+
+{Inverse.}
+Attention ! Si $0 \le a \le b$ et alors $\frac 1a \ge \frac 1b$. 
+Par exemple $2 \le 3$ et $\frac 12 \ge \frac13$.
+
+Autre formule d'addition.
+Si $a \le b$ et $c \le d$ alors $a+c \le b+d$.
+ 
+Autre formule de multiplication.
+Si $0 \le a \le b$ et $0 \le c \le d$ alors $ac \le bd$.
+
+\end{multicols}
+
+\end{document}	

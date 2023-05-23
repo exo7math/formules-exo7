@@ -1,0 +1,276 @@
+\ProvidesPackage{exo7formules}
+
+\usepackage[subpreambles=false]{standalone}
+
+\usepackage{amsfonts,amsmath,amssymb,amsthm}
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage[french]{babel}
+
+
+\usepackage[usenames,x11names]{xcolor}
+\usepackage{tikz}
+\usetikzlibrary{calc,shadows,arrows.meta,patterns,matrix}
+
+%\usepackage{graphicx}
+\usepackage{float}
+
+\usepackage[fontsize=8pt]{fontsize}
+
+%\usepackage{fancybox}
+
+\usepackage{multicol}
+\setlength{\columnsep}{30pt}
+\setlength{\columnseprule}{0.4pt}
+
+% Format de la page
+\usepackage[a4paper,
+  nomarginpar,
+  margin = 1.25cm,
+  %top=0.5in,
+  %right=0.8in, left=0.8in, top=0.5in, bottom=0.7in,
+  bindingoffset=0cm,
+  headsep=15pt, heightrounded,
+  footskip=15pt,
+  %showframe,
+]{geometry}
+
+
+% Police par defaut
+\usepackage[charter]{mathdesign}
+
+
+%----- Ensembles : entiers, reels, complexes -----
+\newcommand{\Nn}{\mathbb{N}}
+\newcommand{\Zz}{\mathbb{Z}}
+\newcommand{\Qq}{\mathbb{Q}}
+\newcommand{\Rr}{\mathbb{R}}
+\newcommand{\Cc}{\mathbb{C}}
+\newcommand{\Kk}{\mathbb{K}}
+
+
+%----- Modifications de symboles -----
+\renewcommand{\epsilon}{\varepsilon}
+\renewcommand{\Re}{\mathop{\mathrm{Re}}\nolimits}
+\renewcommand{\Im}{\mathop{\mathrm{Im}}\nolimits}
+\renewcommand{\ge}{\geqslant} \renewcommand{\geq}{\geqslant}
+\renewcommand{\le}{\leqslant} \renewcommand{\leq}{\leqslant}
+
+
+%----- Presentation ------
+\setlength{\parindent}{0cm}
+
+
+% --- Logo Exo7
+\definecolor{myred}{rgb}{0.93,0.26,0}
+\definecolor{myorange}{rgb}{0.97,0.58,0}
+\definecolor{myyellow}{rgb}{1,0.86,0}
+
+\newcommand{\LogoExoSept}[1]{  % input : échelle
+{\usefont{U}{cmss}{bx}{n}
+\begin{tikzpicture}[scale=0.1*#1,transform shape]
+  \fill[color=myorange] (0,0)--(4,0)--(4,-4)--(0,-4)--cycle;
+  \fill[color=myred] (0,0)--(0,3)--(-3,3)--(-3,0)--cycle;
+  \fill[color=myyellow] (4,0)--(7,4)--(3,7)--(0,3)--cycle;
+  \node[scale=5] at (3.5,3.5) {Exo7};
+\end{tikzpicture}}
+}
+
+
+%----- Commandes supplementaires ------
+\newcommand{\dd}{\mathrm{d}}
+\DeclareMathOperator{\ii}{i}
+\newcommand{\Card}{\mathop{\text{Card}}}
+\newcommand{\pgcd}{\mathop{\text{pgcd}}}
+\newcommand{\ppcm}{\mathop{\text{ppcm}}}
+\newcommand{\val}{\mathop{\text{val}}}
+\DeclareMathOperator{\ch}{ch}
+\DeclareMathOperator{\sh}{sh}
+\let\tanh\undefined\DeclareMathOperator{\tanh}{th} % redéfinition
+\DeclareMathOperator{\cotan}{cotan}
+\DeclareMathOperator{\Arcsin}{Arcsin}
+\DeclareMathOperator{\Arccos}{Arccos}
+\DeclareMathOperator{\Arctan}{Arctan}
+\DeclareMathOperator{\Argsh}{Argsh}
+\DeclareMathOperator{\Argch}{Argch}
+\DeclareMathOperator{\Argth}{Argth}
+\DeclareMathOperator{\Ker}{Ker}
+\DeclareMathOperator{\id}{id}
+\DeclareMathOperator{\Vect}{Vect}
+\DeclareMathOperator{\Mat}{Mat}
+\DeclareMathOperator{\rg}{rg}
+\DeclareMathOperator{\tr}{tr}
+\newcommand{\Pass}{\mathop{\mathrm{P}}\nolimits}
+
+% PPour liens externes
+\usepackage[hypertexnames=false,pdfencoding=auto]{hyperref}
+\hypersetup{colorlinks=true, linkcolor=blue, urlcolor=blue}
+
+% ----------------------------------------------------------------------
+% Personnalisation pour les théorèmes,...
+
+\newtheoremstyle{formuleexo7}% name
+{3ex}% space above
+{2ex}% space below
+{}% body font
+{}% indent amount
+{\itshape\bfseries}% head font
+{}% punctuation after head
+{\newline}% space after head
+{\thmname{#1}\ \thmnumber{#2}\ \thmnote{(#3)}}% head spec
+
+%\newtheoremstyle{qcmexo7}% name
+%{3pt}% Space above
+%{3pt}% Space below
+%{\upshape}% Body font
+%{}% Indent amount
+%{\bfseries}% Theorem head font
+%{.\newline}% Punctuation after theorem head
+%{0pt}% Space after theorem head
+%{}% Theorem head spec (can be left empty, meaning ‘normal’ )
+
+
+%----- Structure des qcm ------
+\theoremstyle{formuleexo7}
+\newtheorem{formule}{Formule}
+
+% Fix bug itemize newline if directly after question
+% From http://tex.stackexchange.com/questions/46357
+\makeatletter
+\def\enumfix{%
+\if@inlabel
+ \noindent \par\nobreak\vskip-\parskip\vskip-\baselineskip\hrule\@height\z@
+\fi}
+
+\let\olditemize\itemize
+\def\itemize{\enumfix\olditemize}
+
+
+% Figures
+\newcommand{\tikzinput}[1]{%
+	%\tikzsetnextfilename{\import@path tikzcach/#1\cachsuffix}%
+	\input{figures/#1.tikz}%
+}
+
+% --- les figures avec échelle éventuel
+\newcommand{\myfigure}[2]{% entrée : échelle, fichier(s) figure à inclure
+	\begin{center}\small
+		\tikzstyle{every picture}=[scale=1.1*#1]% mise en échelle + 10% (automatiquement annulé à la fin du groupe)
+		#2
+\end{center}}
+
+
+% ----------------------------------------------------------------------
+% Encadrement des formules
+\usepackage{varwidth}
+\tikzset{
+	block/.style = {
+		minimum height=1em,
+		inner xsep=.8em, inner ysep=.45em,
+		draw=black, thick, %rounded corners,
+		execute at begin node={\begin{varwidth}{\linewidth}},
+			execute at end node={\end{varwidth}}
+	},
+	inline/.style = {
+		inner sep=.35em, draw=black, thick,
+	}
+}
+\newcommand{\mybox}[1]{\begin{center}\tikz{\node[block]{#1};}\end{center}}
+\newcommand{\myboxinline}[1]{\tikz[baseline=(X.base)]{\node[inline](X){#1};}}
+
+% Définition d'un terme, mise en relief
+\newcommand{\defi}[1]{{\color{myorange}\textbf{\emph{#1}}}}
+\newcommand{\evidence}[1]{{\color{blue}\textbf{\emph{#1}}}}
+
+% saut de page
+\usepackage{needspace}
+
+% Pour l'inclusion des chapitres
+\usepackage{import}
+
+% Faire passer une ligne si un environnement commence par une liste
+%\newcommand{\sauteligne}{\leavevmode\vspace{-\baselineskip}}
+\newcommand{\sauteligne}{\leavevmode}
+
+% ----------------------------------------------------------------------
+% Personnalisation pour les théorèmes,...
+\newtheoremstyle{theoremeexo7}% name
+{3pt}% Space above
+{3pt}% Space below
+{\itshape}% Body font
+{}% Indent amount
+{\bfseries}% Theorem head font
+{.}% Punctuation after theorem head
+{3pt}% Space after theorem head
+{}% Theorem head spec (can be left empty, meaning ‘normal’ )
+
+\newtheoremstyle{definitionexo7}% name
+{3pt}% Space above
+{3pt}% Space below
+{\upshape}% Body font
+{}% Indent amount
+{\bfseries}% Theorem head font
+{.}% Punctuation after theorem head
+{3pt}% Space after theorem head
+{}% Theorem head spec (can be left empty, meaning ‘normal’ )
+
+\theoremstyle{theoremeexo7}
+\newtheorem*{theoreme}{Théorème}
+%\newtheorem*{theoreme*}{Théorème}
+\newtheorem*{proposition}{Proposition}
+%\newtheorem*{proposition*}{Proposition}
+%\newtheorem*{propriete*}{Propriété}
+\newtheorem*{lemme}{Lemme}
+\newtheorem*{corollaire}{Corollaire}
+
+\theoremstyle{definitionexo7}
+\newtheorem*{definition}{Définition}
+\newtheorem*{remarque*}{Remarque}
+\newtheorem*{exemple}{Exemple}
+
+% Pour espace de env 'align
+% \setlength{\parskip}{0pt}
+% \setlength{\abovedisplayskip}{0pt}
+% \setlength{\belowdisplayskip}{0pt}
+% \setlength{\abovedisplayshortskip}{0pt}
+% \setlength{\belowdisplayshortskip}{0pt}
+
+% Ligne bien centrée (sans utiliser \centerline)
+\newenvironment{nscenter}
+{\parskip=0pt\par\nopagebreak\centering}
+{\par\noindent\ignorespacesafterend}
+\newcommand{\mycenterline}[1]{\begin{nscenter}#1\end{nscenter}}
+%\renewcommand{\centerline}[1]{\erreur}  % A commenter après débugage
+
+% vecteurs
+\usepackage{esvect}
+\renewcommand{\vec}{\vv}
+
+% --- Indication des couleurs (pour couleur #1, pour nb #2)
+\newcommand{\couleurnb}[2]{#1}
+
+
+% Pour biographie #1 Prénom Nom, #2 Dates 1802--1985
+\newenvironment{biographie}[2]
+{%
+	\medskip
+	\textbf{\textsc{#1}} \textsl{(#2)}. % Entete nom +dates
+}%
+{\par\smallskip}%
+% ----------------------------------------------------------------------
+
+% Titre
+\usepackage{titlesec}
+\newcommand{\sectionbreak}{\clearpage}
+\newcommand{\partbreak}{\clearpage}
+% ----------------------------------------------------------------------
+% Sommaire
+\usepackage[titles]{tocloft}  % pour l'indentation des pages > 100
+%\setlength{\cftchapnumwidth}{2.55em}
+\setlength{\cftsecindent}{2.55em}
+\renewcommand\cftsecafterpnum{\vskip5pt}
+\setlength{\cftbeforesecskip}{4pt}
+%\setlength{\cftbeforechapskip}{1pt}
+%\usepackage{titletoc}  % Inutile
+%\addto\captionsfrancais{\def\contentsname{Sommaire}}  % Ne marche pas !
+\AtBeginDocument{\renewcommand{\contentsname}{Sommaire}}

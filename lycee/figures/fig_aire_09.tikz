@@ -1,0 +1,26 @@
+﻿
+\begin{tikzpicture}[scale=1]
+
+\begin{scope}
+
+\fill[blue!50, opacity=0.5]   (0,0) circle (2 and 0.5);
+\draw[dashed]   (0,0) circle (2 and 0.5);
+\fill[blue!50, opacity=0.25 ]  (2,0) -- (2.5,6) -- (-2,0) arc (180:360:2 and 0.5);
+\draw (-2,0) arc (180:360:2 and 0.5) -- (2.5,6) -- cycle;
+
+\node at (0,0) {$A$};
+\draw[<->, >=latex] (3,0) -- ++(0,6) node[midway, right] {$h$};
+\end{scope}
+
+\begin{scope}[xshift=4cm]
+
+\filldraw[dashed, fill=blue!50, opacity=0.5]   (0,0) -- (3,0) -- (2,1) -- cycle;
+\fill[blue!50, opacity=0.25 ]  (0,0) -- (3,0) -- (2.5,3) -- cycle;
+
+\draw[dashed] (2,1) -- (2.5,3);
+\draw (0,0) -- (2.5,3) -- (3,0) -- cycle;
+
+\node at (1.75,0.3) {$A$};
+\draw[<->, >=latex] (3.5,0) -- ++(0,3) node[midway, right] {$h$};
+\end{scope}
+\end{tikzpicture}

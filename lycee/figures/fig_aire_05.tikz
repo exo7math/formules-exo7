@@ -1,0 +1,8 @@
+﻿\begin{tikzpicture}[scale=1]
+
+\draw[thick, fill=blue!20]  (0,0) -- (4,0) -- (5,1.5) -- (1,1.5) -- cycle;
+
+\node at (2,0) [below] {$b$};
+\draw[dashed] (3,0) -- (3,1.5) node[midway, left] {$h$};
+
+\end{tikzpicture}

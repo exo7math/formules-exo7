@@ -1,0 +1,396 @@
+\documentclass[10pt,class=article,crop=false]{standalone}
+\usepackage{../exo7formules}
+
+
+\begin{document}
+	
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section{Intégrales}
+
+\begin{multicols}{2}
+	
+
+
+%-----------------------------------------
+\subsection{L'intégrale de Riemann}
+
+\textbf{Fonction en escalier}
+
+
+
+Une fonction $f : [a,b] \to \Rr$ est une \defi{fonction en escalier}\index{fonction!en escalier}
+s'il existe  une subdivision $(x_0,x_1,\ldots,x_n)$ et des nombres réels
+$c_1,\ldots,c_n$ tels que pour tout $i\in \{1,\ldots,n\}$ on ait
+$\forall x \in {}]x_{i-1},x_i[ \quad f(x)=c_i$.
+
+Autrement dit $f$ est une fonction constante sur chacun des sous-intervalles de la subdivision.
+
+L'intégrale d'une fonction en escalier est :
+$$\displaystyle \int_a^b f(x) \; dx = \sum_{i=1}^n c_i(x_i-x_{i-1})$$
+
+\myfigure{0.6}{
+	\tikzinput{fig_int04}
+}
+
+Chaque terme $c_i(x_i-x_{i-1})$ est l'aire algébrique du rectangle compris entre les abscisses
+$x_{i-1}$ et $x_i$ et de hauteur $c_i$.
+
+
+\textbf{Fonction intégrable}
+
+Notation : $f \le g$ signifie  $f(x) \le g(x)$ pour tout $x \in [a,b]$.
+
+\bigskip
+
+Soit $f : [a,b] \to \Rr$ bornée. On définit :
+$$I^-(f) = \sup \left\{ \int_a^b \phi(x) \; dx \mid \phi \text{ en escalier et } \phi \le f \right\}$$
+$$I^+(f) = \inf \left\{ \int_a^b \phi(x) \; dx \mid \phi \text{ en escalier et } \phi \ge f \right\}$$
+
+
+\myfigure{0.6}{
+	\tikzinput{fig_int05}
+}
+
+On a $I^-(f) \le I^+(f)$.
+
+Une fonction bornée $f :[a,b] \to \Rr$ est dite \defi{intégrable}\index{fonction!integrable@intégrable} (\defi{au sens de Riemann})
+si $I^-(f) = I^+(f)$. On note alors ce nombre $\int_a^b f(x)\; dx$.
+
+
+% \textbf{Les fonctions continues sont intégrables}
+
+\begin{theoreme}
+	Si $f : [a,b] \to \Rr$ est continue alors $f$ est intégrable.
+\end{theoreme}
+Et aussi :
+\begin{itemize}
+  \item Si $f : [a,b] \to \Rr$ est continue par morceaux alors $f$ est intégrable.
+  \item Si $f : [a,b] \to \Rr$ est monotone alors $f$ est intégrable.
+\end{itemize}
+
+%-----------------------------------------
+\subsection{Propriétés}
+
+Les fonctions sont supposées intégrables.
+
+$$\int_a^a f(x) \;dx=0 \qquad \text{ et pour } a<b  \quad \int_b^a f(x) \;dx= -\int_a^b f(x) \; dx.$$
+
+%---------------------------------------------------------------
+\textbf{Relation de Chasles}
+
+Pour $a,b,c$ quelconques :
+\mybox{$\displaystyle\int_a^b f(x)\;dx = \int_a^c f(x)\;dx + \int_c^b f(x)\;dx$}
+
+
+\textbf{Positivité de l'intégrale}
+
+\begin{proposition}
+	\index{integrale@intégrale!positivite@positivité}
+
+\end{proposition}
+
+L'intégrale d'une fonction positive est positive :
+\mybox{Si \quad $f\ge 0$ \quad alors \quad $\displaystyle \int_a^bf(x)\;dx \ge 0$}
+
+Variante :
+	\mycenterline{Si $f\le g$ \quad alors \quad  $\displaystyle \int_a^b f(x)\;dx \le\int_a^b g(x)\;dx$}
+	
+	
+%---------------------------------------------------------------
+\textbf{Linéarité de l'intégrale}
+\label{ssec:int23}
+
+Pour tous réels $\lambda,\mu$
+$$\int_a^b \big(\lambda f(x)+\mu g(x)\big)\;dx= \lambda\int_a^b f(x)\;dx+\mu\int_a^b g(x)\;dx$$
+		
+
+\mybox{$\displaystyle\left\vert\int_a^b f(x) \;dx\right\vert\le\int_a^b\big\vert f(x)\big\vert \;dx$}
+
+
+
+%-----------------------------------------
+\subsection{Primitive}
+
+\textbf{Définition.}
+Soit $f:I \to \Rr$ une fonction définie sur un intervalle.
+$F : I \to \Rr$ est une \defi{primitive}\index{primitive} de $f$ si
+$F$ est une fonction dérivable sur $I$ vérifiant $F'(x)=f(x)$ pour tout $x \in I$.
+
+Trouver une primitive est donc l'opération inverse de calculer la fonction dérivée.
+Trouver une primitive permet de les trouver toutes.
+
+\begin{proposition}
+\label{prop:primitunic}
+Si $F : I \to \Rr$ est une primitive de $f$, alors toute primitive de $f$ s'écrit $G=F+c$ où $c\in \Rr$.
+\end{proposition}
+
+% Linéarité :
+% $\int\big(\lambda f+ \mu g\big) \; dt=\lambda \int f+\mu \int g$
+
+
+%---------------------------------------------------------------
+\textbf{Primitives des fonctions usuelles}
+
+
+\index{primitive}
+\begin{center}
+%\noindent
+\setlength{\arrayrulewidth}{0.05mm}
+%\begin{tabular}{|l|l|l|} \hline
+%\begin{tabular}[t]{|c@{\vrule depth 1.2ex height 3ex width 0mm \ }|}
+%\begin{tabular}{c@{\vrule depth 3ex height 3ex width 0mm \ }}
+\begin{tabular}{c@{\vrule depth 3ex height 1ex width 0mm \ }}	
+	$\int e^x \; dx  = e^x + c$  \quad sur $\Rr$ \\ 
+	$\int \cos x \; dx  = \sin x  + c$  \quad sur $\Rr$ \\ 
+	$\int \sin x \; dx  = -\cos x  + c$  \quad sur $\Rr$ \\ 
+	$\int x^n \; dx = \frac{x^{n+1}}{n+1} + c$  \quad ($n \in \Nn$)  \quad sur $\Rr$ \\ 
+	$\int x^\alpha \; dx = \frac{x^{\alpha+1}}{\alpha+1} + c$  \quad ($\alpha \in \Rr\setminus\{-1\}$)  sur $]0,+\infty[$\\ 
+	$\int \frac 1x \; dx  = \ln |x|  + c$  \quad sur $]0,+\infty[$ ou $]-\infty,0[$ \\ 
+	$\int\sh x \; dx=\ch x+c$, $\int \ch x \; dx=\sh x+c$ \quad sur $\Rr$ \\ 
+	$\int \frac{dx}{1+x^2}= \arctan x+c$ \quad sur $\Rr$ \\ 
+	$\int\frac{dx}{\sqrt{1-x^2}} = \left\{ \begin{array}{l}
+		\arcsin x + c \\ \frac\pi2-\arccos x +c \end{array} \right.$ \quad  sur $]-1,1[$ \\ 
+	$\int \frac{dx}{\sqrt {x^2+1}}=  \left\{ \begin{array}{l} \mbox{Argsh} x+c \\
+		\ln\big(x+\sqrt{x^2+1}\big)+c  \end{array} \right.$ \quad sur $\Rr$ \\
+	$\int \frac{dx}{\sqrt {x^2-1}} = \left\{ \begin{array}{l} \mbox{Argch} x+c \\
+		\ln\big(x+\sqrt{x^2-1}\big)+c \end{array} \right.$ \quad sur $]1,+ \infty[$\\ 
+\end{tabular}
+\end{center}
+
+
+
+%---------------------------------------------------------------
+\textbf{Relation primitive-intégrale}
+
+\begin{theoreme}
+Soit $f : [a,b] \to \Rr$ une fonction continue.
+La fonction $F:I \to \Rr$ définie par
+\mybox{$\displaystyle F(x)=\int_a^x f(t) \; dt$}
+est une primitive de $f$, c'est-à-dire $F$ est dérivable et $F'(x)=f(x)$.
+
+Par conséquent pour une primitive $F$ quelconque de $f$:
+\mybox{$\displaystyle \int_a^b f(t) \; dt = F(b)-F(a)$}
+\end{theoreme}
+
+\textbf{Notation.} $\big[F(x)\big]_a^b=F(b)-F(a)$.
+Si l'on omet les bornes alors $\big[F\big]$ désigne la fonction $F+c$ où $c$ est une constante quelconque.
+
+Remarques :
+\begin{enumerate}
+	
+	\item $F(x)=\int_a^x f(t) \; dt$ est même \evidence{l'unique primitive de $f$ qui s'annule en $a$}.
+	
+	\item En particulier si $F$ est une fonction de classe $\mathcal{C}^1$ alors
+	\myboxinline{$\int_a^b F'(t) \; dt = F(b)-F(a)$}.
+	
+\end{enumerate}
+
+
+
+%---------------------------------------------------------------
+\textbf{Sommes de Riemann}
+
+
+\begin{theoreme}
+Soit $f : [a,b] \to \Rr$ une fonction intégrable, alors 
+\mybox{$\displaystyle S_n = \frac{b-a}{n} \sum_{k=1}^{n} f\big(a+k\frac{b-a}{n} \big)
+	\qquad \xrightarrow[n\to+\infty]{} \qquad \int_a^b f(x) \; dx$}
+\end{theoreme}
+
+
+Cas particulier $a=0$, $b=1$, $\frac{b-a}{n}=\frac1n$ et
+$f\big(a+k\frac{b-a}{n}\big) = f\big(\frac kn\big)$ : 
+$$S_n = \frac{1}{n} \sum_{k=1}^{n} f\big(\frac kn \big)
+\qquad \xrightarrow[n\to+\infty]{} \qquad \int_0^1 f(x) \; dx$$
+
+\myfigure{0.6}{
+\tikzinput{fig_int10}
+}
+
+
+
+
+%-----------------------------------------
+\subsection{Intégration par parties - Changement de variable}
+
+%---------------------------------------------------------------
+\textbf{Intégration par parties}
+
+\begin{theoreme}
+	Soient $u$ et $v$ deux fonctions de classe $\mathcal{C}^1$ sur un intervalle $[a,b]$.
+	\mybox{$\displaystyle\int_a^b u(x) \, v'(x)\;dx= \big[uv\big]_a^b - \int_a^b u'(x) \, v(x)\;dx$}
+\end{theoreme}
+
+Pour les primitives :
+$$\int u(x)v'(x)\;dx= \big[uv\big] - \int u'(x)v(x)\;dx$$
+
+%---------------------------------------------------------------
+\textbf{Changement de variable}
+\begin{theoreme}
+	Soit $f$ une fonction définie sur un intervalle $I$ et $\varphi : J \to I$ une bijection de classe $\mathcal{C}^1$.
+	Pour tout $a,b\in J$
+	\mybox{$\displaystyle\int_{\varphi(a)}^{\varphi(b)} f(x) \; dx = \int_a^b f\big(\varphi(t)\big)\cdot\varphi'(t) \; dt$}
+	
+	Si $F$ est une primitive de $f$ alors $F\circ \varphi$ est une primitive de
+	$\big(f \circ \varphi\big)\cdot\varphi'$.
+	%Autrement dit: \mybox{$\displaystyle \left( \int f(x) \; dx \right) \circ \varphi
+		%= \int f\big(\varphi(t)\big)\varphi'(t) \; dt$}
+\end{theoreme}
+
+\textbf{Méthodologie.}
+\begin{itemize}
+	\item Trouver le bon changement de variable $u =\varphi(x)$.
+	\item Effectuer le changement de l'élément différentiel $du = \varphi'(x) \; dx$.
+	\item Effectuer le changement de bornes : comme $x$ varie de \ldots{} à \ldots{} alors $u$ varie de \ldots{} à \ldots{}
+	\item Appliquer la formule de changement de variable.
+\end{itemize}
+	
+\begin{exemple}
+	Calcul de $\int_0^{1/2}\frac{x}{(1-x^2)^{3/2}} \;dx$.
+	
+	Soit le changement de variable $u=\varphi(x) = 1-x^2$. Alors $du = \varphi'(x) \; dx = -2x \; dx$.
+	Pour $x=0$ on a $u=\varphi(0)=1$ et pour $x=\frac12$ on a $u=\varphi(\frac{1}{2})=\frac34$.
+	Comme $\varphi'(x)=-2x$, $\varphi$ est une bijection de $[0,\frac{1}{2}]$ sur $[1,\frac{3}{4}]$. Alors
+	\begin{eqnarray*}
+		\int_0^{1/2}\frac{x \; dx}{(1-x^2)^{3/2}} 
+		&=& \int_1^{3/4} \frac{\frac{-du}{2}}{u^{3/2}}
+		= -\frac12\int_1^{3/4} u^{-3/2}\;du \\
+		&=& -\frac12\big[-2u^{-1/2}\big]_1^{3/4}
+		%=\big[\frac1{\sqrt{u}}\big]_1^{3/4} 
+		= \frac1{\sqrt{\frac34}}-1= \frac{2}{\sqrt3}-1.
+	\end{eqnarray*}
+\end{exemple}
+
+
+%-----------------------------------------
+\subsection{Intégration des fractions rationnelles}
+
+
+
+%---------------------------------------------------------------
+\textbf{Trois situations de base}
+
+On souhaite intégrer $f(x)=\frac{\alpha x + \beta}{a x^2+b x+c}$.
+
+\textbf{Premier cas.} Le dénominateur $a x^2+b x+c$ possède deux racines réelles distinctes $x_1,x_ 2\in \Rr$.
+
+
+Écrire 
+$f(x)
+= \frac{\alpha x + \beta}{a(x - x_1)(x - x_2)} 
+= \frac{A}{x - x_1}+\frac{B}{x -x_2}$ avec $A,B \in \Rr$ à déterminer. 
+Alors 
+$$\int f(x)\;dx = A \ln|x - x_1|+B\ln|x -x_2|+c$$
+sur chacun des intervalles
+$]-\infty,x_1[$, $]x_1,x_2[$, $]x_2,+\infty[$ (si $x_1<x_2$).
+
+
+\textbf{Deuxième cas.} Le dénominateur $a x^2+b x+c$ possède une racine double $x_0 \in \Rr$.
+
+
+Alors 
+$f(x)
+= \frac{\alpha x + \beta}{a(x -x_0)^2}
+= \frac{A}{(x - x_0)^2}+\frac{B}{x - x_0}$ avec $A,B \in \Rr$ à déterminer. 
+
+Alors
+$$\int f(x)\;dx = -\frac{A}{x - x_0} + B\ln|x - x_0|+c$$
+sur chacun des intervalles
+$]-\infty,x_0[$, $]x_0,+\infty[$.
+
+
+\textbf{Troisième cas.}  Le dénominateur $u = a x^2+b x+c$ ne possède pas de racine réelle.
+
+\begin{enumerate}
+	\item Faire apparaître une fraction du type $\frac{u'}{u}$
+	(que l'on sait intégrer en $\ln|u|$).
+	
+    \item Il reste une partie du type $\frac{1}{u}$ qui par un changement de variable se ramène à une expression $\frac{1}{v^2+1}$ dont une primitive est $\arctan v$.
+\end{enumerate}
+
+
+%---------------------------------------------------------------
+\textbf{Intégration des éléments simples}
+
+Une fraction rationnelle $\frac{P(x)}{Q(x)}$ s'écrit comme somme d'un polynôme $E(x) \in \Rr[x]$ (la partie entière)
+et d'éléments simples d'une des formes suivantes :
+$$\frac{\gamma}{(x - x_0)^k} \quad \text{ ou } \quad \frac{\alpha x+\beta}{(a x^2+b x+c)^k} \text{ avec } b^2-4ac < 0$$
+% où $\alpha,\beta,\gamma,a,b,c \in \Rr$ et $k \in \Nn\setminus\{0\}$.
+
+\begin{enumerate}
+	\item On sait intégrer le polynôme $E(x)$.
+	
+	\item Intégration de l'élément simple $\frac{\gamma}{(x - x_0)^k}$.
+	\begin{enumerate}
+		\item Si $k=1$ alors $\int \frac{\gamma \; dx}{x - x_0} = \gamma \ln|x - x_0|+c_0$.
+		\item Si $k\ge 2$ alors  $\int \frac{\gamma \; dx}{(x - x_0)^k} = \gamma \int (x - x_0)^{-k} \; dx
+		= \frac{\gamma}{-k+1}(x - x_0)^{-k+1}+c_0$.
+	\end{enumerate}
+	
+	\item Intégration de l'élément simple $\frac{\alpha x+\beta}{(a x^2+b x+c)^k}$.
+	On écrit cette fraction sous la forme
+	$$\frac{\alpha x+\beta}{(a x^2+b x+c)^k} = \gamma \frac{2a x+b}{(a x^2+b x+c)^k} + \delta \frac{1}{(a x^2+b x+c)^k}$$
+	\begin{enumerate}
+		\item Si $k=1$, calcul de $\int \frac{2a x+b}{a x^2+b x+c} \; dx = \int \frac{u'(x)}{u(x)} \; dx = \ln |u(x)| + c_0
+		= \ln |a x^2+b x+c|+c_0$.
+		
+		\item Si $k\ge 2$, calcul de $\int \frac{2a x+b}{(a x^2+b x+c)^k} \; dx = \int \frac{u'(x)}{u(x)^k} \; dx = \frac{1}{-k+1}u(x)^{-k+1}+c_0
+		= \frac{1}{-k+1}(a x^2+b x+c)^{-k+1}+c_0$.
+		
+		\item Si $k=1$, calcul de $\int \frac{1}{a x^2+b x+c}\; dx$. Par un changement de variable $u= px+q$ on se ramène à
+		calculer une primitive du type
+		$\int \frac{du}{u^2+1}=\arctan u + c_0$.
+		
+		\item Si $k\ge 2$, calcul de $\int \frac{1}{(a x^2+b x+c)^k} \; dx$. On effectue le changement de variable $u=px+q$
+		pour se ramener au calcul de $I_k =\int \frac{du}{(u^2+1)^k}$.
+		Une intégration par parties permet de passer de $I_k$ à $I_{k-1}$.
+	
+	\end{enumerate}
+\end{enumerate}
+
+
+%---------------------------------------------------------------
+\textbf{Intégration des fonctions trigonométriques}
+
+
+\textbf{Les règles de Bioche.}\index{regle@règle!de Bioche}
+On note $\omega(x) = f(x)\;dx$.
+On a alors $\omega(-x)= f(-x)\;d(-x)=-f(-x)\;dx$ et
+$\omega (\pi-x)= f(\pi-x)\;d(\pi-x)=-f(\pi-x)\;dx$.
+
+
+
+\begin{itemize}
+	\item Si $\omega(-x)=\omega(x)$ alors on effectue le changement de variable $u=\cos x$.
+	
+	\item Si $\omega(\pi-x)=\omega(x)$ alors on effectue le changement de variable $u=\sin x$.
+	
+	\item Si $\omega(\pi + x)=\omega(x)$ alors on effectue le changement de variable $u=\tan x$.
+\end{itemize}
+
+
+
+\textbf{Le changement de variable $t=\tan \frac x2$.}
+
+Les formules de la \og tangente de l'arc moitié \fg{} permettent d'exprimer sinus, cosinus et tangente
+en fonction de $\tan \frac x2$.
+\mybox{
+	\begin{tabular}{c}
+		Avec \quad  $\displaystyle t=\tan \frac{x}{2}$ \quad on a \\[2ex]
+		$\displaystyle\cos x = \frac {1-t^2}{1+t^2} 
+		\qquad  \sin x = \frac{2t}{1+t^2} 
+		\qquad \tan x = \frac{2t}{1-t^2}$ \\[2ex]
+		et \qquad  $\displaystyle dx=\dfrac{2\;dt}{1+t^2}.$
+	\end{tabular}
+}
+
+
+
+\end{multicols}
+\end{document}
+
+
+
+\end{document}
+
+

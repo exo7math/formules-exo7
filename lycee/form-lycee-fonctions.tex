@@ -1,0 +1,119 @@
+\documentclass[10pt,class=article,crop=false]{standalone}
+\usepackage{../exo7formules}
+
+
+\begin{document}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section{Fonctions}
+
+
+\begin{multicols}{2}
+
+%-----------------------------------------
+\subsection{Fonction polynomiale}
+
+
+Soit $P(x) = ax^2+bx+c$ avec $a,b,c \in \Rr$, $a\neq0$.
+Soit \myboxinline{$\Delta = b^2-4ac$} le \defi{discriminant}.
+
+\textbf{Racines}
+\begin{itemize}
+	\item Si $\Delta > 0$, l'équation $P(x)=0$ a deux solutions réelles :
+	\mybox{$\displaystyle 
+		x_1 = \frac{-b - \sqrt{\Delta}}{2a} 
+		\qquad \text{ et } \qquad
+	x_2 = \frac{-b + \sqrt{\Delta}}{2a} $}	
+		
+	\item Si $\Delta = 0$, l'équation $P(x)=0$ a une solution double :
+$$x_0 = \frac{-b}{2a}$$	
+
+	\item Si $\Delta < 0$, l'équation $P(x)=0$ n'a pas de solution réelle.
+\end{itemize}
+
+\textbf{Factorisation}
+\begin{itemize}
+	\item Si $\Delta > 0$, $P(x)= a(x-x_1)(x-x_2)$.
+	\item Si $\Delta = 0$, $P(x) = a(x-x_0)^2$.
+\end{itemize}
+
+\textbf{Signe}
+\begin{itemize}
+	\item Si $\Delta > 0$, $P(x)$ est du signe de $a$ à l'extérieur des racines
+	(c'est-à-dire sur $]-\infty,x_1] \cup [x_2,+\infty[$). 
+	
+	\item Si $\Delta = 0$ ou $\Delta < 0$, $P(x)$ est du signe de $a$ sur $\Rr$.
+\end{itemize}
+
+
+%-----------------------------------------
+\subsection{Exponentielle}
+% \textbf{Exponentielle}
+
+La fonction \defi{exponentielle}\index{exponentielle} : $\exp : \Rr \to   ]0,+\infty[$.
+Pour $x \in \Rr$ on note aussi $e^x$ pour $\exp x$.
+
+\myfigure{0.7}{
+	\tikzinput{fig_usuelles03}
+}
+
+
+La fonction exponentielle vérifie les propriétés suivantes :
+\begin{itemize}
+	% \item \myboxinline{$\exp(\ln x) = x$ pour tout $x >0$} et
+	% \myboxinline{$\ln(\exp x) = x$ pour tout $x \in \Rr$}
+	
+	\item $\exp(a+b) = \exp(a) \times \exp(b)$
+	
+	\item $\exp(nx) = (\exp x)^n$
+	
+	\item $\exp : \Rr \to   ]0,+ \infty[$ est une fonction continue, strictement croissante,
+	
+	\item $\lim_{x\to-\infty} \exp x = 0$,
+	
+	\item $\lim_{x\to +\infty} \exp = +\infty$,
+	
+	\item $\exp(1) = e \simeq 2,718\ldots$
+\end{itemize}
+
+
+%-----------------------------------------
+\subsection{Logarithme}
+
+% \textbf{Logarithme}
+\index{logarithme}
+
+Le \defi{logarithme népérien} $\ln : ]0,+\infty[ \to \Rr$.
+
+\myfigure{0.7}{
+	\tikzinput{fig_usuelles02}
+}
+
+
+\begin{itemize}
+	\item $\ln (a \times b) = \ln a + \ln b$ (pour tout $a,b >0$),
+	\item $\ln(\frac 1 a) = - \ln a$,
+	\item $\ln(a^n) = n \ln a$, (pour tout $n \in \Nn$),
+	\item $\ln$ est une fonction continue, strictement croissante,
+	\item $\ln'(x) = \frac 1x$ pour tout $x>0$,
+	\item $\ln(1) = 0$, $\ln(e)=1$,
+	\item $\lim_{x\to +\infty} \ln x = +\infty$,
+	\item $\lim_{x\to 0^+} \ln x = -\infty$.
+\end{itemize}
+
+\medskip
+
+Lien logarithme/exponentielle :
+
+\mybox{$\exp(\ln x) = x$ pour tout $x >0$} 
+
+\mybox{$\ln(\exp x) = x$ pour tout $x \in \Rr$}
+
+Pour $x \in \Rr$ et $y>0$ :
+\mybox{$y = \exp(x) \iff x = \ln(y)$}
+
+
+\end{multicols}
+
+
+\end{document}	

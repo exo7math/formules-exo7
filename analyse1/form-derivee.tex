@@ -1,0 +1,276 @@
+\documentclass[10pt,class=article,crop=false]{standalone}
+\usepackage{../exo7formules}
+
+
+\begin{document}
+	
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section{Dérivée d'une fonction}
+
+\begin{multicols}{2}
+	
+
+%-----------------------------------------
+\subsection{Définition}
+
+
+%---------------------------------------------------------------
+\textbf{Dérivée en un point}
+
+Soit $I$ un intervalle ouvert de $\Rr$ et $f : I \to \Rr$ une fonction. Soit $x_0 \in I$.
+$f$ est \defi{dérivable en $x_0$} si la limite suivante existe :
+\mybox{$\displaystyle f'(x_0)= \lim_{x\to x_0} \frac{f(x)-f(x_0)}{x-x_0}$}
+
+\begin{proposition}
+Si $f$ est dérivable en $x_0$ alors $f$ est continue en $x_0$.
+\end{proposition}
+
+La réciproque est \textbf{fausse} : par exemple, la fonction valeur absolue
+est continue en $0$ mais n'est pas dérivable en $0$.
+
+%\myfigure{1}{
+%	\tikzinput{fig_derive03}
+%}
+
+%---------------------------------------------------------------
+\textbf{Tangente}
+Une équation de la \defi{tangente}\index{tangente} au point $(x_0,f(x_0))$ est :
+\mybox{$y = (x-x_0) f'(x_0) + f(x_0)$}
+
+%\myfigure{2}{
+%	\tikzinput{fig_derive02}
+%}
+
+
+
+%-----------------------------------------
+\subsection{Calculs des dérivées}
+
+%---------------------------------------------------------------
+%\textbf{Somme, produit,...}
+
+
+	\mybox{$(u+v)'=u'+v' \qquad  (\lambda u)' = \lambda u' \qquad (u \times v)' = u'v+uv'$}
+	\mybox{$\displaystyle\left(\frac{1}{u}\right)'=-\frac{u'}{u^2} \qquad
+		\left(\frac{u}{v}\right)'=\frac{u'v-uv'}{v^2}$}
+
+
+
+%---------------------------------------------------------------
+\textbf{Dérivée de fonctions usuelles}
+
+\index{fonction!derivee@dérivée}
+\begin{center}
+	%\noindent
+	\setlength{\arrayrulewidth}{0.05mm}
+	%\begin{tabular}{|l|l|l|} \hline
+	\begin{tabular}[t]{|c|c@{\vrule depth 1.2ex height 3ex width 0mm \ }|}
+		\hline
+		\textbf{Fonction}         & \textbf{Dérivée} \\ \hline
+		$x^n$         & $nx^{n-1}$  \quad ($n \in \Zz$)   \\ \hline
+		$\frac 1x$    & $-\frac{1}{x^2}$              \\ \hline
+		$\sqrt{x}$    & $\frac12 \frac1{\sqrt{x}}$   \\ \hline
+		$x^\alpha$   & $\alpha x^{\alpha-1}$  \quad ($\alpha\in\Rr$)  \\ \hline
+		$e^x$         & $e^x$                        \\ \hline
+		$\ln x$       & $\frac 1x$                   \\ \hline
+		$\cos x$      & $-\sin x$                    \\ \hline
+		$\sin x$      & $\cos x$                     \\ \hline
+		$\tan x$      & $1+\tan^2 x = \frac{1}{\cos^2 x}$        \\ \hline
+	\end{tabular}
+	\hspace*{0.2cm}
+	\begin{tabular}[t]{|c|c@{\vrule depth 1.2ex height 3ex width 0mm \ }|}
+		\hline
+		\textbf{Fonction}         & \textbf{Dérivée} \\ \hline
+		$u^n$         & $nu'u^{n-1}$  \quad  ($n \in \Zz$)   \\ \hline
+		$\frac 1u$    & $-\frac{u'}{u^2}$              \\ \hline
+		$\sqrt{u}$    & $\frac12 \frac{u'}{\sqrt{u}}$   \\ \hline
+		$u^\alpha$   & $\alpha u' u^{\alpha-1}$ \quad ($\alpha\in\Rr$)  \\ \hline
+		$e^u$         & $u'e^u$                        \\ \hline
+		$\ln u$       & $\frac {u'}{u}$                   \\ \hline
+		$\cos u$      & $-u'\sin u$                    \\ \hline
+		$\sin u$      & $u'\cos u$                     \\ \hline
+		$\tan u$      & $u'(1+\tan^2 u) = \frac{u'}{\cos^2 u}$        \\ \hline
+	\end{tabular}
+	\hfill
+\end{center}
+
+
+%---------------------------------------------------------------
+\textbf{Composition}
+
+	\mybox{$\big( g \circ f \big)'(x) = g'\big( f(x) \big) \cdot f'(x)$}
+
+
+
+\begin{corollaire}
+	Soit $I$ un intervalle ouvert. Soit $f : I \to J$ dérivable et bijective dont on note
+	$f^{-1} : J \to I$ la bijection réciproque. Si $f'$ ne s'annule pas sur $I$ alors $f^{-1}$ est dérivable
+	et on a pour tout $x \in J$ :
+	\mybox{$\displaystyle \big(f^{-1}\big)'(x)= \frac{1}{f'\big( f^{-1}(x) \big)} $}
+\end{corollaire}
+
+
+
+Il peut être plus simple de retrouver la formule à chaque fois
+en dérivant l'égalité $f\big( g(x) \big)  = x$
+où $g=f^{-1}$ est la bijection réciproque de $f$.
+
+
+%---------------------------------------------------------------
+% \textbf{Dérivées successives}
+
+\begin{theoreme}[Formule de Leibniz]
+	\index{formule!de Leibniz}
+	\sauteligne	
+	$$\big( f \cdot g \big)^{(n)} = \sum_{k=0}^n \binom{n}{k} \ f^{(n-k)} \cdot g^{(k)}.$$
+\end{theoreme}
+
+Pour $n=1$ on retrouve $(f\cdot g)'= f' g + f g'$.
+Pour $n=2$, on a $(f\cdot g)''= f''g + 2f' g' + fg''$.
+
+
+
+%-----------------------------------------
+\subsection{Extremum local, théorème de Rolle}
+
+
+Soit $f : I \to \Rr$ une fonction définie sur un intervalle $I$.
+	\begin{itemize}
+		\item On dit que $x_0$ est un \defi{point critique}\index{point critique} de $f$ si $f'(x_0)=0$.
+		
+		\item On dit que $f$ admet un \defi{maximum local en $x_0$}\index{maximum} (resp. un \defi{minimum local
+			en $x_0$}\index{minimum}) s'il existe un intervalle ouvert $J$ contenant $x_0$  tel que
+		$$\text{pour tout } x\in I \cap J \quad f(x) \le f(x_0)$$
+		(resp. $f(x) \ge f(x_0)$).
+		\item On dit que $f$ admet un \defi{extremum local en $x_0$}\index{extremum} si $f$ admet un maximum
+		local ou un minimum local en ce point.
+	\end{itemize}
+
+
+%\myfigure{0.8}{
+%	\tikzinput{fig_derive04}
+%}
+
+
+\begin{theoreme}
+	\label{th:extremum}
+	Soit $I$ un intervalle ouvert et $f : I \to \Rr$ une fonction
+	dérivable. Si $f$ admet un maximum local (ou un minimum local)
+	en $x_0$ alors $f'(x_0)=0$.
+\end{theoreme}
+
+En d'autres termes, un maximum local (ou un minimum local) $x_0$ est toujours un point critique.
+Géométriquement, au point $(x_0,f(x_0))$ la tangente au graphe est horizontale.
+
+%\myfigure{1}{
+%	\tikzinput{fig_derive05}
+%}
+
+La réciproque du théorème est fausse.
+Par exemple la fonction $f : \Rr \to \Rr$, définie par $f(x)= x^3$
+vérifie $f'(0)=0$ mais $x_0=0$ n'est ni maximum local ni un minimum local.
+
+
+
+%---------------------------------------------------------------
+% \subsection{Théorème de Rolle}
+
+\begin{theoreme}[Théorème de Rolle]
+	\index{theoreme@théorème!de Rolle}
+	\label{th:rolle}
+	Soit $f:[a,b] \to \Rr$ telle que
+	\begin{itemize}
+		\item $f$ est continue sur $[a,b]$,
+		\item $f$ est dérivable sur $]a,b[$,
+		\item $f(a)=f(b)$.
+	\end{itemize}
+	Alors il existe $c \in {}]a,b[$  tel que $f'(c)=0$.
+\end{theoreme}
+%
+%\myfigure{1}{
+%	\tikzinput{fig_derive09}
+%}
+
+Interprétation géométrique : il existe au moins un point du graphe de $f$ où la tangente est horizontale.
+
+
+%-----------------------------------------
+\subsection{Théorème des accroissements finis}
+
+
+\begin{theoreme}[Théorème des accroissements finis]
+	\index{theoreme@théorème!des accroissements finis}
+	Soit $f:[a,b] \to \Rr$ une fonction continue sur $[a,b]$ et dérivable sur $]a,b[$.
+	Il existe $c\in{}]a,b[$ tel que
+	\mybox{$f(b)-f(a)= f'(c) \; (b-a)$}
+\end{theoreme}
+
+\myfigure{1}{
+	\tikzinput{fig_derive10}
+}
+
+Interprétation géométrique : il existe au moins un point du graphe de $f$ où la tangente est
+parallèle à la droite $(AB)$ où $A=(a,f(a))$ et $B=(b,f(b))$.
+
+
+
+%---------------------------------------------------------------
+%\textbf{Fonction croissante et dérivée}
+
+\begin{corollaire}
+	Soit $f:[a,b] \to \Rr$ une fonction continue sur $[a,b]$ et dérivable sur $]a,b[$.
+	\begin{enumerate}
+		\item \label{it:crois}$\forall x \in ]a,b[ \quad f'(x) \ge 0 \quad \iff \quad$ $f$ est croissante ;
+		\item $\forall x \in ]a,b[ \quad f'(x) \le 0 \quad \iff \quad$ $f$ est décroissante ;
+		\item  $\forall x \in ]a,b[ \quad f'(x) = 0 \quad \iff \quad$ $f$ est constante ;
+		\item \label{it:stcrois} $\forall x \in ]a,b[ \quad f'(x) > 0 \quad \implies \quad$ $f$ est strictement croissante ;
+		\item \label{it:stdec} $\forall x \in ]a,b[ \quad f'(x) < 0 \quad \implies \quad$ $f$ est strictement décroissante.
+	\end{enumerate}
+\end{corollaire}
+
+La réciproque au point (\ref{it:stcrois}) (et aussi au  (\ref{it:stdec})) est fausse.
+Par exemple la fonction $x \mapsto x^3$ est strictement croissante et pourtant sa dérivée s'annule en $0$.
+
+
+
+%---------------------------------------------------------------
+%\subsection{Inégalité des accroissements finis}
+
+
+\begin{corollaire}[Inégalité des accroissements finis]
+	\index{inegalite@inégalité!des accroissements finis}
+	Soit $f : I \to \Rr$ une fonction dérivable sur un intervalle $I$ ouvert.
+	S'il existe une constante $M$ telle que pour tout $x \in I$, $\big|f'(x)\big| \le M$ alors
+	\mybox{$\forall x,y \in I \qquad \big| f(x)-f(y) \big| \le M |x-y|$}
+\end{corollaire}
+
+
+Exemple : \myboxinline{$|\sin x| \le |x|$} pour tout $x\in\Rr$.
+Preuve : Soit $f(x)=\sin(x)$. Comme $f'(x)=\cos x$ alors $|f'(x)| \le 1$ pour tout $x\in \Rr$.
+L'inégalité des accroissements finis s'écrit alors $|\sin x - \sin y | \le |x-y|$.
+On conclut en fixant $y=0$.
+
+
+%---------------------------------------------------------------
+%\subsection{Règle de l'Hospital}
+
+
+\begin{corollaire}[Règle de l'Hospital]
+	\index{regle@règle!de l'Hospital}
+	Soient $f,g : I \to \Rr$ deux fonctions dérivables et soit $x_0\in I$.
+	On suppose que
+	\begin{itemize}
+		\item $f(x_0)=g(x_0)=0$,
+		\item $\forall x \in I\setminus\{x_0\} \quad g'(x)\neq0$.
+	\end{itemize}
+	\mybox{Si \quad $\displaystyle \lim_{x\to x_0} \frac{f'(x)}{g'(x)} = \ell \quad (\in \Rr)$
+		\quad alors \quad $\displaystyle \lim_{x\to x_0} \frac{f(x)}{g(x)} = \ell.$}
+\end{corollaire}
+
+
+\end{multicols}
+
+\end{document}
+
+
+

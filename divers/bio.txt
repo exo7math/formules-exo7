@@ -1,0 +1,130 @@
+Liste de mathématiciens
+=======================
+
+
+Pythagore
+Thales
+Euclide
+Erathostene
+Archimède
+Hypatie d'Alexandrie
+
+Al-Khwarizmi (algèbre, algorithme)
+
+Pierre de Fermat (petit th, gd th/conjecture)
+Pascal (triangle, proba)
+
+Euler (series, constante gamma, )
+Newton (binome, calcul infinitesémal)
+Leibniz (calcul infintésimal)
+Cauchy
+
+Napier (logarithme)
+
+Galois (groupes)
+Gauss (arithmétiques,...)
+Sophie Germain (nombres premiers)
+Cantor (l'infini, non dénombrable, hôtel de Cantor)
+Ada Lovelace (algorithme)
+
+Ramanujan
+Emmy Noether (anneaux, algèbre)
+Henri Poincaré 
+Katherine Johnson (nasa, calculs, ségrégation)
+
+Andrew Wiles (Fermat)
+Terence Tao (autour de Goldbach)
+Pereleman (conjecture de Poincaré)
+Maryam Mirzakhani 
+
+Guillaume Jouve : Descartes, Riemann, Fourier et Fibonacci.
+
+Jimena Lemes : Goldbach, Gödel, Hilbert, Peano, S. Kovalevsky, M. G. Agnesi, E. Du Chatelet, A. Lovelace, Abel....
+
+
+
+Frises chronologiqes et thématiques
+===================================
+
+Antiquités (-3000 à +476)
+
+  Babyloniens
+  Egyptiens
+  Grecs
+
+
+De 0 à 1500 (en insistant sur hors Europe)
+
+  Chine (triangle de Pascal, numérotation de position, 0)
+  Inde (0)
+  Monde arabe (algèbre, écriture des chifffres)
+  Viete (notations)
+
+
+Calculs infinitésimal (1650-1850)
+  long chemin pour arriver à la notion de fonction continue, dérivable
+  à la formalisation avec espsilon/delta, notion de limites,...
+  Newton
+  Leibniz
+  Cauchy
+  Weirstrass
+  Euler 
+  Bernouilli
+  ln, exp, arcsin, 
+  nombre transcendant (pi, e)
+
+
+Mathématiques modernes (1800-1940)
+  calculs en coordonnées cartésiennes
+  algèbre (groupe, anneaux, corps)
+  conjectures de Hilbert
+  géométrie algébrique
+  espace vectoriel (normé)
+  théorie de la mesure/intégrale de Lebesgue
+
+
+
+L'explosion des mathématiques (1940-2030)
+  Godel
+  Turing (nouvelle branche : l'informatique)
+  arXiv (nb de preprint par jour = ?)
+  nb de mathématiciens dans le monde
+  branches séparées (analyse, algèbre, ...)
+
+
+Mathématiques et autres disciplines
+  Biologie 
+    recherche séquence adn
+    évolution de population
+  Physique
+    Einstein relativité générale, géométrie non Euclidinne
+    modélisation 
+    calculs numériques 
+  Architecture (calcul de structure)
+  Art (mosaïque, pavage, Alhambra)
+  Astronomie
+    Kepler, calcul astronomique, 
+  Informatique
+    Chatgpt (langage, espace de dim 1024)
+    IA/Réseau de neurones
+    Informatqiue quantique
+    RSA
+  Sciences humaines
+    statistique/proba/sondage/échantillonnage/loi des grands nombres
+
+
+
+    
+Mathématiques et informatique
+  * machine Pascal, Babbage
+  * regle à calculer
+
+
+
+
+
+
+
+
+
+

@@ -1,0 +1,111 @@
+\documentclass[10pt,class=article,crop=false]{standalone}
+\usepackage{../exo7formules}
+
+
+\begin{document}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section{Écrire des mathématiques: LaTeX}
+
+\begin{multicols}{2}
+
+%-----------------------------------------
+%\subsection{??}
+
+Pour écrire des mathématiques, il existe un langage pratique et universel,
+le langage LaTeX (prononcé [latek]). Il est utile pour rédiger des textes contenant des formules,
+mais aussi accepté sur certains blogs et vous permet d'écrire des maths
+dans un courriel ou un texto.
+
+Une formule s'écrit entre deux dollars \verb?$\pi^2$? qui donne $\pi^2$ ou entre double dollars
+si l'on veut la centrer sur une nouvelle ligne ; \verb?$$\lim u_n = +\infty$$? affichera:
+$$\lim u_n = + \infty$$
+
+Dans la suite on omettra les balises dollars.
+
+%-----------------------------------------
+\subsection{Premières commandes}
+
+Les exposants s'obtiennent avec la commande \verb?^? et les indices avec \verb?_?:
+$a^2$ s'écrit \verb?a^2? ; $u_n$ s'écrit \verb?u_n? ; $\alpha_i^2$ s'écrit \verb?\alpha_i^2?.
+Les accolades \verb?{ }? permettent de grouper du texte: \verb?2^{10}? pour $2^{10}$ ;
+\verb?a_{i,j}? pour $a_{i,j}$.
+
+
+Il y a ensuite toute une liste de commandes (qui commencent par \verb?\?) dont voici les plus utiles:
+
+
+\begin{tabular}{ccc@{\vrule depth 1.2ex height 4ex width 0mm \ }}
+	
+	\verb?\sqrt?  &
+	$\sqrt{a}$ & \verb?\sqrt{a}? \\
+	& $\sqrt{1+\sqrt{2}}$ & \verb?\sqrt{1+\sqrt{2}}?  \\
+	&  $\sqrt[3]{x}$ & \verb?\sqrt[3]{x}?  \\
+	
+	\verb?\frac?  &
+	$\dfrac{a}{b}$ & \verb?\frac{a}{b}? \\
+	& $\dfrac{\pi^3}{12}$ & \verb?\frac{\pi^3}{12}?   \\
+	& $\dfrac{1}{2+ \frac{3}{4}}$ & \verb?\frac{1}{2 + \frac{3}{4}}?  \\
+	& $\gamma^{\frac{1}{n}}$ & \verb?\gamma^{\frac{1}{n}}? \\
+	
+	
+	\verb?\lim?  &
+	$\lim_{n \to + \infty} u_n = 0$ & \verb?\lim_{n \to +\infty} u_n = 0?  \\
+	& $\lim_{x \to 0} f(x) < \epsilon$ & \verb?\lim_{x \to 0} f(x) < \epsilon?  \\
+	
+	\verb?\sum?  &
+	$\displaystyle \sum_{i=1}^n \frac{1}{i}$ & \verb?\sum_{i=1}^n \frac{1}{i}? \\
+	& $\displaystyle \sum_{i \ge 0} a_i$ & \verb?\sum_{i \ge 0} a_i?  \\
+	
+	\verb?\int?  &
+	$\displaystyle \int_a^b \phi(t) dt$ & \verb?\int_a^b \phi(t) dt?  \\
+	
+\end{tabular}
+
+%-----------------------------------------
+\subsection{D'autres commandes}
+
+Voici d'autres commandes, assez naturelles pour les anglophones.
+
+\begin{center}
+	\begin{tabular}{cc}
+		$f : E \to F$ & \verb?f : E \to F?  \\
+		$+\infty$ & \verb?+\infty? \\
+		$a \le 0$ & \verb?a \le 0? \\
+		$a > 0$ & \verb?a > 0?  \\
+		$a \ge 1$ & \verb?a \ge 1? \\
+		$\delta$ & \verb?\delta? \\
+		$\Delta$ & \verb?\Delta? \\
+	\end{tabular}\hspace{2cm}
+	\begin{tabular}{cc}
+		$a \in E$ & \verb?a \in E? \\
+		$A \subset E$ & \verb?A \subset E? \\
+		$P \implies Q$ & \verb?P \implies Q? \\
+		$P \iff Q$ & \verb?P \iff Q? \\
+		$\forall$ & \verb?\forall? \\
+		$\exists$ & \verb?\exists? \\
+		$\cup$ & \verb?\cup? \\
+		$\cap$ & \verb?\cap?  \\
+	\end{tabular}
+\end{center}
+
+%-----------------------------------------
+\subsection{Pour allez plus loin}
+
+Il est possible de créer ses propres commandes avec \verb?\newcommand?.
+Par exemple avec l'instruction
+
+\hfil \verb?\newcommand{\Rr}{\mathbb{R}}?
+
+vous définissez une nouvelle commande \verb?\Rr? qui exécutera l'instruction
+\verb?\mathbb{R}? et affichera donc $\Rr$.
+
+Autre exemple, après avoir défini
+
+\hfil \verb?\newcommand{\monintegrale}{\int_0^1 f(t) dt}?
+
+la commande \verb?\monintegrale? affichera $\int_0^1 f(t) dt$.
+
+\end{multicols}
+
+\end{document}	

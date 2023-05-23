@@ -1,0 +1,187 @@
+\documentclass[10pt,class=article,crop=false]{standalone}
+\usepackage{../exo7formules}
+
+
+\begin{document}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section{Trigonométrie au lycée}
+
+\begin{multicols}{2}
+
+\myfigure{0.6}{
+	\tikzinput{fig_lecons07}
+}
+
+
+Voici le cercle trigonométrique (de rayon $1$),
+le sens de lecture est l'inverse du sens des aiguilles d'une montre.
+Les angles remarquables sont marqués de $0$ à $2 \pi$ (en radian) et de $0^\circ$ à $360^\circ$.
+Les coordonnées des points correspondant à ces angles sont aussi indiquées.
+
+
+\myfigure{0.6}{
+	\tikzinput{fig_lecons02}
+}
+
+Le point $M$ a pour coordonnées $(\cos x,\sin x)$.
+La droite $(OM)$ coupe la droite d'équation $(x=1)$ en $T$,
+l'ordonnée du point $T$ est $\tan x$.
+
+Les formules de base:
+\begin{align*}
+	& \cos^2 x + \sin^2 x = 1 \\
+	& \cos(x+2\pi)=\cos x \\
+	& \sin(x+2\pi)=\sin x \\
+\end{align*}
+
+\begin{minipage}{0.45\textwidth}
+	\myfigure{0.6}{
+		\tikzinput{fig_lecons06}
+	}
+\end{minipage}
+\begin{minipage}{0.42\textwidth}
+	Nous avons les formules suivantes:
+	\begin{align*}
+		\cos (-x) &= \cos x \\
+		\sin (-x) &= -\sin x \\
+	\end{align*}
+	On retrouve graphiquement ces formules à l'aide du dessin des angles $x$ et $-x$.
+\end{minipage}
+
+Il en est de même pour les formules suivantes:
+
+\begin{minipage}{0.25\textwidth}
+\myfigure{0.5}{
+	\tikzinput{fig_lecons04}
+}	
+\end{minipage}	
+\begin{minipage}{0.15\textwidth}
+	\begin{align*}
+		\cos (\pi + x) &= -\cos x \\
+		\sin (\pi + x) &= -\sin x \\
+	\end{align*}
+\end{minipage}
+
+\begin{minipage}{0.25\textwidth}
+\myfigure{0.5}{
+	\tikzinput{fig_lecons03}
+}	
+\end{minipage}	
+\begin{minipage}{0.15\textwidth}
+	\begin{align*}
+		\cos (\pi - x) &= -\cos x \\
+		\sin (\pi - x) &= \sin x \\
+	\end{align*}
+\end{minipage}
+
+\begin{minipage}{0.25\textwidth}
+\myfigure{0.5}{
+	\tikzinput{fig_lecons05}
+}	
+\end{minipage}	
+\begin{minipage}{0.15\textwidth}
+	\begin{align*}
+		\cos (\frac\pi2 - x) &= \sin x \\
+		\sin (\frac\pi2 - x) &= \cos x \\
+	\end{align*}
+\end{minipage}
+
+
+
+{
+	\renewcommand{\arraystretch}{2}
+	$$
+	\begin{array}{c|*{5}{c}}
+		x     & \quad 0 \quad & \quad \dfrac\pi6 \quad & \quad \dfrac\pi 4\quad
+		& \quad \dfrac \pi 3\quad  &\quad  \dfrac \pi 2\quad  \\
+		\hline
+		\cos x  \quad & 1 & \dfrac{\sqrt3}{2} & \dfrac{\sqrt2}{2} & \dfrac12 & 0 \\
+		\hline
+		\sin x  \quad & 0 &\dfrac12 & \dfrac{\sqrt2}{2} & \dfrac{\sqrt3}{2} & 1\\
+		\hline
+		\tan x  \ & 0 & \dfrac{1}{\sqrt{3}} & 1 & \sqrt{3} &
+	\end{array}
+	$$
+}
+
+Valeurs que l'on retrouve bien sur le cercle trigonométrique.
+\myfigure{0.8}{
+	\tikzinput{fig_lecons08}
+}
+
+%--------------------------------------------------------
+\subsection{Les fonctions sinus, cosinus, tangente}
+
+La fonction cosinus est périodique de période $2\pi$
+et elle est paire (donc symétrique par rapport à l'axe des ordonnées).
+La fonction sinus est aussi périodique de période de $2\pi$ mais elle est impaire
+(donc symétrique par rapport à l'origine).
+
+
+
+\myfigure{0.4}{
+	\tikzinput{fig_lecons10}
+}
+
+Voici un zoom sur l'intervalle $[-\pi,\pi]$.
+\myfigure{0.8}{
+	\tikzinput{fig_lecons11}
+}
+
+
+Pour tout $x$ n'appartenant pas à $\{\ldots, -\frac\pi2, \frac\pi2, \frac{3\pi}{2}, \frac{5\pi}{2},\ldots  \}$
+la tangente est définie par
+$$\tan x = \frac{\sin x}{\cos x}$$
+La fonction $x \mapsto \tan x$ est périodique de période $\pi$ ; c'est une fonction impaire.
+
+\myfigure{0.5}{
+	\tikzinput{fig_lecons12}
+}
+
+
+Voici les dérivées:
+\begin{align*}
+	\cos'x&= -\sin x\\
+	\sin'x&=\cos x\\
+	\tan' x &= 1+\tan^2x=\frac{1}{\cos^2x}\\
+\end{align*}
+
+
+
+
+%--------------------------------------------------------
+\subsection{Les formules d'addition}
+
+
+
+\begin{align*}
+	\cos(a+b) &= \cos a \cdot \cos b - \sin a \cdot \sin b \\
+	\sin(a+b) &= \sin a\cdot \cos b  +  \sin b\cdot\cos a \\
+	\tan (a+b) &=\dfrac{\tan a + \tan b}{1-\tan a \cdot \tan b}\\
+\end{align*}
+
+
+
+On en déduit immédiatement :
+\begin{align*}
+	\cos(a-b)&=\cos a\cdot\cos b + \sin a\cdot\sin b\\
+	\sin(a-b)&=\sin a\cdot\cos b  - \sin b\cdot\cos a \\
+	\tan (a-b)&=\frac{\tan a - \tan b}{1+\tan a\cdot\tan b} \\
+\end{align*}
+
+
+
+Il est bon de connaître par c\oe ur les formules suivantes (faire $a=b$ dans les formules d'addition) :
+\begin{align*}
+	\cos 2a &= 2\cos^2a-1\\
+	&= 1-2\sin^2a\\
+	&=\cos^2a-\sin^2a\\
+	\sin 2a &= 2\sin a\cdot \cos a\\
+	\tan 2a &= \frac{2\tan a}{1-\tan^2 a}
+\end{align*}
+
+
+\end{multicols}
+
+\end{document}	

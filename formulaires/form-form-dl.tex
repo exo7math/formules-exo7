@@ -1,0 +1,79 @@
+\documentclass[10pt,class=article,crop=false]{standalone}
+\usepackage{../exo7formules}
+
+
+\begin{document}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section{Formules de développements limités}
+
+	
+\mycenterline{Développements limités usuels (au voisinage de $0$)}
+
+
+	\begin{align*}
+		e^x &\ \ =\ \  1 + \frac{x}{1!}+\frac{x^2}{2!}+ \cdots + \frac{x^n}{n!}\ \  + \ \ o(x^n)
+		= \sum_{k=0}^n \frac{x^k}{k!} \ \ + \ \ o(x^n)
+		\\[1.2em]
+		\text{cos } x &\ \ =\ \
+		1 - \frac{x^2}{2!}+\frac{x^4}{4!}- \cdots + (-1)^n \cdot \frac{x^{2n}}{(2n)!}\ \  + \ \ o(x^{2n+1})
+		= \sum_{k=0}^n (-1)^{k} \frac{x^{2k}}{(2k)!}  \ \  + \ \ o(x^{2n+1})
+		\\[0.5em]
+		\text{sin } x &\ \ =\ \
+		x - \frac{x^3}{3!}+\frac{x^5}{5!}- \cdots + (-1)^n \cdot \frac{x^{2n+1}}{(2n+1)!}\ \  + \ \ o(x^{2n+2})
+		= \sum_{k=0}^n (-1)^{k} \frac{x^{2k+1}}{(2k+1)!}  \ \  + \ \ o(x^{2n+2})
+		\\[0.5em]
+		\text{tan } x &\ \ =\ \
+		x +  \frac{x^3}{3} + \frac{2}{15}x^5 + \frac{17}{315}x^7\ \  + \ \ o(x^{8})  \\[1.2em]
+		\text{ch } x &\ \ =\ \
+		1 + \frac{x^2}{2!}+\frac{x^4}{4!}+ \cdots + \frac{x^{2n}}{(2n)!}\ \  + \ \ o(x^{2n+1})
+		= \sum_{k=0}^n \frac{x^{2k}}{(2k)!} \ \  + \ \ o(x^{2n+1})
+		\\[0.5em]
+		\text{sh } x &\ \ =\ \
+		x + \frac{x^3}{3!}+\frac{x^5}{5!}+ \cdots + \frac{x^{2n+1}}{(2n+1)!}\ \  + \ \ o(x^{2n+2})
+		= \sum_{k=0}^n \frac{x^{2k+1}}{(2k+1)!} \ \  + \ \ o(x^{2n+2})
+		\\[0.5em]
+		\text{th } x &\ \ =\ \
+		x -  \frac{x^3}{3} + \frac{2}{15}x^5 - \frac{17}{315}x^7\ \  + \ \ o(x^{8})
+		\\[0.5em]
+	\end{align*}
+
+	\begin{align*}
+		\text{ln}\, (1+x)&\ \ =\ \
+		x - \frac{x^2}{2}+\frac{x^3}{3}- \cdots + (-1)^{n-1}\cdot\frac{x^n}{n}\ \  + \ \ o(x^n)
+		= \sum_{k=1}^n (-1)^{k+1} \frac{x^k}{k} \ \  + \ \ o(x^n)
+		\\[0.5em]
+		(1+x)^\alpha &\ \ =\ \
+		1 + \alpha x + \frac{\alpha(\alpha - 1)}{2!}x^2+ \cdots +
+		\frac {\alpha(\alpha-1)\cdots(\alpha - n+1)}{n!} x^n \ \  + \ \ o(x^n)\\
+		&\ \ =\ \ \sum_{k=0}^n \binom{\alpha}{k} x^k \ \  + \ \ o(x^n)
+		\\[1.2em]
+		\frac{1}{1+x}&\ \ =\ \
+		1 -x+x^2-\cdots+(-1)^n x^n \ \ +\ \ o(x^n)
+		= \sum_{k=0}^n (-1)^k x^k \ \ +\ \ o(x^n)
+		\\[0.5em]
+		\frac{1}{1-x}&\ \ =\ \
+		1 + x+x^2+ \cdots+ x^n\ \ +\ \ o(x^n) = \sum_{k=0}^n x^k \ \ +\ \ o(x^n)
+		\\[0.5em]
+		\sqrt{1+x}&\ \ =\ \
+		1 + \frac{x}{2} - \frac{1}{8}x^2- \cdots +
+		(-1)^{n-1}\cdot\frac{1\cdot1\cdot3\cdot5\cdots(2n-3)}{2^n n!}x^n\ \  + \ \ o(x^n)
+		\\[0.5em]
+		\frac{1}{\sqrt{1+x}}&\ \ =\ \
+		1 - \frac{x}{2} + \frac{3}{8}x^2- \cdots +
+		(-1)^{n}\cdot\frac{1\cdot3\cdot5\cdots(2n-1)}{2^n n!} x^n\ \ + \ \ o(x^n)
+		\\[1.2em]
+		\text{arccos } x &\ \ =\ \
+		\frac{\pi}{2} - x - \frac{1}{2}\frac{x^3}{3} - \frac{1\cdot3}{2\cdot4}\frac{x^5}{5}- \cdots -
+		\frac{1\cdot3\cdot5\cdots(2n-1)}{2\cdot4\cdot6\cdots(2n)} \frac{x^{2n+1}}{2n+1}\ \ + \ \ o(x^{2n+2})
+		\\[0.5em]
+		\text{arcsin } x &\ \ =\ \
+		x + \frac{1}{2}\frac{x^3}{3} + \frac{1\cdot3}{2\cdot4}\frac{x^5}{5}+ \cdots +
+		\frac{1\cdot3\cdot5\cdots(2n-1)}{2\cdot4\cdot6\cdots(2n)} \frac{x^{2n+1}}{2n+1}\ \ + \ \ o(x^{2n+2})
+		\\[0.5em]
+		\text{arctan } x &\ \ =\ \
+		x - \frac{x^3}{3}+\frac{x^5}{5}+ \cdots + (-1)^{n}\cdot\frac{x^{2n+1}}{2n+1}\ \  + \ \ o(x^{2n+2})
+	\end{align*}
+
+
+\end{document}	

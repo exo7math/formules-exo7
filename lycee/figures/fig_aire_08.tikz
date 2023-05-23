@@ -1,0 +1,48 @@
+﻿
+\begin{tikzpicture}[scale=1]
+
+\begin{scope}
+% https://tex.stackexchange.com/questions/86535/
+% hpesoj626
+\draw [fill=blue!30,opacity=0.5] (0,0) ellipse (1.25 and 0.5);
+\draw [fill=blue!40,opacity=0.5] (0,-3.5) ellipse (1.25 and 0.5);
+\draw (-1.25,0) -- (-1.25,-3.5);
+\draw (-1.25,-3.5) arc (180:360:1.25 and 0.5);
+\draw [dashed] (-1.25,-3.5) arc (180:360:1.25 and -0.5);
+\draw (1.25,-3.5) -- (1.25,0);  
+\fill [blue!20,opacity=0.5] (-1.25,0) -- (-1.25,-3.5) arc (180:360:1.25 and 0.5) -- (1.25,0) arc (0:180:1.25 and -0.5);
+
+\node at (0,-3.5) {$A$};
+\draw[<->, >=latex] (2,-3.5) -- ++(0,3.5) node[midway, right] {$h$};
+\end{scope}
+
+\begin{scope}[xshift=4cm, yshift=-3.5cm]
+
+\coordinate (A) at (0,0);
+\coordinate (B) at (4,0);
+\coordinate (C) at (3,1);
+
+\def\a{1.7}
+\def\b{3}
+
+    \coordinate (AA) at (0+\a,0+\b);
+    \coordinate (BB) at (4+\a,0+\b);
+    \coordinate (CC) at (3+\a,1+\b);
+
+\fill[blue!40, opacity=0.5] (A) -- (B) -- (C) -- cycle;
+\fill[blue!20, opacity=0.5] (A) -- (AA) -- (BB) -- (B) -- cycle;
+\draw (A) -- (AA);
+\draw (B) -- (BB);
+\draw[dashed] (C) -- (CC);
+
+\draw (A) -- (B);
+\draw[dashed] (A) -- (C) -- (B);
+
+\draw[fill=blue!30, opacity=0.5] (AA) -- (BB) -- (CC) -- cycle;
+
+\node at (2.5,0.3) {$A$};
+
+\draw[<->, >=latex] (6,0) -- ++(0,3) node[midway, right] {$h$};
+
+\end{scope}
+\end{tikzpicture}

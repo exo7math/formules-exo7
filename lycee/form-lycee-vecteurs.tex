@@ -1,0 +1,106 @@
+\documentclass[10pt,class=article,crop=false]{standalone}
+\usepackage{../exo7formules}
+
+
+\begin{document}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section{Droites et vecteurs}
+
+\begin{multicols}{2}
+	
+%-----------------------------------------
+\subsection{Géométrie}
+
+La \defi{distance} entre $A(x_A,y_A)$ et $B(x_B,y_B)$ est $AB = \sqrt{(x_B-x_A)^2 + (y_B-y_A)^2}$.
+
+Le \defi{milieu} $M$ de $[AB]$ a pour coordonnées $\left( \frac{x_A+y_A}{2}, \frac{x_B+y_B}{2} \right)$.
+
+
+%-----------------------------------------
+\subsection{Vecteurs}
+
+Si $A(x_A,y_A)$ et $B(x_B,y_B)$ sont deux points du plan, le \defi{vecteur} de $A$ à $B$ est $\vec{AB} = (x_B-x_A,y_B-y_A)$.
+
+La \defi{norme} d'un vecteur $\vec v = (x,y)$ est $\|\vec v \| = \sqrt{x^2+y^2}$. 
+
+
+
+Soient $\vec u = (x,y)$ et $\vec v = (x',y')$ deux vecteurs et $k \in \Rr$.
+
+Addition. $\vec u + \vec v = (x+x',y+y')$.
+
+Multiplication par un scalaire. $k\vec u = (kx,ky)$.
+
+Opposé. $-\vec u = (-x,-y)$.
+
+Produit scalaire. $\vec u \cdot \vec v = x x' + y y'$.
+
+$\vec u \cdot \vec v = \| \vec u \| \| \vec v \| \cos \theta$ où $\theta$ est l'angle entre $\vec u$ et $\vec v$.
+
+$$\| \vec v \|^2 = \vec v \cdot \vec v$$
+
+Vecteurs orthogonaux. Deux vecteurs $\vec u$ et $\vec v$ sont \defi{orthogonaux} si $\vec u \cdot \vec v = 0$.
+
+Si $\vec u = (a,b)$ alors $\vec n = (-b,a)$ est un vecteur orthogonal à $\vec v$.
+
+
+Vecteurs colinéaires. Deux vecteurs $\vec u$ et $\vec v$ sont \defi{colinéaires} (ou \defi{parallèles}) si 
+il existe $k \in \Rr$ tel que $\vec u = k\vec v$ (ou $\vec v = k\vec u$).
+$\vec u = (a,b)$ et $\vec v = (c,d)$ sont colinéaires
+si et seulement si $ad - bc = 0$.
+
+On note $\det (\vec u, \vec v) = \begin{vmatrix}
+a & b \\
+c & d
+\end{vmatrix}
+= ad - bc$ le \defi{déterminant}.
+
+
+%-----------------------------------------
+\subsection{Droites}
+
+Équation cartésienne. 
+$$ax+by+c=0$$
+avec $a$, $b$ et $c$ des nombres réels (et $a$ et $b$ non tous les deux nuls).
+
+Vecteur directeur. $\vec v = (-b,a)$ est un vecteur directeur de la droite d'équation $ax+by+c=0$
+
+Vecteur normal. $\vec n = (a,b)$ est un vecteur normal à la droite d'équation $ax+by+c=0$.
+
+
+Équation réduite.
+$$y = ax+b$$
+avec $a$ et $b$ des nombres réels (et $a$ non nul).
+\begin{itemize}
+    \item $a$ est la \defi{pente} ou \defi{coefficient directeur},
+    \item $b$ est l'\defi{ordonnée à l'origine}.
+\end{itemize}
+
+Si $A(x_A,y_A)$ et $B(x_B,y_B)$ sont deux points de la droite, alors $a = \frac{y_B-y_A}{x_B-x_A}$.
+On trouve ensuite l'ordonnée à l'origine à l'aide de la relation $y_A = a x_A+b$.
+
+\textbf{Équation paramétrique.}
+$$\begin{cases}
+x = x_A + t \alpha \\
+y = y_A + t \beta
+\end{cases}$$
+avec $A(x_A,y_A)$ un point de la droite et $\vec v = (\alpha,\beta)$ un vecteur directeur de la droite.
+
+
+\textbf{Droites parallèles.}
+Deux droites sont parallèles si et seulement si leurs vecteurs directeurs sont colinéaires.
+Ainsi $ax+by+c=0$ et $ax'+by'+c'=0$ sont deux droites parallèles
+si et seulement si 
+$\det( \begin{pmatrix} -b \\ a\end{pmatrix},  \begin{pmatrix} -b' \\ a'\end{pmatrix}) = 0$ c'est-à-dire 
+$$ab' - a'b=0$$
+
+\textbf{Droites perpendiculaires.}
+Deux droites sont perpendiculaires si et seulement si leurs vecteurs directeurs sont orthogonaux.
+Ainsi $ax+by+c=0$ et $ax'+by'+c'=0$ sont deux droites perpendiculaires
+si et seulement si 
+$$aa' + bb'=0.$$ 
+
+\end{multicols}
+
+\end{document}	

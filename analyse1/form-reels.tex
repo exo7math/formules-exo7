@@ -1,0 +1,252 @@
+\documentclass[10pt,class=article,crop=false]{standalone}
+\usepackage{../exo7formules}
+
+
+\begin{document}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section{Les nombres réels}
+
+\begin{multicols}{2}
+	
+
+%-----------------------------------------
+\subsection{L'ensemble des nombres rationnels $\Qq$}
+
+L'ensemble des \defi{nombres rationnels}\index{nombre!rationnel} est
+\(
+\Qq = \left\{ \frac{p}{q}  \mid p\in \Zz, q\in \Nn^*\right\}.
+\)
+
+%Un \defi{nombre décimal}\index{nombre!décimal} est un nombre de la forme $\frac{a}{10^n}$,
+%avec $a\in \Zz$ et $n\in \Nn$ ; ce sont des nombres rationnels.
+
+\begin{proposition}
+Un nombre est rationnel si et seulement s'il admet une écriture décimale périodique ou finie.
+\end{proposition}
+
+
+%---------------------------------------------------------------
+\textbf{}
+
+\begin{proposition}
+	$\sqrt2$ n'est pas un nombre rationnel :
+	\myboxinline{$\sqrt{2}\notin \Qq$}
+\end{proposition}
+
+La démonstration classique par l'absurde est à connaître !
+
+On représente les nombres réels sur la \og droite numérique\fg{} :
+\myfigure{0.7}{
+	\tikzinput{fig_reels03}
+}
+
+
+$\sqrt{2}\simeq 1,4142\ldots$ \quad
+$\pi\simeq 3,14159265\ldots$ \quad $e\simeq 2,718\ldots$
+
+
+La droite numérique \og{}achevée\fg{} est : 
+$\overline{\Rr}=\Rr\cup\{-\infty,\infty\}$
+
+
+
+
+%-----------------------------------------
+\subsection{Propriétés de $\Rr$}
+
+\begin{proposition}[addition et multiplication]
+	$(\Rr,+,\times)$ est un \evidence{corps commutatif}.
+C'est-à-dire, pour $a,b,c \in \Rr$ on a :
+\begin{center}
+	\begin{tabular}{ll}
+		$a+b=b+a$ & $a\times b=b\times a$ \\
+		$0+a=a$ & $1\times a =a\text{ si }a\neq 0$ \\
+		$a+b=0 \iff a=-b$ & $ab=1 \iff a=\frac{1}{b}$\\
+		$(a+b)+c=a+(b+c)$ & $(a\times b)\times c=a\times (b\times c)$\\
+		&\\
+		$a\times(b+c)=a\times b+a\times c$ & \\
+		$a\times b=0 \iff (a=0 \text{ ou } b=0)$ &
+	\end{tabular}
+\end{center}	
+\end{proposition}
+
+\begin{proposition}[Ordre]
+La relation $\leq$ sur $\Rr$ est une relation d'ordre, et de plus, elle est totale.
+Nous avons donc :
+\begin{itemize}
+	\item pour tout $x \in \Rr$, $x \le x$ (\defi{réflexive}),
+	\item pour tout $x,y \in \Rr$, si $x \le y$ et $y\le x$ alors $x=y$ (\defi{antisymétrique}),
+	\item pour tout $x,y,z \in \Rr$ si $x\le y$ et $y\le z$ alors $x\le z$ (\defi{transitive}),
+	\item pour tout $x,y \in \Rr$, on a $x \le y $ ou $y \le x$ (\defi{totale}).
+\end{itemize}
+\end{proposition}
+
+
+\begin{proposition}[Propriété d'Archimède]
+\label{propr:archi}
+   $\Rr$ est \defi{archimédien}\index{archimedien@archimédien}, c'est-à-dire :
+   Pour tout réel $x$, il existe un entier naturel $n$ strictement plus grand que $x$.
+\end{proposition}
+
+
+\begin{proposition}
+	\label{prop:part_ent}
+	Soit $x\in \Rr$, il \evidence{existe} un \evidence{unique} entier relatif, la 
+	\defi{partie entière}\index{partie entiere@partie entière} notée $E(x)$, tel que :
+	\mybox{$E(x)\leq x <E(x)+1$}
+\end{proposition}
+
+
+
+		
+		\myfigure{0.4}{
+			\tikzinput{fig_reels04}
+		}
+
+
+%---------------------------------------------------------------
+% \subsection{Valeur absolue}
+
+Pour un nombre réel $x$, on définit la \defi{valeur absolue}\index{valeur absolue} de $x$ par :
+\mybox{$\displaystyle |x|=
+	\begin{cases}
+		x & \text{ si } x\geq 0 \\
+		-x & \text{ si } x<0
+	\end{cases}
+	$}
+
+
+\myfigure{0.8}{
+	\tikzinput{fig_reels05}
+}
+
+\begin{proposition}
+	\sauteligne
+	\begin{enumerate}
+		\item $|x|\geq 0$ \quad ; \quad  $|-x|=|x|$ \quad  ;  \quad $|x|>0 \iff x\neq 0$
+		\item $\sqrt{x^2}=|x|$
+		\item $|xy|=|x||y|$
+		\item \defi{Inégalité triangulaire}\index{inegalite@inégalité!triangulaire} \myboxinline{$|x+y|\leq |x|+|y|$}
+		\item \defi{Seconde inégalité triangulaire} $\big||x|-|y|\big|\leq |x-y|$
+	\end{enumerate}
+\end{proposition}
+
+Sur la droite numérique, $|x-y|$ représente la distance entre les
+réels $x$ et $y$ ; en particulier $|x|$ représente la distance entre les réels $x$ et $0$.
+
+\myfigure{0.7}{
+	\tikzinput{fig_reels06}
+}
+
+\begin{center}
+	\begin{tikzpicture}[>=latex]
+		
+	\end{tikzpicture}
+\end{center}
+
+De plus  $|x-a|<r \iff x \in {}]a-r,a+r[$.
+
+
+
+%-----------------------------------------
+\subsection{Densité de $\Qq$ dans $\Rr$}
+
+\begin{definition}
+	Soit $a$ un réel, $V\subset \Rr$ un sous-ensemble.
+	On dit que $V$ est un \defi{voisinage}\index{voisinage} de $a$ s'il existe un intervalle
+	ouvert $I$ tel que $a\in I$ et $I\subset V$.
+\end{definition}
+
+\begin{theoreme}
+	\sauteligne
+	\begin{enumerate}
+		\item $\Qq$ est \defi{dense}\index{densite@densité} dans $\Rr$ :
+		tout intervalle ouvert (non vide) de $\Rr$ contient une infinité de rationnels.
+		\item $\Rr\backslash\Qq$ est dense dans $\Rr$ :
+		tout intervalle ouvert (non vide) de $\Rr$ contient une infinité d'irrationnels.
+	\end{enumerate}
+\end{theoreme}
+
+
+%-----------------------------------------
+\subsection{Borne supérieure}
+
+
+\textbf{Maximum, minimum}
+
+
+\begin{definition}
+	\label{def:max}
+	Soit $A$ une partie non vide de $\Rr$. Un réel $\alpha$ est un
+	\defi{plus grand élément}\index{plus grand element@plus grand élément} (ou \defi{maximum}) de $A$ si :
+	\mycenterline{$\alpha \in A$ \qquad et  \qquad  $\forall x \in A \;\; x\leq \alpha$.}
+	S'il existe, le plus grand élément est unique, on le note alors $\max A$.
+	
+	Le \defi{plus petit élément}\index{plus petit element@plus petit élément} de $A$, (ou \defi{minimum}) noté $\min A$, 
+	s'il existe est le réel
+	$\alpha$ tel que $\alpha \in A$ et $\forall x \in A \;\; x \ge \alpha$.
+\end{definition}
+
+Le plus grand élément ou le plus petit élément n'existent pas toujours.
+
+
+\begin{definition}
+	\label{def:majorant-minorant}
+	Soit $A$ une partie non vide de $\Rr$. Un réel $M$ est un
+	\defi{majorant}\index{majorant} de $A$ si $\forall x \in A \;\; x\leq M$.
+	
+	Un réel $m$ est un \defi{minorant}\index{minorant} de $A$ si $\forall x \in A \;\; x\geq m$.
+\end{definition}
+
+
+
+Si un majorant (resp. un minorant) de $A$ existe on dit que $A$ est \defi{majorée} (resp. \defi{minorée}).
+
+
+
+\begin{definition}
+	\label{def:sup-inf}
+	Soit $A$ une partie non vide de $\Rr$ et $\alpha$ un réel.
+	\begin{itemize}
+		\item $\alpha$ est la \defi{borne supérieure}\index{borne superieure@borne supérieure} de $A$ si $\alpha$ est un majorant de $A$ et
+		si c'est le plus petit des majorants. S'il existe on le note $\sup A$.
+		\item $\alpha$ est la \defi{borne inférieure}\index{borne inferieure@borne inférieure} de $A$ si $\alpha$ est un minorant de
+		$A$ et si c'est le plus grand des minorants. S'il existe on le note $\inf A$.
+	\end{itemize}
+\end{definition}
+
+
+
+
+\begin{theoreme}[$\Rr4$]
+	Toute partie de $\Rr$ non vide et majorée admet une borne supérieure.
+\end{theoreme}
+
+De la même façon : Toute partie de $\Rr$ non vide et minorée admet une borne inférieure.
+
+\begin{proposition}[Caractérisation de la borne supérieure]
+	Soit $A$ une partie non vide et majorée de $\Rr$. La borne supérieure de $A$ est l'unique réel $\sup A$ tel que
+	\begin{enumerate}
+		\item[(i)] si $x\in A$, alors $x\leq \sup A$,
+		\item[(ii)] pour tout $y<\sup A$, il existe $x\in A$ tel que $y<x$.
+	\end{enumerate}
+\end{proposition}
+
+
+
+
+
+Caractérisation très utile de la borne supérieure.
+\begin{proposition}
+	Soit $A$ une partie non vide et majorée de $\Rr$. La borne supérieure de $A$ est l'unique réel $\sup A$ tel que
+	\begin{enumerate}
+		\item[(i)] $\sup A$ est un majorant de $A$,
+		\item[(ii)] il existe une suite $(x_n)_{n\in\Nn}$ d'éléments de $A$ qui converge vers $\sup A$.
+	\end{enumerate}
+\end{proposition}
+
+
+\end{multicols}
+
+\end{document}	

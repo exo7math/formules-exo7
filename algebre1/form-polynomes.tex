@@ -1,0 +1,302 @@
+\documentclass[10pt,class=article,crop=false]{standalone}
+\usepackage{../exo7formules}
+
+
+\begin{document}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section{Polynômes}
+
+\begin{multicols}{2}
+	
+
+%-----------------------------------------
+\subsection{Définitions}
+
+Un \defi{polynôme}\index{polynome@polynôme} à coefficients dans $\Kk$ ($\Qq$, $\Rr$ ou $\Cc$)
+est une expression :
+$$P(X) = a_n X^n + a_{n-1} X^{n-1} + \cdots + a_2 X^2 + a_1 X + a_0$$
+
+\begin{itemize}
+	\item Les $a_i \in \Kk$ sont appelés les \defi{coefficients} du polynôme.
+	
+	\item Si $a_n \neq 0$, $n \in \Nn$ est le \defi{degré}\index{degre@degré} de $P$, noté 
+	$\deg P$. (Convention : le degré du polynôme nul est $-\infty$.)
+
+	\item $\Kk[X]$ désigne l'ensemble des polynômes.
+	
+    \item $\Kk_n[X]$ est l'ensemble des polynômes de degré $\le n$.
+    
+    \item Deux polynômes sont \defi{égaux} si et seulement si ils ont les mêmes coefficients.
+    
+\end{itemize}
+
+
+\textbf{Multiplication.}
+Soient  $P=a_nX^n+a_{n-1}X^{n-1}+\cdots + a_1X+a_0$ et
+$Q=b_mX^m+b_{m-1}X^{m-1}+\cdots+b_1X+b_0$.
+$P \times Q$ est un polynôme de degré $n+m$ avec :
+$$c_k=\sum_{i+j=k}a_ib_j  \text{ pour }k\in \{0,\ldots, r\}.$$
+
+
+\mybox{$\deg(P\times Q)=\deg P + \deg Q
+	\qquad
+\deg(P+Q) \le \max(\deg P, \deg Q)$}
+
+\begin{itemize}
+	\item Les polynômes comportant un seul terme non nul (du type $a_kX^k$) sont
+	appelés \defi{monômes}\index{monome@monôme}.
+	
+	\item Soit $P=a_nX^n+a_{n-1}X^{n-1}+\cdots + a_1X+a_0,$ un polynôme avec
+	$a_n\neq0$. On appelle \defi{terme dominant} le monôme $a_nX^n$. Le coefficient
+	$a_n$ est appelé le \defi{coefficient dominant} de $P$.
+	
+	\item Si le coefficient dominant est $1$, on dit que $P$ est un \defi{polynôme
+		unitaire}.
+\end{itemize}
+
+
+%-----------------------------------------
+\subsection{Arithmétique des polynômes}
+
+% \textbf{Division euclidienne}
+
+
+Soient $A,B \in\Kk[X]$, on dit que $B$ \defi{divise}\index{divisibilite@divisibilité} $A$ s'il existe  $Q\in\Kk[X]$ tel que $A=BQ$.
+On note alors $B|A$.
+On dit aussi que $A$ est multiple de $B$ ou que $A$ est divisible par $B$.
+
+\begin{theoreme}[Division euclidienne des polynômes]
+	Soient $A,B \in\Kk[X]$, avec $B \neq 0$, alors il existe un
+	unique polynôme $Q$ et il existe un unique polynôme $R$ tels que :
+	\mybox{$A=BQ+R \quad \text{ et } \quad \deg R < \deg B$.}
+\end{theoreme}
+
+$Q$ est appelé le \defi{quotient}\index{quotient} et $R$ le \defi{reste}\index{reste} et cette écriture
+est la \defi{division euclidienne}\index{division euclidienne} de $A$ par $B$.
+
+Notez que la condition $\deg R < \deg B$ signifie $R=0$
+ou bien $0 \le \deg R < \deg B$.
+
+Enfin $R=0$ si et seulement si $B|A$.
+
+
+\begin{exemple}
+	On pose une division de polynômes comme une division euclidienne de deux entiers.
+	Par exemple si $A=2X^4-X^3-2X^2+3X-1$ et $B=X^2-X+1$.
+	Alors on trouve $Q= 2X^2+X-3$ et $R=-X+2$.
+	
+	\myfigure{0.8}{
+		\tikzinput{fig_polynome01}
+	}
+	
+\end{exemple}
+
+Le \defi{pgcd}\index{pgcd} (plus grand commun diviseur) de $A$ et $B$
+est l'unique polynôme unitaire de plus grand degré qui
+divise à la fois $A$ et $B$.
+
+
+
+
+
+\textbf{Algorithme d'Euclide.}
+\index{algorithme d'Euclide}
+Soient $A$ et $B$ des polynômes, $B \neq 0$.
+Si $A=BQ+R$ alors $\pgcd(A,B) = \pgcd(B,R)$.
+On calcule des divisions euclidiennes successives,
+
+$$\begin{array}{ll}
+	A = B Q_1+R_1 \quad \quad & \deg R_1 < \deg B \\
+	B = R_1 Q_2 + R_2  & \deg R_2 < \deg R_1 \\
+	R_1=R_2Q_3+R_3 & \deg R_3 < \deg R_2 \\
+	\cdots & \\
+\end{array}$$
+
+Le degré du reste diminue à chaque division.
+Le pgcd est le dernier reste non nul $R_k$ (rendu unitaire).
+
+
+$A$ et $ B$ sont \defi{premiers entre eux}\index{polynome@polynôme!premiers entre eux} si $\pgcd(A,B)=1$.
+Pour $A,B$ quelconques on peut se ramener à des polynômes premiers entre eux :
+si  $\pgcd(A,B)=D$ alors $A$ et $B$ s'écrivent : $A=DA'$, $B=DB'$ avec $\pgcd(A',B')=1$.
+
+\begin{theoreme}[de Bézout]
+	\index{theoreme@théorème!de Bézout}
+	\label{thm_Bezout}
+	Soient $A, B\in \Kk[X]$ des polynômes avec $A\neq 0$ ou $B\neq 0$.
+	On note $D=\pgcd(A,B)$.
+	Il existe deux polynômes $U, V\in \Kk[X]$ tels que $AU+BV=D$.
+\end{theoreme}
+
+\begin{corollaire}
+	Soient $A$ et $B$ deux polynômes. $A$ et $B$ sont premiers entre eux si
+	et seulement s'il existe deux polynômes $U$ et $V$ tels que $AU+BV=1$.
+\end{corollaire}
+
+\begin{corollaire}
+	Soient $A, B, C\in \Kk[X]$ avec $A\neq 0$ ou $B\neq 0$.
+	Si $C|A$ et $C|B$ alors $C|\pgcd(A,B)$.
+\end{corollaire}
+
+\begin{corollaire}[Lemme de Gauss]
+	\index{lemme!de Gauss}
+	Soient $A, B, C\in \Kk[X]$.
+	Si $A|BC$ et $\pgcd(A,B)=1$ alors $A|C$.
+\end{corollaire}
+
+
+%\textbf{ppcm}
+
+%\begin{proposition}
+%	Soient $A, B\in \Kk[X]$ des polynômes non nuls, alors il existe un unique
+%	polynôme unitaire $M$ de plus petit degré tel que $A|M$ et $B|M$.
+%\end{proposition}
+
+%Le \defi{ppcm}\index{ppcm} (plus petit commun multiple) de $A$ et $B$ est l'unique
+%polynôme unitaire $M$ de plus petit degré tel que $A|M$ et $B|M$.
+
+%\begin{proposition}
+%	Soient $A, B\in\Kk[X]$ des polynômes non nuls et
+%	$M=\ppcm(A,B)$. Si $C\in\Kk[X]$ est un polynôme tel que $A|C$ et $B|C$, alors $M|C$.
+%\end{proposition}
+
+%-----------------------------------------
+\subsection{Racine d'un polynôme, factorisation}
+
+$\alpha\in\Kk$ est une \defi{racine}\index{racine} (ou un \defi{zéro}) de $P\in\Kk[X]$ si $P(\alpha)=0$.
+
+\mybox{$P(\alpha)=0 \quad \iff \quad X-\alpha \text{ divise } P$}
+
+$\alpha$ est une \defi{racine de multiplicité $k$} de $P$ est équivalent à l'une des propriétés suivantes :
+\begin{itemize}
+	\item[(i)]  $P(\alpha)= P'(\alpha)=\cdots=P^{(k-1)}(\alpha)=0$ et $P^{(k)}(\alpha) \neq 0$.
+	
+	\item[(ii)] Il existe  $Q \in\Kk[X]$ tel que $P=(X-\alpha)^kQ,$ avec $Q(\alpha) \neq 0$.
+	
+	\item[(iii)]$(X-\alpha )^k$ divise $P$ alors que $(X- \alpha )^{k+1}$ ne divise pas $P$.
+\end{itemize}
+
+
+\begin{theoreme}[Théorème de d'Alembert-Gauss]
+	Tout polynôme à coefficients complexes de degré $n \ge 1$
+	a au moins une racine dans $\Cc$.
+	Il admet exactement $n$ racines si on compte chaque racine
+	avec multiplicité.
+\end{theoreme}
+
+
+\begin{exemple}
+	Soit $P(X)=aX^2+bX+c$ de degré $2$ à coefficients $a,b,c$ réels.
+	\begin{itemize}
+		\item Si $\Delta = b^2-4ac > 0$, $P$ a $2$ racines réelles distinctes $\frac{-b\pm\sqrt{\Delta}}{2a}$.
+		\item Si $\Delta < 0$, $P$ a $2$ racines complexes conjuguées $\frac{-b \pm \ii\sqrt{|\Delta|}}{2a}$.
+		\item Si $\Delta = 0$ $P$ a une racine réelle double $\frac{-b}{2a}$.
+	\end{itemize}
+\end{exemple}
+
+
+\textbf{Polynômes irréductibles}
+\begin{itemize}
+	\item Un polynôme \defi{irréductible} $P$ est donc un polynôme non constant
+	dont les seuls diviseurs de $P$ sont les constantes ou $P$ lui-même
+	(à une constante multiplicative près).
+	Cela correspond à la notion de nombre premier pour l'arithmétique de $\Zz$.
+	
+	\item Dans le cas contraire, $P$ est \defi{réductible}\index{reductibilite@réductibilité} :
+	il existe  $A, B \in \Kk[X]$ tels que $P=AB$, avec
+	$\deg A \ge 1$ et  $\deg B \ge 1$.
+\end{itemize}
+
+
+
+%\begin{proposition}[Lemme d'Euclide]
+%	\index{lemme!d'Euclide}
+%	Soit $P\in\Kk[X]$ un polynôme irréductible et soient $A, B\in\Kk[X]$.
+%	Si $P|AB$ alors $P|A$ ou $P|B$.
+%\end{proposition}
+
+
+\begin{theoreme}[Factorisation sur $\Cc$ et $\Rr$]
+\sauteligne	
+\begin{enumerate}
+	\item Tout polynôme unitaire s'écrit de manière unique comme un produit de polynômes irréductibles unitaires.
+	
+    \item Les polynômes irréductibles de $\Cc[X]$ sont les polynômes de degré $1$.
+	
+	Tout $P\in\Cc[X]$ se factorise en produit de polynômes de degré $1$ dans $\Cc[X]$.
+
+	\item Les polynômes irréductibles de $\Rr[X]$
+	sont les polynômes de degré $1$ et ceux de degré $2$ ayant
+	un discriminant $\Delta<0$.
+	
+	Tout $P\in\Cc[X]$ se factorise en produit de polynômes irréductibles de degré $1$ ou $2$ dans $\Cc[X]$.	
+\end{enumerate}
+\end{theoreme}
+
+
+
+\begin{exemple}
+Soit $P(X)=X^4+1$.
+\begin{itemize}
+	\item Sur $\Cc$. D'abord $P(X)=(X^2+\ii)(X^2-\ii)$.
+	Les racines de $P$ sont les racines carrées complexes de $\ii$ et $-\ii$.
+	Ainsi $P$ se factorise dans $\Cc[X]$ :
+	$$P(X)=\big(X-\tfrac{\sqrt2}{2}(1+\ii)\big)\big(X+\tfrac{\sqrt2}{2}(1+\ii)\big)\big(X-\tfrac{\sqrt2}{2}(1-\ii)\big)
+	\big(X+\tfrac{\sqrt2}{2}(1-\ii)\big)$$
+	
+	\item Sur $\Rr$ on regroupe les facteurs ayant des racines conjuguées :
+	$$P(X) = \big[X^2+\sqrt2X+1\big]\big[X^2-\sqrt2X+1\big]$$ 
+\end{itemize}
+\end{exemple}
+
+%-----------------------------------------
+\subsection{Fractions rationnelles}
+
+
+Une \defi{fraction rationnelle}\index{fraction rationnelle} à coefficients dans $\Kk$ est une expression de la forme
+$F=\frac{P}{Q}$ où $P,Q \in \Kk[X]$ sont deux polynômes et $Q \neq 0$.
+
+
+
+%Toute fraction rationnelle est somme de fractions rationnelles
+%élémentaires : les \og éléments simples \fg. Mais les éléments simples sont différents sur $\Cc$ ou sur $\Rr$.
+
+
+\begin{theoreme}[Décomposition en éléments simples sur $\Cc$]
+	Soit $P/Q$ une fraction rationnelle avec $P,Q \in \Cc[X]$, $\pgcd(P,Q)=1$ et
+	$Q=(X-\alpha_1)^{k_1}\cdots(X-\alpha_r)^{k_r}$.
+	Alors il existe une et une seule écriture :
+	$$\begin{array}{rl}
+		\displaystyle \frac{P}{Q} \  =  \ \  E(X)  & + \
+		\displaystyle  \frac{a_{1,1}}{(X-\alpha_1)^{k_1}}+\frac{a_{1,2}}{(X-\alpha_1)^{k_1-1}}+\cdots
+		+\ \frac{a_{1,k_1}}{(X-\alpha_1)} \\[4mm]
+		& \displaystyle+ \frac{a_{2,1}}{(X-\alpha_2)^{k_2}}+\cdots
+		+\ \frac{a_{2,k_2}}{(X-\alpha_2)}  + \ \cdots
+	\end{array}$$
+\end{theoreme}
+
+Le polynôme $E$ s'appelle la \defi{partie polynomiale}\index{partie polynomiale} 
+(ou \defi{partie entière}).
+Les termes $\frac{a}{(X-\alpha)^i}$ sont les \defi{éléments simples}\index{element simple@élément simple} sur $\Cc$.
+
+
+
+\begin{theoreme}[Décomposition en éléments simples sur $\Rr$]
+	Soit $P/Q$ une fraction rationnelle avec $P,Q \in \Rr[X]$, $\pgcd(P,Q)=1$.
+	Alors $P/Q$ s'écrit de manière unique comme somme :
+	\begin{itemize}
+		\item d'une partie polynomiale $E(X)$,
+		\item d'éléments simples du type $\frac{a}{(X-\alpha)^i}$,
+		\item d'éléments simples du type $\frac{aX+b}{(X^2+\alpha X + \beta)^i}$,
+	\end{itemize}
+	où les $X-\alpha$ et $X^2+\alpha X + \beta$ sont les facteurs irréductibles de $Q(X)$
+	et les exposants $i$ sont inférieurs ou égaux à la puissance correspondante dans cette factorisation.
+\end{theoreme}
+
+
+
+
+\end{multicols}
+
+\end{document}	

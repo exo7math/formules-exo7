@@ -1,0 +1,330 @@
+\documentclass[10pt,class=article,crop=false]{standalone}
+\usepackage{../exo7formules}
+
+
+\begin{document}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section{Nombres complexes}
+
+\begin{multicols}{2}
+
+%-----------------------------------------
+\subsection{$z = a +\ii b$}
+
+Un \defi{nombre complexe}\index{nombre complexe} est un couple $(a, b) \in \Rr^2$ que l'on notera $a + \ii b$, avec :
+\mybox{$\ii ^2 = - 1$}
+
+Pour $z = a + \ii b$ et $z' = a' + \ii b'$ :
+\begin{itemize}
+	\item \evidence{addition} : $(a + \ii b) + (a' + \ii b') =
+	(a + a') + \ii  (b + b')$
+	\item \evidence{multiplication} : $(a + \ii b) \times (a' + \ii b')
+	= (aa' - bb') + \ii  (ab' + ba')$. On développe en suivant les règles de la multiplication usuelle 
+	et la relation $\ii ^2 = - 1$
+\end{itemize}	
+Soit $z = a + \ii b$ un nombre complexe, sa \defi{partie réelle}\index{partie reelle@partie réelle} est le réel $a$ et on
+la note $\Re(z)$ ;
+sa \defi{partie imaginaire}\index{partie imaginaire} est le réel $b$ et on la note $\Im(z)$.
+\myfigure{1}{
+	\tikzinput{fig_complexes04}
+}	
+
+\begin{itemize}
+	\item L'\defi{\,inverse}: si $z \neq 0$, il existe un unique $z' \in \Cc$ tel
+	que $zz' = 1$ (o\`u $1 = 1 + \ii  \times 0$).
+	\item La \defi{division} : $\frac{z}{z'}$ est le nombre complexe $z \times \frac{1}{z'}$.
+	
+	\item Propriété d'intégrité : si $zz' = 0$ alors $z = 0$ ou $z' = 0$.
+	
+	\item Puissances : $z^2 = z \times z$, $z^n = z \times \cdots \times z$ ($n$
+	fois, $n\in \Nn$). Par convention $z^0 = 1$ et $z^{- n} = \left( \frac{1}{z} \right)^n = \frac{1}{z^n}$.
+\end{itemize}
+
+\begin{proposition}
+	\label{prop:somme}
+	Pour tout $z \in \Cc$ différent de $1$ :
+	\mybox{$1 + z + z^2 + \cdots + z^n = \dfrac{1 - z^{n + 1}}{1 - z} .$}
+\end{proposition}
+
+
+%-----------------------------------------
+\subsection{Module}
+
+
+\begin{itemize}
+	\item Le \defi{module}\index{module} de $z = a + \ii b$ est le réel positif \myboxinline{$|z| = \sqrt{a^2 + b^2}$}.
+	\item Le \defi{conjugué}\index{conjugue@conjugué} de $z = a + \ii b$ est \myboxinline{$\bar{z} = a - \ii b$}.
+	\item \myboxinline{$|z|^2 = z\bar z$} car $z \times \bar z = (a+\ii b)(a-\ii b) = a^2+b^2$.
+\end{itemize}
+
+\myfigure{0.7}{
+	\tikzinput{fig_complexes08} \qquad
+	\tikzinput{fig_complexes07}
+}
+
+\begin{itemize}
+	\item $\overline{z + z'} = \bar{z} + \overline{z'}$,\quad $\overline{\bar{z}} =
+	z$,\quad $\overline{zz'} = \bar{z}  \overline{z'}$
+	
+	\item $z = \bar{z} \Longleftrightarrow z \in \Rr$
+	
+	\item $\left| z \right|^2 = z \times \bar{z}$,\quad $\left| \bar{z} \right| =
+	\left| z \right|$,\quad $\left| zz' \right| = |z| |z'|$
+	
+	\item $\left| z \right| = 0 \Longleftrightarrow z = 0$
+\end{itemize}
+
+\begin{proposition}[L'inégalité triangulaire]
+	\index{inegalite triangulaire@inégalité triangulaire}
+	\ 
+	\mybox{$\left| z + z' \right| \leqslant \left| z  \right| + \left| z' \right|$}
+\end{proposition}
+\myfigure{0.7}{
+	\tikzinput{fig_complexes10bis}
+}
+
+
+%-----------------------------------------
+\subsection{\'Equation du second degré}
+
+Pour $z \in \Cc$, une \defi{racine carrée} est un nombre complexe $\omega$
+tel que $\omega^2 = z$. Tout nombre complexe, admet deux racines carrées, $\omega$ et $-\omega$.
+
+\begin{proposition}
+	L'équation du second degré $az^2 + bz + c = 0$, o\`u $a, b, c \in
+	\Cc$ et $a \neq 0$, possède deux solutions $z_1, z_2 \in \Cc$
+	éventuellement confondues.
+	
+	Soit $\Delta = b^2 - 4 ac$ le discriminant et
+	$\delta \in \Cc$ une racine carrée de $\Delta$. Alors les
+	solutions sont
+	\mybox{
+		$ z_1 = \dfrac{- b + \delta}{2 a} \quad \text{ et } \quad z_2 = \dfrac{- b - \delta}{2
+			a} . $
+	}
+\end{proposition}
+
+\begin{corollaire}
+	Si les coefficients $a, b, c$ sont réels alors $\Delta \in \Rr$ et les solutions sont de trois types :
+	\begin{itemize}
+		\item si $\Delta > 0$, on a deux solutions réelles $\dfrac{- b \pm\sqrt{\Delta}}{2 a}$,		
+		
+		\item si $\Delta = 0$, la racine double est réelle et vaut $-\dfrac{b}{2 a}$,
+		
+		\item si $\Delta < 0$, on a deux solutions complexes conjuguées $\dfrac{- b \pm \ii  \sqrt{|\Delta|}}{2 a}$.
+	\end{itemize}
+\end{corollaire}
+
+\begin{theoreme}[d'Alembert--Gauss]
+	\index{theoreme@théorème!de d'Alembert--Gauss}
+	Soit $P (z) = a_n z^n + a_{n - 1} z^{n - 1}
+	+ \cdots + a_1 z + a_0$ un polyn\^ome \`a coefficients complexes
+	et de degré $n$. Alors l'équation $P(z) = 0$ admet exactement $n$
+	solutions complexes comptées avec leur multiplicité.
+	Il existe donc des nombres complexes $z_1, \ldots, z_n$ (dont certains sont
+	éventuellement confondus) tels que $P (z) = a_n  \left( z - z_1 \right) \left( z - z_2 \right) 	\cdots \left( z - z_n \right)$.
+\end{theoreme}
+
+
+%-----------------------------------------
+\subsection{Argument}
+
+
+Pour tout $z \in \Cc^{\ast} =\Cc \setminus \left\{ 0 \right\}$,
+un nombre $\theta \in \Rr$ tel que $z = \left| z
+\right|  \left( \cos \theta + \ii  \sin \theta \right)$ est appelé un \defi{argument}\index{argument}
+de $z$ et noté $\theta = \arg (z)$.
+
+
+\myfigure{1}{
+	\tikzinput{fig_complexes11}
+}
+
+Cet argument est défini modulo $2\pi$. On peut imposer à cet argument d'être unique si on
+rajoute la condition $\theta \in {}]-\pi,+\pi]$ (ou bien $\theta \in [0,2\pi[$).
+
+\[ \theta \equiv \theta' \pmod {2\pi}\   \Longleftrightarrow \   \exists k \in
+\Zz, \, \theta = \theta' + 2 k \pi \   \Longleftrightarrow \ 
+\left\{ \begin{array}{l}
+	\cos \theta = \cos \theta'\\
+	\sin \theta = \sin \theta'
+\end{array} \right. \]
+
+\begin{proposition}
+	\sauteligne
+	\begin{itemize}
+		\item $\arg \left( zz' \right) \equiv \arg (z) + \arg \left(
+		z' \right) \pmod {2\pi}$
+		
+		\item $\arg \left( z^n \right) \equiv n \arg (z) \pmod {2\pi}$
+		
+		\item $\arg \left( 1 / z \right) \equiv - \arg (z) \pmod {2\pi}$
+		
+		\item $\arg (\bar{z}) \equiv - \arg z \pmod{2 \pi}$
+	\end{itemize}
+\end{proposition}
+
+
+%-----------------------------------------
+\subsection{Formule de Moivre, notation exponentielle}
+
+La \defi{formule de Moivre}\index{formule!de Moivre} est :
+\mybox{$
+	\left( \cos \theta + \ii \sin \theta \right)^n = \cos \left( n \theta \right)
+	+ \ii  \sin \left( n \theta \right)$}
+
+Nous définissons la \defi{notation exponentielle}\index{exponentielle complexe} par
+\mybox{$e^{\ii  \theta} = \cos \theta + \ii  \sin \theta$}
+et donc tout nombre complexe s'écrit
+\mybox{$z = \rho e^{\ii  \theta}$}
+o\`u $\rho = \left| z \right|$ est le module et $\theta = \arg (z)$ est un argument.
+
+\bigskip
+
+Avec la notation exponentielle, on peut écrire pour $z = \rho e^{\ii  \theta}$ et $z' = \rho' e^{\ii  \theta'}$ :
+\begin{itemize}
+	\item $zz' = \rho \rho' e^{\ii  \theta} e^{\ii  \theta'} = \rho \rho' e^{\ii  (\theta + \theta')}$
+	\item $z^n = \left( \rho e^{\ii  \theta} \right)^n = \rho^n  \left( e^{\ii  \theta}
+	\right)^n = \rho^n e^{\ii n \theta}$
+	\item $1 / z = 1 / \left( \rho e^{\ii  \theta} \right) = \frac{1}{\rho} e^{- \ii
+		\theta}$
+	\item $\bar{z} = \rho e^{-\ii \theta}$
+\end{itemize}
+
+La formule de Moivre se réduit à l'égalité : \myboxinline{$\left(e^{\ii\theta}\right)^n = e^{\ii n \theta}$}.
+
+Enfin : $\rho e^{\ii \theta} = \rho' e^{\ii \theta'}$ (avec $\rho, \rho' > 0$)
+si et seulement si $\rho = \rho'$ et $\theta \equiv \theta' \pmod{2\pi}$.
+
+
+
+%-----------------------------------------
+\subsection{Racines $n$-ième}
+
+Pour $z \in \Cc$ et $n \in \Nn$, une \defi{racine $n$-ième} est un nombre $\omega \in \Cc$ tel que $\omega^n = z$.
+
+
+\begin{proposition}
+	Il y a $n$ racines $n$-ièmes $\omega_0, \omega_1, \ldots, \omega_{n - 1}$ de $z=\rho e^{\ii  \theta}$, ce sont :
+	\mybox{$\omega_k = \rho^{1 / n} e^{\frac{\ii\theta + 2 \ii k \pi}{n}}  \qquad k = 0,1,\ldots, n - 1$}
+\end{proposition}
+
+Par exemple pour $z = 1$, on obtient les $n$ \defi{racines $n$-ièmes de l'unité}\index{racine de l unite@racine de l'unité} :
+\mybox{$e^{2 \ii k \pi / n} \qquad k = 0,1,\ldots, n - 1$}
+
+\myfigure{0.4}{
+	\tikzinput{fig_complexes14}
+	\tikzinput{fig_complexes12}
+}
+
+\centerline{Racine $3$-ième (à gauche) et $5$-ième de l'unité}
+
+
+
+
+%-----------------------------------------
+\subsection{Applications à la trigonométrie}
+
+\defi{Formules d'Euler}\index{formule!d'Euler}, pour $\theta \in \Rr$ :
+\mybox{$ \cos \theta = \dfrac{e^{\ii  \theta} + e^{- \ii  \theta}}{2} \quad \quad \quad
+	\sin \theta = \dfrac{e^{\ii  \theta} - e^{- \ii  \theta}}{2 \ii }$}
+
+
+\defi{Développement.}\index{developpement@développement} On exprime $\sin n \theta$ ou $\cos n \theta$ en
+fonction des puissances de $\cos \theta$ et $\sin \theta$.
+
+\emph{Méthode :} on utilise la formule de Moivre pour écrire $\cos \left( n
+\theta \right) + \ii  \sin \left( n \theta \right) = \left( \cos \theta + \ii  \sin
+\theta \right)^n$ que l'on développe avec la formule du bin\^ome de Newton.
+
+\begin{exemple}
+	\begin{equation*}
+		\begin{split}
+			\cos 3 \theta + \ii  \sin 3 \theta & =   \left( \cos \theta + \ii  \sin \theta
+			\right)^3\\
+			& =  \cos^3 \theta + 3 \ii  \cos^2 \theta \sin \theta - 3 \cos \theta \sin^2
+			\theta - \ii  \sin^3 \theta\\
+			& =  \left( \cos^3 \theta - 3 \cos \theta \sin^2 \theta \right) + \ii  \left(
+			3 \cos^2 \theta \sin \theta - \sin^3 \theta \right)
+		\end{split}
+	\end{equation*}
+	
+	En identifiant les parties réelles et imaginaires, on déduit que
+	\[ \cos 3 \theta = \cos^3 \theta - 3 \cos \theta \sin^2 \theta \quad \text{ et } \quad
+	\sin 3 \theta = 3 \cos^2 \theta \sin \theta - \sin^3 \theta . \]
+	
+\end{exemple}
+
+\defi{Linéarisation.}\index{linearisation@linéarisation}  On exprime
+$\cos^n \theta$ ou $\sin^n \theta$ en fonction des $\cos k \theta$ et $\sin k
+\theta$ pour $k$ allant de $0$ \`a~$n$.
+
+\medskip
+
+\emph{Méthode :} avec la formule d'Euler on écrit $\sin^n \theta = \left( \frac{e^{\ii
+		\theta} - e^{- \ii  \theta}}{2 \ii } \right)^n$. On développe à l'aide du binôme de Newton
+puis on regroupe les termes par paires conjugu\'ees.
+
+\begin{exemple}
+	\begin{equation*}
+		\begin{split}
+			\sin^3 \theta & =  \left( \frac{e^{\ii  \theta} - e^{- \ii  \theta}}{2 \ii }
+			\right)^3 \\
+			& =  \frac{1}{- 8 \ii }  \left( (e^{\ii  \theta})^3 - 3 (e^{\ii  \theta})^2e^{- \ii  \theta}
+			+ 3 e^{\ii  \theta}(e^{-\ii  \theta})^2 - (e^{- \ii  \theta})^3 \right)\\
+			& =  \frac{1}{- 8 \ii }  \left( e^{3 \ii  \theta} - 3 e^{\ii  \theta} + 3 e^{-
+				\ii  \theta} - e^{- 3 \ii  \theta} \right)\\
+			& =  - \frac{1}{4} \left( \frac{e^{3 \ii  \theta} -  e^{-3 \ii \theta}}{2 \ii } - 3
+			\frac{e^{\ii  \theta} - e^{-\ii  \theta}}{2 \ii } \right) \\
+			& =  - \frac{\sin 3 \theta}{4}
+			+ \frac{3 \sin \theta}{4}
+		\end{split}
+	\end{equation*}
+\end{exemple}
+
+
+
+%---------------------------------------------------------------
+\subsection{\'Equation complexe d'un cercle}
+
+L'équation du cercle $\mathcal{C}(\Omega,r)$ de centre $\Omega$, d'affixe $\omega$ et de rayon $r$ est
+\mybox{$z\bar z - \bar \omega z - \omega \bar z = r^2-|\omega|^2$}
+
+Il est plus simple de retrouver la formule à chaque fois :
+$\mathrm{dist}(\Omega,M) = r \iff  |z-\omega|=r \iff |z-\omega|^2=r^2 \iff (z-\omega)\overline{(z-\omega)}=r^2$.
+
+\myfigure{0.8}{
+	\tikzinput{fig_complexes02}
+}
+
+
+%-----------------------------------------
+\subsection{\'Equation complexe d'une droite}
+
+La droite d'équation $ax+by=c$ (avec $a,b,c \in \Rr$) a pour équation complexe :
+\mybox{$\bar \omega z + \omega \bar z = k$}
+où $\omega = a+\ii  b \in \Cc^*$ et $k=2c \in \Rr$.
+
+%---------------------------------------------------------------
+\subsection{\'Equation $\frac{|z-a|}{|z-b|}=k$}
+
+\begin{proposition}
+	Soit $A,B$ deux points du plan et $k\in \Rr_+$.
+	L'ensemble des points $M$ tel que $\frac{MA}{MB}=k$
+	est
+	\begin{itemize}
+		\item une droite qui est la médiatrice de $[AB]$, si $k=1$,
+		\item un cercle, sinon.
+	\end{itemize}
+\end{proposition}
+
+
+\myfigure{1}{
+	\tikzinput{fig_complexes13bis}
+}
+
+
+\end{multicols}
+
+\end{document}	

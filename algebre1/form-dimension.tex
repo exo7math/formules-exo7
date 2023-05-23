@@ -1,0 +1,248 @@
+\documentclass[10pt,class=article,crop=false]{standalone}
+\usepackage{../exo7formules}
+
+
+\begin{document}
+	
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section{Dimension finie}
+
+\begin{multicols}{2}
+	
+$E$ est un $\Kk$-espace vectoriel.
+
+%-----------------------------------------
+\subsection{Famille libre}
+
+Une famille $\{ v_1, v_2,\ldots, v_p \}$ de $E$ est une \defi{famille libre}\index{famille!libre} ou
+\defi{linéairement indépendante}\index{famille!lineairement independante@linéairement indépendante} si toute combinaison linéaire nulle
+$$\lambda_1 v_1+\lambda_2 v_2+\cdots+\lambda_p v_p=0$$
+est telle que tous ses coefficients sont nuls, c'est-à-dire
+$$\lambda_1=0, \quad \lambda_2=0, \quad \ldots \quad \lambda_p=0.$$
+
+Dans le cas contraire,
+c'est-à-dire s'il existe une combinaison linéaire nulle
+à coefficients non tous nuls,
+on dit que la famille est \defi{liée}\index{famille!liee@liée} ou \defi{linéairement dépendante}.
+%Une telle combinaison linéaire s'appelle alors
+%une \defi{relation de dépendance linéaire} entre les $ v_j$.
+
+\begin{theoreme}
+	\label{carac liee}
+	Soit $E$ un $\Kk$-espace vectoriel.
+	Une famille $\mathcal{F}=\{v_1, v_2,\ldots, v_p\}$ de $p\ge 2$
+	vecteurs de $E$ est une famille liée si et seulement si
+	au moins un des vecteurs de $\mathcal{F}$ est combinaison linéaire
+	des autres vecteurs de $\mathcal{F}$.
+\end{theoreme}
+
+Exemples :
+\begin{itemize}
+	\item Dans $\Rr^2$ ou $\Rr^3$, deux vecteurs sont linéairement dépendants si et seulement s'ils sont colinéaires.
+	\item Dans $\Rr^3$, trois vecteurs sont linéairement dépendants si et seulement s'ils sont coplanaires.
+\end{itemize}
+
+\begin{proposition}
+Soit $\mathcal{F}=\{ v_1, v_2,\ldots ,v_p\}$ une famille de vecteurs de $\Rr^n$. Si $\mathcal{F}$ contient plus de $n$ éléments (c'est-à-dire $p > n$), alors $\mathcal{F}$ est une famille liée.
+\end{proposition}
+
+
+
+%-----------------------------------------
+\subsection{Famille génératrice}
+
+
+Une famille $\{v_1,\dots ,v_p\}$ de vecteurs de $E$ est une \defi{famille génératrice}\index{famille!generatrice@génératrice} de l'espace vectoriel $E$
+si tout vecteur de $E$ est une combinaison linéaire des vecteurs $v_1,\dots ,v_p$.
+Ce qui peut s'écrire aussi :
+$$\forall v \in E  \qquad \exists \lambda_1, \ldots,\lambda_p \in \Kk \qquad
+v=\lambda_1 v_1+\cdots + \lambda_p v_p$$
+
+
+On dit aussi que la famille $\{v_1,\dots ,v_p\}$ \defi{engendre}\index{sous-espace vectoriel!engendre@engendré} l'espace vectoriel $E$.
+
+Les vecteurs $\{v_1,\dots ,v_p\}$ forment une famille génératrice de $E$
+si et seulement si $E=\Vect (v_1,\ldots,v_p)$.
+
+
+\begin{proposition}
+Soit $\mathcal{F} = \left\{ v_1, v_2, \dots , v_p\right\}$ une famille génératrice de $E$.
+Alors $\mathcal{F}' = \left\{ v_1', v_2', \dots , v_q'\right\}$ est aussi une famille
+génératrice de $E$ si et seulement si tout vecteur de $\mathcal{F}$
+est une combinaison linéaire de vecteurs de $\mathcal{F}'$.
+\end{proposition}
+
+
+%Nous chercherons bientôt à avoir un nombre minimal de générateurs.
+%Voici une proposition sur la réduction d'une famille génératrice.
+%\begin{proposition}
+%	Si la famille de vecteurs  $\{v_1,\ldots,v_p\}$ engendre $E$ et si l'un des vecteurs,
+%	par exemple $v_p$, est combinaison linéaire des autres, alors la famille
+%	$\{v_1,\dots ,v_p\} \setminus \{v_p\}= \{v_1,\dots ,v_{p-1}\}$
+%	est encore une famille génératrice de $E$.
+%\end{proposition}
+
+%-----------------------------------------
+\subsection{Base}
+
+
+Une famille $\mathcal{B}= (v_1, v_2, \dots , v_n)$ de vecteurs de $E$
+est une \defi{base}\index{base} de $E$
+si $\mathcal{B}$ est une famille libre \evidence{et} génératrice.
+
+\begin{theoreme}
+\label{th:coordonnees}
+Si $\mathcal{B} = (v_1, v_2, \dots , v_n)$ est une base de $E$, alors
+tout vecteur $v \in E$ s'exprime de façon unique comme combinaison
+linéaire d'éléments de $\mathcal{B}$.
+Autrement dit, il \evidence{existe} des scalaires $\lambda_1,\ldots,\lambda_n \in \Kk$
+\evidence{uniques} tels que :
+$$v = \lambda_1 v_1 + \lambda_2 v_2 + \dots + \lambda_n v_n.$$
+\end{theoreme}
+
+\myfigure{0.7}{
+	\tikzinput{fig_dimension01}
+}
+
+Exemples :
+\begin{itemize}
+	\item Les vecteurs de $\Kk^n$ :
+	$
+	e_1 = \left(\begin{smallmatrix}1\\0\\\vdots\\0\end{smallmatrix}\right) \quad
+	e_2 = \left(\begin{smallmatrix}0\\1\\\vdots\\0\end{smallmatrix}\right) \quad \ldots  \quad
+	e_n = \left(\begin{smallmatrix}0\\\vdots\\0\\1\end{smallmatrix}\right)$
+	forment une base de $\Kk^n$, appelée la \defi{base canonique}\index{base canonique} de $\Kk^n$.
+	
+	\item La base canonique de $\Rr_n[X]$ est $\mathcal{B} = (1,X,X^2, \ldots , X^n)$.
+	Attention, il y a $n+1$ vecteurs !
+\end{itemize}
+
+\begin{theoreme}[Théorème d'existence d'une base]
+	\label{th:existencebase}
+	Tout espace vectoriel admettant une famille finie génératrice admet une base.
+\end{theoreme}
+
+\begin{theoreme}[Théorème de la base incomplète]
+	\label{th:baseincomplete}
+	Soit $E$ un $\Kk$-espace vectoriel admettant une famille génératrice finie.
+	\begin{enumerate}
+		\item \emph{Toute famille libre $\mathcal{L}$ peut être complétée en une base.}
+		C'est-à-dire qu'il existe une famille $\mathcal{F}$ telle que
+		$\mathcal{L} \cup \mathcal{F}$ soit une famille libre et génératrice de $E$.
+		
+		\item \emph{De toute famille génératrice $\mathcal{G}$ on peut extraire une base de $E$.}
+		C'est-à-dire qu'il existe une famille $\mathcal{B} \subset \mathcal{G}$ telle que
+		$\mathcal{B}$ soit une famille libre et génératrice de $E$.
+	\end{enumerate}
+\end{theoreme}
+
+
+
+%-----------------------------------------
+\subsection{Dimension d'un espace vectoriel}
+
+
+Un $\Kk$-espace vectoriel $E$ admettant une base ayant un nombre fini
+d'éléments est dit de \defi{dimension finie}.
+
+Par le théorème d'existence d'une base, c'est équivalent à l'existence d'une
+famille finie génératrice.
+
+\begin{theoreme}[Théorème de la dimension]
+	\label{th:dimension}
+	Toutes les bases d'un espace vectoriel $E$ de dimension
+	finie ont le même nombre d'éléments $\dim E$.
+\end{theoreme}
+
+Exemples :
+\begin{itemize}
+	\item Plus généralement, $\Kk^n$ est de dimension $n$, car par exemple sa base canonique
+	$(e_1,e_2, \ldots ,e_n)$ contient $n$ éléments.
+	
+	\item $\dim \Rr_n[X] = n+1$ car une base de $\Rr_n[X]$ est
+	$(1,X,X^2,\ldots,X^n)$, qui contient $n+1$ éléments.
+\end{itemize}
+
+Les espaces vectoriels suivants ne sont pas de dimension finie :
+\begin{itemize}
+	\item $\Rr[X]$ : l'espace vectoriel de tous les polynômes,
+	\item $\mathcal{F}(\Rr,\Rr)$ : l'espace vectoriel des fonctions de $\Rr$ dans $\Rr$.
+\end{itemize}
+
+\begin{theoreme}
+	\label{th:equivbase}
+	Soient $E$ un $\Kk$-espace vectoriel de dimension $n$, et
+	$\mathcal{F}=(v_1,\ldots,v_n)$ une famille de \evidence{$n$} vecteurs de $E$.
+	Il y a équivalence entre :
+	\begin{itemize}
+		\item[(i)] $\mathcal{F}$ est une base de $E$,
+		
+		\item[(ii)] $\mathcal{F}$ est une famille libre de $E$,
+		
+		\item[(iii)] $\mathcal{F}$ est une famille génératrice de $E$.
+	\end{itemize}
+\end{theoreme}
+
+
+%-----------------------------------------
+\subsection{Dimension des sous-espaces vectoriels}
+
+
+\begin{theoreme}
+	\label{th:dimsev}
+	Soit $E$ un $\Kk$-espace vectoriel de dimension finie.
+	\begin{enumerate}
+		\item Alors tout sous-espace vectoriel $F$ de $E$ est de dimension finie et $\dim F \le \dim E$.
+	
+		\item $F=E \iff \dim F = \dim E$.
+	\end{enumerate}
+\end{theoreme}
+
+Vocabulaire.
+\begin{itemize}
+  \item un sous-espace vectoriel de dimension $1$ est
+  appelé \defi{droite vectorielle},
+  \item un sous-espace vectoriel de dimension $2$ est
+  appelé \defi{plan vectoriel},
+  \item un sous-espace vectoriel dimension $n-1$ dans un espace vectoriel de dimension $n$ est
+  appelé \defi{hyperplan}.
+\end{itemize}	
+
+\begin{corollaire}
+	Soit $E$ un $\Kk$-espace vectoriel.
+	Soient $F$ et $G$ deux sous-espaces vectoriels de $E$. On suppose que $F$ est de dimension finie
+	et que $G \subset F$.
+	Alors :
+	$$F=G \iff \dim F = \dim G$$
+\end{corollaire}
+Autrement dit, sachant qu'un sous-espace est inclus dans un autre, alors
+pour montrer qu'ils sont égaux il suffit de montrer l'égalité des dimensions.
+
+
+
+\begin{theoreme}[Théorème des quatre dimensions]
+	\index{theoreme@théorème!des quatre dimensions}
+	\label{th:4dim}
+	Soient $E$ un espace vectoriel de dimension finie
+	et $F,G$ des sous-espaces vectoriels de $E$.
+	Alors~:
+	\mybox{$\dim(F+G) = \dim F + \dim G - \dim (F\cap G)$}
+\end{theoreme}
+
+\begin{corollaire}
+	Si $E = F \oplus G$, alors $\dim E = \dim F + \dim G$.
+\end{corollaire}
+
+
+
+\begin{corollaire}
+Tout sous-espace vectoriel $F$ d'un espace vectoriel $E$ de dimension finie admet un supplémentaire.
+\end{corollaire}
+
+
+
+\end{multicols}
+
+\end{document}
+
+

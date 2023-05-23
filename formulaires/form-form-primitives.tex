@@ -1,0 +1,89 @@
+\documentclass[10pt,class=article,crop=false]{standalone}
+\usepackage{../exo7formules}
+
+
+\begin{document}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section{Formules des primitives}
+
+{\large
+	
+\mycenterline{$C$ d\'esigne une constante arbitraire. Les intervalles sont \`a pr\'eciser.}
+
+$$\int e^{\alpha t} \, dt= \frac{e^{\alpha t}}{\alpha}+C \quad (\alpha \in \Cc^*)$$
+
+\begin{multicols}{2}[
+	%\begin{center}
+	%\textbf{\textsf{\Large{Primitives  usuelles}}}
+	%\vspace{0.5cm}
+	%    \textit{$C$ d\'esigne une constante arbitraire. Les intervalles sont \`a pr\'eciser.}
+	%\vspace{0.5cm}
+	%$$\int e^{\alpha t} \, dt= \frac{e^{\alpha t}}{\alpha}+C \quad (\alpha \in \Cc^*)$$
+	%\vspace{0.5cm}
+	%\end{center}
+	]
+	
+	$$\int t^{\alpha} \, dt= \frac{t^{\alpha +1}}{\alpha+1}+C \quad (\alpha \not= -1)$$
+	
+	\vspace{2mm}
+	
+	$$\int \frac{dt}{1+t^2} = \text{arctan }t+C$$
+	
+	\vspace{6mm}
+	
+	$$\int \frac{dt}{\sqrt{1-t^2}} = \text{arcsin }t+C$$
+	
+	\vspace{4mm}
+	
+	
+	$$\int \cos t \, dt = \sin t +C$$
+	
+	$$\int \sin t \, dt = -\cos t +C$$
+	
+	$$\int \frac{dt}{\cos^2 t} = \tan t +C$$
+	
+	$$\int \frac{dt}{\sin^2 t} = -\text{cotan } t +C$$
+	
+	$$\int \frac{dt}{\cos t} = \ln \left| \tan \left( \frac{t}{2}+\frac{\pi}{4} \right) \right| +C$$
+	
+	$$\int \frac{dt}{\sin t} = \ln \left| \tan \frac{t}{2} \right| +C$$
+	
+	$$\int \tan t \, dt = - \ln \left| \cos t \right| +C$$
+	
+	\vspace{-2mm}
+	
+	$$\int \text{cotan } t \, dt = \ln \left| \sin t \right| +C$$
+	
+	%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+	% Changement de colonne
+	
+	$$\int \frac{dt}{t} = \ln|t|+C$$
+	
+	$$\int \frac{dt}{1-t^2} = \frac{1}{2}\ln \left| \frac{1+t}{1-t} \right| +C$$
+	
+	$$\int \frac{dt}{\sqrt{t^2+\alpha}} = \ln \left| t+\sqrt{t^2+\alpha} \right| +C$$
+	
+	$$\int \text{ch } t \, dt = \text{sh } t +C$$
+	
+	$$\int \text{sh } t \, dt = \text{ch } t +C$$
+	
+	$$\int \frac{dt}{\text{ch}^2 t} = \text{th } t +C$$
+	
+	$$\int \frac{dt}{\text{sh}^2 t} = -\text{coth } t +C$$
+	
+	$$\int \frac{dt}{\text{ch } t} = 2\text{arctan }e^t +C$$
+	
+	\vspace{2mm}
+	
+	$$\int \frac{dt}{\text{sh } t} = \ln \left| \text{th } \frac{t}{2} \right| +C$$
+	
+	$$\int \text{th } t \, dt =  \ln \left( \text{ch } t \right) +C$$
+	
+	$$\int \text{coth } t \, dt = \ln \left| \text{sh } t \right| +C$$
+\end{multicols}
+
+}
+
+
+\end{document}	

@@ -1,0 +1,397 @@
+\documentclass[10pt,class=article,crop=false]{standalone}
+\usepackage{../exo7formules}
+
+
+\begin{document}
+	
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section{Déterminants}
+
+\begin{multicols}{2}
+	
+$\Kk$ est un corps commutatif, par exemple $\Kk=\Rr$ ou $\Kk=\Cc$.
+
+%-----------------------------------------
+\subsection{Déterminant en dimension $2$ et $3$}
+
+%-------------------------------------------------------
+\textbf{Matrice $2 \times 2$.}
+
+\begin{center}
+\begin{minipage}{0.2\textwidth}
+$$\det \begin{pmatrix}a&b\\c&d\end{pmatrix} = ad-bc$$
+\end{minipage}
+\begin{minipage}{0.2\textwidth}
+\myfigure{2}{
+	\tikzinput{fig_determinants01}
+}	
+\end{minipage}
+\end{center}	
+
+C'est donc le produit des éléments sur la diagonale principale
+(\couleurnb{en bleu}{en gris foncé}) moins le produit des éléments sur l'autre diagonale (\couleurnb{en orange}{en gris clair}).
+
+\begin{proposition}\label{prop:aire}
+	L'aire du parallélogramme délimité par $v_1= \left(\begin{smallmatrix}a\\c\end{smallmatrix}\right)$ et
+	$v_2= \left(\begin{smallmatrix}b\\d\end{smallmatrix}\right)$ est donnée par la valeur absolue du déterminant:
+\begin{center}
+\begin{minipage}{0.27\textwidth}	
+	$$\mathcal{A}
+	= \Big|\det(v_1,v_2)\Big|
+	= \Big|\det
+	\begin{pmatrix}
+		a & b \\
+		c & d
+	\end{pmatrix}\Big|
+	$$
+\end{minipage}
+\begin{minipage}{0.15\textwidth}
+\myfigure{0.6}{
+	\tikzinput{fig_determinants04}
+}
+	
+\end{minipage}
+\end{center}		
+\end{proposition}
+
+
+%-------------------------------------------------------
+\textbf{Matrice $3 \times 3$.}
+Soit $A \in M_3(\Kk)$ une matrice $3 \times 3$:
+$$A = \begin{pmatrix}
+	a_{11} & a_{12} & a_{13} \\
+	a_{21} & a_{22} & a_{23} \\
+	a_{31} & a_{32} & a_{33} \\
+\end{pmatrix}.$$
+
+Voici la formule pour le déterminant:
+$$\det A =
+a_{11} a_{22} a_{33}
++ a_{12} a_{23} a_{31}
++ a_{13} a_{21} a_{32}
+- a_{31} a_{22} a_{13}
+- a_{32} a_{23} a_{11}
+- a_{33} a_{21} a_{12}$$
+
+\defi{Règle de Sarrus}\index{regle@règle!de Sarrus} :
+Addition de trois produits de trois termes le long de la diagonale descendante (\couleurnb{en bleu}{en gris foncé}, à gauche)
+puis soustraction de trois produits de trois termes le long de la diagonale montante (\couleurnb{en orange}{en gris clair}, à droite)
+
+\myfigure{1.5}{
+	\tikzinput{fig_determinants02ter}
+}
+
+
+\begin{proposition}\label{prop:volume}
+Le volume du parallélépipède 
+délimité par trois vecteurs 
+$v_1=\left(\begin{smallmatrix}a_{11}\\a_{21}\\a_{31}\end{smallmatrix}\right)$,
+$v_2=\left(\begin{smallmatrix}a_{12}\\a_{22}\\a_{32}\end{smallmatrix}\right)$,
+$v_3=\left(\begin{smallmatrix}a_{13}\\a_{23}\\a_{33}\end{smallmatrix}\right)$
+est donné par la valeur absolue du déterminant de la matrice correspondante : $\mathcal{V} = \Big|\det(A)\Big|.$
+\end{proposition}
+
+\myfigure{0.6}{
+	\tikzinput{fig_determinants05}
+}
+
+
+%-----------------------------------------
+\subsection{Définition du déterminant}
+
+\begin{theoreme}[Existence et d'unicité du déterminant]
+	\label{th:def:determinant}
+	Il existe une unique application de $M_n(\Kk)$ dans $\Kk$,
+	appelée \defi{déterminant}\index{determinant@déterminant}, telle que
+	\begin{itemize}
+		\item[(i)] le déterminant est linéaire par rapport à chaque
+		vecteur colonne, les autres étant fixés ;
+		\item[(ii)] si une matrice $A$ a deux colonnes identiques,
+		alors son déterminant est nul ;
+		\item[(iii)] le déterminant de la matrice identité $I_n$ vaut $1$.
+	\end{itemize}
+\end{theoreme}
+
+Le déterminant est donc la seule \defi{forme multilinéaire} (propriété (i)),   \defi{alternée} (propriété (ii)) qui prend comme valeur $1$ sur la matrice
+$I_n$.
+
+Si on note $C_{i}$ la $i$-ème colonne de $A$, alors
+$$\det A=\left|\begin{matrix}
+	C_1&C_2&\cdots&C_n
+\end{matrix}\right|
+= \det (C_1,C_2,\ldots,C_n) \,.
+$$
+Avec cette notation, la propriété (i) de linéarité par rapport à la colonne $j$ s'écrit:
+pour tout $\lambda,\mu \in \Kk$,
+$\det (C_1,\ldots,\lambda C_j + \mu C'_j,\ldots, C_n)
+= \lambda  \det (C_1,\ldots,C_j,\ldots, C_n)+ \mu \det (C_1,\ldots,C_j',\ldots, C_n)$, soit
+
+
+
+\begin{proposition}[Opérations élémentaires sur les colonnes]
+\sauteligne
+\begin{enumerate}
+	\item $C_i \leftarrow \lambda C_i$ avec $\lambda \neq 0$:
+	$A'$ est obtenue en multipliant une colonne de $A$ par un scalaire non nul.
+	Alors $\det A' = \lambda \det A$.
+	
+	\item $C_i \leftarrow C_i+\lambda C_j$ avec $\lambda \in \Kk$ (et $j\neq i$):
+	$A'$ est obtenue en ajoutant à une colonne de $A$ un multiple d'une autre colonne de $A$.
+	Alors $\det A' = \det A$.
+	
+	\item $C_i \leftrightarrow C_j$: $A'$ est obtenue en échangeant
+	deux colonnes distinctes de $A$. Alors \myboxinline{$\det A' = - \det A$}. \'Echanger deux colonnes change le signe du déterminant.
+\end{enumerate}
+\end{proposition}
+
+
+\begin{corollaire} \label{coro:colonnes-liees}
+Si une colonne $C_i$ de la matrice $A$ est combinaison linéaire des autres colonnes, alors $\det A=0$.
+\end{corollaire}
+
+
+\begin{proposition}
+	\label{prop:dettriang}
+	Le déterminant d'une matrice triangulaire supérieure (ou inférieure, ou diagonale)
+	est égal au produit des termes diagonaux.
+\end{proposition}
+
+
+%-----------------------------------------
+\subsection{Propriétés du déterminant}
+
+
+
+
+%-------------------------------------------------------
+\textbf{Déterminant d'un produit}
+
+
+\begin{theoreme}~
+	\mybox{$\det (AB)=\det A \cdot \det B$}
+\end{theoreme}
+
+
+%-------------------------------------------------------
+\textbf{Déterminant des matrices inversibles}
+
+\begin{corollaire}
+	Une matrice carrée $A$ est inversible si et seulement si son
+	déterminant est non nul. De plus si $A$ est inversible,
+	alors:
+	\mybox{$\displaystyle \det \big(A^{-1}\big)=\frac1{\det A}$}
+\end{corollaire}
+
+
+
+%-------------------------------------------------------
+\textbf{Déterminant de la transposée}
+
+\begin{corollaire}
+	~
+	\mybox{$\det \big(A^T\big)=\det A$}
+\end{corollaire}
+
+Conséquence. Par transposition, tout ce que l'on a
+dit des déterminants à propos des colonnes est
+vrai pour les lignes : le déterminant est multilinéaire
+par rapport aux lignes ; si une matrice a deux lignes égales,
+son déterminant est nul ; on ne modifie pas un déterminant en
+ajoutant à une ligne une combinaison linéaire des autres lignes, etc.
+	
+
+
+%-----------------------------------------
+\subsection{Calculs de déterminants}
+
+
+\textbf{Cofacteur}
+
+	Soit $A = \big( a_{ij}\big) \in M_n(\Kk)$ une matrice carrée.
+	
+	\begin{itemize}
+		\item On note $A_{ij}$ la matrice extraite, obtenue en effaçant la ligne~$i$ et la colonne $j$ de $A$.
+		\item Le nombre $\det A_{ij}$ est un \defi{mineur d'ordre $n-1$}\index{mineur} de la matrice $A$.
+		\item Le nombre $C_{ij} = (-1)^{i+j}\det A_{ij}$ est le \defi{cofacteur}\index{cofacteur} de $A$
+		relatif au coefficient $a_{ij}$.
+	\end{itemize}
+
+
+\myfigure{2}{
+	\tikzinput{fig_determinants07}
+}
+\[
+A_{ij} = \begin{pmatrix}
+	a_{1,1} & \dots & a_{1,j-1} & a_{1,j+1} &\dots & a_{1,n}\\
+	\vdots &&\vdots &\vdots &&\vdots \\
+	a_{i-1,1} & \dots & a_{i-1,j-1} & a_{i-1,j+1} &\dots & a_{i-1,n}\\
+	a_{i+1,1} & \dots & a_{i+1,j-1} & a_{i+1,j+1} &\dots & a_{i+1,n}\\
+	\vdots &&\vdots &&&\vdots \\
+	a_{n,1} & \dots & a_{n,j-1} & a_{n,j+1}& \dots & a_{n,n}
+\end{pmatrix}
+\]
+
+
+
+Pour déterminer si $C_{ij} = +\det A_{ij} $ ou $C_{ij} = -\det A_{ij}$, on peut se souvenir
+que l'on associe des signes en suivant le schéma d'un échiquier:
+$$  A =
+\begin{pmatrix}
+	+ & - & + & - &\dots\\
+	- & + & - & + &\dots \\
+	+ & - & + & - &\dots\\
+	\vdots & \vdots & \vdots & \vdots &
+\end{pmatrix}
+$$
+
+\begin{theoreme}[Développement suivant une ligne ou une colonne]
+	Formule de développement par rapport à la ligne $i$:
+	$$\det A
+	= \sum_{j=1}^n (-1)^{i+j} a_{ij} \det A_{ij}
+	= \sum_{j=1}^n a_{ij} C_{ij}$$
+	
+	Formule de développement par rapport à la colonne $j$:
+	$$\det A
+	= \sum_{i=1}^n (-1)^{i+j} a_{ij} \det A_{ij}
+	= \sum_{i=1}^n a_{ij}C_{ij}$$
+\end{theoreme}
+
+On commence souvent par faire apparaître
+un maximum de zéros par des opérations élémentaires sur les lignes et/ou les colonnes
+qui ne modifient pas le déterminant,
+avant de développer le déterminant suivant la ligne ou la colonne qui a le plus de zéros.
+
+%-------------------------------------------------------
+\textbf{Inverse d'une matrice}
+
+Soit $A \in M_n(\Kk)$ une matrice carrée.
+La matrice $C$ des cofacteurs, appelée \defi{comatrice}\index{comatrice}, et notée
+$\mathrm{Com}(A)$:
+$$C = (C_{ij}) = \left(
+\begin{array}{cccc}
+	C_{11} & C_{12} & \cdots & C_{1n}\\
+	C_{21} & C_{22} & \cdots & C_{2n}\\
+	\vdots & \vdots & & \vdots\\
+	C_{n1} & C_{n2} & \cdots & C_{nn}
+\end{array}\right)
+$$
+
+\begin{theoreme}
+	Soient $A$ une matrice inversible, et $C$ sa comatrice.
+	On a alors
+	\mybox{$\displaystyle A^{-1} = \frac{1}{\det A} \, C^T$}
+\end{theoreme}
+
+
+
+
+
+%-----------------------------------------
+\subsection{Applications des déterminants}
+
+
+
+%-------------------------------------------------------
+\textbf{Méthode de Cramer}
+
+
+Considérons le système d'équations linéaires à $n$ équations et $n$ inconnues suivant:
+\[
+\left\{
+\begin{array}{ccc}
+	a_{11} x_1 + a_{12} x_2 + \dots + a_{1n} x_{n} & = & b_1\\
+	a_{21} x_1 + a_{22} x_2 + \dots + a_{2n} x_n & = & b_2\\
+	\qquad\qquad \dots \qquad\qquad &  &\\
+	a_{n1} x_1 + a_{n2} x_2 + \dots + a_{nn} x_n & = & b_n
+\end{array}
+\right.
+\]
+Ce système s'écrit sous forme matricielle $AX=B$ où
+$$
+A = \left(
+\begin{array}{cccc}
+	a_{11} & a_{12} & \cdots & a_{1n}\\
+	a_{21} & a_{22} & \cdots & a_{2n}\\
+	\vdots & \vdots && \vdots\\
+	a_{n1} & a_{n2}& \cdots &a_{nn}
+\end{array}\right) \in M_{n}(\Kk), 
+\quad X= \left( \begin{array}{c}x_1\\x_2 \\\vdots \\x_n \end{array} \right) 
+\quad B=\left( \begin{array}{c}b_1\\b_2 \\\vdots \\b_n \end{array} \right)
+$$
+
+
+Définissons la matrice $A_j \in M_{n}(\Kk)$ obtenue en remplaçant la $j$-ème
+colonne de $A$ par le second membre $B$ :
+$$
+A_j = \left(
+\begin{array}{ccccccc}
+	a_{11} &  \dots & a_{1,j-1} & {\color{myred}b_1} & a_{1,j+1} & \dots & a_{1n}\\
+	a_{21} & \dots & a_{2,j-1}& {\color{myred}b_2} & a_{2,j+1}& \dots & a_{2n}\\
+	\vdots &  & \vdots & {\color{myred}\vdots} & \vdots& &\vdots\\
+	a_{n1} &\dots & a_{n,j-1}& {\color{myred}b_n}& a_{n,j+1}& \dots & a_{nn}
+\end{array}\right)
+$$
+
+
+\begin{theoreme}[Règle de Cramer] 
+Soit $AX = B$ un système de $n$ équations  à $n$ inconnues. Supposons que $\det A \neq 0$.
+Alors l'unique solution $(x_1,x_2,\ldots,x_n)$ du système est donnée par:
+$$
+x_1 = \frac{\det A_1}{\det A} \qquad x_2 = \frac{\det A_2}{\det A} \qquad \ldots \qquad x_n = \frac{\det A_n}{\det A}.
+$$
+\end{theoreme}
+
+
+
+
+
+%-------------------------------------------------------
+\textbf{Déterminant et base}
+
+
+\begin{theoreme}
+	Une famille de $n$ vecteurs de $\Rr^n$
+	$$\begin{pmatrix}a_{11}\\a_{21}\\\vdots\\a_{n1}\end{pmatrix}
+	\quad
+	\begin{pmatrix}a_{12}\\a_{22}\\\vdots\\a_{n2}\end{pmatrix}
+	\quad \cdots
+	\quad
+	\begin{pmatrix}a_{1n}\\a_{2n}\\\vdots\\a_{nn}\end{pmatrix}$$
+	forme une base si et seulement si
+	$\det \ (a_{ij}) \neq 0$.
+\end{theoreme}
+
+
+%-------------------------------------------------------
+\textbf{Calcul du rang d'une matrice}
+
+Soit $A=(a_{ij}) \in M_{n,p}(\Kk)$ une matrice à $n$ lignes
+et $p$ colonnes à coefficients dans $\Kk$.
+Le \defi{rang}\index{rang!d une matrice@d'une matrice} de $A$ est la dimension de l'espace vectoriel engendré par les vecteurs colonnes. C'est donc le nombre maximum de vecteurs colonnes linéairement indépendants.
+
+Soit $k$ un entier inférieur à $n$ et à $p$.
+On appelle \defi{mineur d'ordre $k$}\index{mineur}
+le déterminant d'une matrice carrée de taille $k$ obtenue à partir
+de $A$ en supprimant $n-k$ lignes et $p-k$ colonnes.
+
+
+\begin{theoreme}
+	\label{th:mineur}
+	Le rang d'une matrice $A \in M_{n,p}(\Kk)$ est le plus grand entier $r$
+	tel qu'il existe un mineur d'ordre~$r$ extrait de $A$ non nul.
+\end{theoreme}
+
+\begin{proposition}
+	Le rang de $A$ est égal au rang de sa transposée $A^T$.
+\end{proposition}
+
+
+
+\end{multicols}
+\end{document}
+
+
+
+\end{document}
+
+

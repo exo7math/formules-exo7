@@ -1,0 +1,67 @@
+\documentclass[10pt,class=article,crop=false]{standalone}
+\usepackage{../exo7formules}
+
+
+\begin{document}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section{Dérivées}
+
+
+\begin{multicols}{2}
+
+\begin{center}
+	%\noindent
+	\setlength{\arrayrulewidth}{0.05mm}
+	%\begin{tabular}{|l|l|l|} \hline
+	\begin{tabular}[t]{|c|c@{\vrule depth 1.2ex height 3ex width 0mm \ }|}
+		\hline
+		\textbf{Fonction}         & \textbf{Dérivée} \\ \hline
+		$x^n$         & $nx^{n-1}$  \quad ($n \in \Zz$)   \\ \hline
+		$\frac 1x$    & $-\frac{1}{x^2}$              \\ \hline
+		$\sqrt{x}$    & $\frac12 \frac1{\sqrt{x}}$   \\ \hline
+		$x^\alpha$   & $\alpha x^{\alpha-1}$  \quad ($\alpha\in\Rr$)  \\ \hline
+		$e^x$         & $e^x$                        \\ \hline
+		$\ln x$       & $\frac 1x$                   \\ \hline
+		$\cos x$      & $-\sin x$                    \\ \hline
+		$\sin x$      & $\cos x$                     \\ \hline
+		$\tan x$      & $1+\tan^2 x = \frac{1}{\cos^2 x}$        \\ \hline
+	\end{tabular}
+\end{center}
+
+\begin{itemize}
+	\item \textbf{Somme.} \myboxinline{$(u+v)' = u'+v'$}
+	
+	\item \textbf{Produit par un réel.} \myboxinline{$(k u)' = k u' \qquad \text{ où } k\in \Rr$} 
+	
+	\item \textbf{Produit.} \myboxinline{$(u \times v)' = u'v+uv'$}
+	
+	\item \textbf{Inverse.} \myboxinline{$\displaystyle\left(\frac{1}{u}\right)'=-\frac{u'}{u^2}$}
+	
+	\item \textbf{Quotient.} \myboxinline{$\displaystyle \left(\frac{u}{v}\right)'=\frac{u'v-uv'}{v^2}$}
+\end{itemize}
+
+\bigskip
+
+Pour $u$ une fonction qui dépend de $x$ :
+\begin{center}
+    \setlength{\arrayrulewidth}{0.05mm}
+	\begin{tabular}[t]{|c|c@{\vrule depth 1.2ex height 3ex width 0mm \ }|}
+		\hline
+		\textbf{Fonction}         & \textbf{Dérivée} \\ \hline
+		$u^n$         & $nu'u^{n-1}$  \quad  ($n \in \Zz$)   \\ \hline
+		$\frac 1u$    & $-\frac{u'}{u^2}$              \\ \hline
+		$\sqrt{u}$    & $\frac12 \frac{u'}{\sqrt{u}}$   \\ \hline
+		$u^\alpha$   & $\alpha u' u^{\alpha-1}$ \quad ($\alpha\in\Rr$)  \\ \hline
+		$e^u$         & $u'e^u$                        \\ \hline
+		$\ln u$       & $\frac {u'}{u}$                   \\ \hline
+		$\cos u$      & $-u'\sin u$                    \\ \hline
+		$\sin u$      & $u'\cos u$                     \\ \hline
+		$\tan u$      & $u'(1+\tan^2 u) = \frac{u'}{\cos^2 u}$        \\ \hline
+	\end{tabular}
+\end{center}
+
+
+\end{multicols}
+
+\end{document}	

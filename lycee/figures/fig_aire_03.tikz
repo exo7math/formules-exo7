@@ -1,0 +1,6 @@
+﻿\begin{tikzpicture}[scale=1]
+
+\draw[thick, fill=blue!20] (0,0) circle (2);
+\draw (0,0) -- (20:2) node[midway, above, sloped] {$r$};
+
+\end{tikzpicture}

@@ -1,0 +1,162 @@
+\documentclass[10pt,class=article,crop=false]{standalone}
+\usepackage{../exo7formules}
+
+
+\begin{document}
+
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section{Formulaire: trigonométrie circulaire et hyperbolique}
+
+\mycenterline{\textbf{Propri\'et\'es trigonom\'etriques}: remplacer $\cos$ par $\ch$
+			et $\sin$ par $\ii\cdot\sh$.}
+
+\begin{multicols}{2}
+	
+	$$\cos^2 x + \sin^2 x = 1$$
+	
+	\begin{align*}
+		\cos(a+b)&=\cos a\cdot\cos b - \sin a\cdot\sin b\\
+		\sin(a+b)&=\sin a\cdot\cos b  +  \sin b\cdot\cos a \\
+		\tan (a+b)&=\frac{\tan a + \tan b}{1-\tan a\cdot\tan b} \\
+	\end{align*}
+	
+	
+	$$\ch^2 x - \sh^2 x = 1$$
+	
+	\begin{align*}
+		\ch(a+b)&=\ch a\cdot\ch b + \sh a\cdot\sh b\\
+		\sh(a+b)&=\sh a\cdot\ch b  +  \sh b\cdot\ch a\\
+		\tanh (a+b)&=\frac{\tanh a + \tanh b}{1+\tanh a\cdot\tanh b}\\
+	\end{align*}
+\end{multicols}
+
+
+
+\begin{multicols}{2}
+	\begin{align*}
+		\cos(a-b)&=\cos a\cdot\cos b + \sin a\cdot\sin b\\
+		\sin(a-b)&=\sin a\cdot\cos b  - \sin b\cdot\cos a \\
+		\tan (a-b)&=\frac{\tan a - \tan b}{1+\tan a\cdot\tan b} \\
+	\end{align*}
+	
+	\begin{align*}
+		\ch(a-b)&=\ch a\cdot\ch b - \sh a\cdot\sh b\\
+		\sh(a-b)&=\sh a\cdot\ch b  - \sh b\cdot\ch a\\
+		\tanh (a-b)&=\frac{\tanh a - \tanh b}{1-\tanh a\cdot\tanh b}\\
+	\end{align*}
+	
+\end{multicols}
+
+%\vspace{0.5cm}
+\begin{multicols}{2}
+	\begin{align*}
+		\cos 2a &= 2\,\cos^2a-1\\
+		&= 1-2\,\sin^2a\\
+		&=\cos^2a-\sin^2a\\[3mm]
+		\sin 2a &= 2\,\sin a\cdot\cos a\\[3mm]
+		\tan 2a &= \frac{2\,\tan a}{1-\tan^2 a}
+	\end{align*}
+	
+	\begin{align*}
+		\ch 2a &= 2\,\ch^2a-1\\
+		&= 1+2\,\sh^2a\\
+		&=\ch^2a+\sh^2a\\[3mm]
+		\sh 2a &= 2\,\sh a\cdot\ch a\\[3mm]
+		\tanh 2a &= \frac{2\,\tanh a}{1+\tanh^2 a}
+	\end{align*}
+\end{multicols}
+
+
+\begin{multicols}{2}
+	\small
+	\begin{align*}
+		\cos a\cdot\cos b &= \frac{1}{2}\,\big[ \cos(a+b)+\cos(a-b)\big]\\
+		\sin a\cdot\sin b &= \frac{1}{2}\,\big[ \cos(a-b)-\cos(a+b)\big]\\
+		\sin a\cdot\cos b &= \frac{1}{2}\,\big[ \sin(a+b)+\sin(a-b)\big]
+	\end{align*}
+	
+	\begin{align*}
+		\ch a\cdot\ch b &= \frac{1}{2}\,\big[ \ch(a+b)+\ch(a-b)\big]\\
+		\sh a\cdot\sh b &= \frac{1}{2}\,\big[ \ch(a+b)-\ch(a-b)\big]\\
+		\sh a\cdot\ch b &= \frac{1}{2}\,\big[ \sh(a+b)+\sh(a-b)\big]
+	\end{align*}
+\end{multicols}
+
+
+
+\begin{multicols}{2}
+	\begin{align*}
+		\cos p+\cos q &= 2\,\cos \frac{p+q}{2}\cdot\cos\frac{p-q}{2}\\
+		\cos p-\cos q &= -2\,\sin \frac{p+q}{2}\cdot\sin \frac{p-q}{2}\\
+		\sin p+\sin q &= 2\,\sin \frac{p+q}{2}\cdot\cos\frac{p-q}{2}\\
+		\sin p-\sin q &= 2\,\sin \frac{p-q}{2}\cdot\cos\frac{p+q}{2}
+	\end{align*}\vspace{0.1cm}
+	\begin{align*}
+		\ch p+\ch q &= 2\,\ch \frac{p+q}{2}\cdot\ch\frac{p-q}{2}\\
+		\ch p-\ch q &= 2\,\sh \frac{p+q}{2}\cdot\sh \frac{p-q}{2}\\
+		\sh p+\sh q &= 2\,\sh \frac{p+q}{2}\cdot\ch\frac{p-q}{2}\\
+		\sh p-\sh q &= 2\,\sh \frac{p-q}{2}\cdot\ch\frac{p+q}{2}
+	\end{align*}
+\end{multicols}
+
+%**********************************
+%\newpage
+
+\begin{multicols}{2}
+	Avec \quad $t=\tan \frac{x}{2}$ \quad on a \quad
+	$$
+	\begin{cases}
+		\cos x &= \frac {1-t^2}{1+t^2} \\
+		\sin x &= \frac{2t}{1+t^2} \\
+		\tan x &= \frac{2t}{1-t^2}
+	\end{cases}$$
+	
+	Avec \quad $t=\tanh \frac{x}{2}$ \quad on a \quad
+	$$
+	\begin{cases}
+		\ch x &= \frac {1+t^2}{1-t^2} \\
+		\sh x &= \frac{2t}{1-t^2} \\
+		\tanh x &= \frac{2t}{1+t^2}
+	\end{cases}$$
+\end{multicols}
+
+% \vspace{2cm}
+\begin{multicols}{2}
+	
+	
+	\begin{align*}
+		\cos'x&= -\sin x\\
+		\sin'x&=\cos x\\
+		\tan' x &= 1+\tan^2x=\frac{1}{\cos^2x}\\
+	\end{align*}%\vspace{0.1cm}
+
+\textbf{D\'eriv\'ees}: la multiplication par $\ii$ n'est plus valable
+	\begin{align*}
+		\ch'x&= \sh x\\
+		\sh'x&=\ch x\\
+		\tanh' x &= 1-\tanh^2x=\frac{1}{\ch^2x}\\
+	\end{align*}
+\end{multicols}
+
+
+\begin{multicols}{2}
+
+	\begin{align*}
+		\text{arccos}'x&=\frac{-1}{\sqrt{1-x^2}} \quad (|x|<1)\\
+		\text{arcsin}'x&=\frac{1}{\sqrt{1-x^2}} \quad (|x|<1)\\
+		\text{arctan}'x&=\frac{1}{1+x^2}
+	\end{align*}%\vspace{0.1cm}
+
+	\begin{align*}
+		\text{Argch}'x&=\frac{1}{\sqrt{x^2-1}} \quad (x>1)\\
+		\text{Argsh}'x&=\frac{1}{\sqrt{x^2+1}} \\
+		\text{Argth}'x&=\frac{1}{1-x^2} \quad (|x|<1)
+	\end{align*}
+	
+\end{multicols}
+
+
+
+\end{document}	

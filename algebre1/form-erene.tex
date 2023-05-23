@@ -1,0 +1,164 @@
+\documentclass[10pt,class=article,crop=false]{standalone}
+\usepackage{../exo7formules}
+
+\begin{document}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section{L'espace vectoriel $\Rr^n$}
+
+\begin{multicols}{2}
+	
+\subsection{Vecteurs de $\Rr^n$}
+
+\[
+\text{Si }
+u = \begin{pmatrix} u_1 \\ \vdots \\ u_n \end{pmatrix} 
+, \;
+v = \begin{pmatrix} v_1 \\ \vdots \\ v_n \end{pmatrix} 
+\text{ et }
+\lambda \in \Rr \; \quad
+u + v = \begin{pmatrix}u_1 + v_1 \\ \vdots \\ u_n + v_n\end{pmatrix} 
+\qquad
+-u = \begin{pmatrix} -u_1\\ \vdots \\ -u_n \end{pmatrix}\]
+
+\[
+\lambda \cdot u = \begin{pmatrix}\lambda u_1 \\ \vdots \\ \lambda u_n \end{pmatrix} 
+\qquad
+0 = 0_{\Rr^n} = \begin{pmatrix} 0 \\ \vdots \\ 0 \end{pmatrix}
+\]
+
+Propriétés définissant l'espace vectoriel $\Rr^n$ :
+\begin{enumerate}
+	\item $u + v = v + u$
+	\item $u + (v+w) = (u+v) +w$
+	\item $u + 0 = 0 + u = u$
+	\item $u + (-u) = 0$
+	\item $1 \cdot u = u$
+	\item $\lambda \cdot (\mu \cdot u) = (\lambda\mu )\cdot u$
+	\item $\lambda \cdot (u+v) = \lambda \cdot u + \lambda \cdot v$
+	\item $(\lambda + \mu ) \cdot u = \lambda \cdot u + \mu \cdot u$
+\end{enumerate} 
+
+
+%---------------------------------------------------------------
+\textbf{Produit scalaire}
+
+\begin{itemize}
+	\item \(u,v\) sont \defi{colinéaires} ssi $\exists \lambda,\mu \in \Rr , \; \lambda u + \mu v = 0$,
+\( (\lambda,\mu) \neq (0,0) \)
+
+    \item \defi{produit scalaire} :
+\[
+ \langle u \mid v \rangle 
+= u_1 v_1 + u_2 v_2 + \dots + u_n v_n = \sum_{i=1}^n u_i v_i
+= \| u \| \, \|v\| \, \cos \angle(u,v)
+\]
+
+    \item 
+\defi{norme}
+\[
+\| u \| = \sqrt{\langle u \mid u \rangle} = \sqrt{u_1^2 + \cdots + u_n^2}
+\]
+
+  \item En dimension 3 uniquement, le \defi{produit vectoriel} est : 
+\[u \wedge v = \begin{pmatrix} u_1 \\ u_2 \\ u_3 \end{pmatrix} \wedge \begin{pmatrix} v_1 \\ v_2 \\ v_3 \end{pmatrix}
+= \begin{pmatrix} u_2 v_3 - u_3 v_2 \\ u_3 v_1 - u_1 v_3 \\ u_1 v_2 - u_2 v_1 \end{pmatrix}
+\]
+  
+  \item le \defi{produit mixte }
+  \[  
+  [u,v,w] = \langle u \mid v \wedge w \rangle = \det (u,v,w)
+  = \left| \begin{matrix}
+  	u_1 & v_1 & w_1 \\ u_2 & v_2 & w_2 \\ u_3 & v_3 & w_3 
+  \end{matrix} \right|
+  \]
+  
+\end{itemize}
+
+
+Propriétés du produit scalaire et du produit vectoriel :
+ \begin{enumerate}
+ \item \( \langle v \mid u \rangle = \langle u \mid v \rangle \)
+ \item \( \langle \lambda u + u' \mid v \rangle = \lambda \langle u \mid v \rangle + \langle u' \mid v \rangle \)
+ \item \( \| \lambda u \| = |\lambda| \, \| u \| \) 
+ \item \( \| u + v \| \leq \| u \| + \| v \| \) avec égalité ssi \(u\) et \(v\) colinéaires (\emph{inégalité triangulaire})
+ \item \( v \wedge u = - u \wedge v \), \( u\wedge u = 0 \)
+ \item \( (\lambda u + u') \wedge v = \lambda (u \wedge v) + u' \wedge v \)
+ \end{enumerate}
+
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\subsection{Exemples d'applications linéaires}
+
+En notation matricielle, $f : \Rr^p \to \Rr^n$ est une \defi{application linéaire} si
+$f(X)=AX$ où
+$X= \begin{pmatrix} x_1\\ \vdots \\x_p \end{pmatrix} \in \Rr^n$ et
+$A \in M_{n,p}(\Rr)$ est une matrice notée  $\Mat(f)$.
+
+
+
+\textbf{Dans le plan \(\Rr^2\).}
+\[
+\begin{array}{ll}
+\text{réflexion par rapport à l'axe $(Ox)$} &
+\begin{pmatrix} x \\ y \end{pmatrix} \mapsto \begin{pmatrix} x \\ -y \end{pmatrix}
+= \begin{pmatrix} 1 & 0 \\ 0 & -1 \end{pmatrix} \begin{pmatrix} x \\ y \end{pmatrix}
+\\[2em]
+\text{réflexion par rapport à l'axe $(Oy)$} &
+\begin{pmatrix} x \\ y \end{pmatrix} \mapsto \begin{pmatrix} -x \\ y \end{pmatrix}
+= \begin{pmatrix} -1 & 0 \\ 0 & 1 \end{pmatrix} \begin{pmatrix} x \\ y \end{pmatrix}
+\\[2em]
+\text{homothétie de rapport \(\lambda\), centrée à l'origine} &
+\begin{pmatrix} x \\ y \end{pmatrix} \mapsto \begin{pmatrix} \lambda x \\ \lambda y \end{pmatrix}
+= 
+\begin{pmatrix} \lambda & 0 \\ 0 & \lambda \end{pmatrix} \begin{pmatrix} x \\ y \end{pmatrix}
+\\[2em]
+\text{rotation d'angle $\theta$, centrée à l'origine} &
+\begin{pmatrix} x \\ y \end{pmatrix} 
+\mapsto 
+% \begin{pmatrix} x \cos \theta - y \sin \theta \\ x \sin \theta + y \cos \theta \end{pmatrix}
+% = 
+\begin{pmatrix} \cos\theta & -\sin\theta\\ \sin\theta & \cos\theta \end{pmatrix} \begin{pmatrix} x \\ y \end{pmatrix}
+\\[2em]
+\text{projection sur l'axe $(Ox)$} &
+\begin{pmatrix} x \\ y \end{pmatrix} \mapsto \begin{pmatrix} x \\ 0 \end{pmatrix}
+= \begin{pmatrix} 1 & 0 \\ 0 & 0 \end{pmatrix} \begin{pmatrix} x \\ y \end{pmatrix}
+\end{array}
+\]
+
+\medskip
+
+\textbf{Dans l'espace  \(\Rr^3\).}
+\[
+\begin{array}{ll}
+\text{réflexion par rapport au plan $(Oxy)$} &
+\begin{pmatrix} x \\ y \\ z \end{pmatrix} \mapsto \begin{pmatrix} x \\ y \\ -z \end{pmatrix}
+= \begin{pmatrix} 1 & 0 & 0 \\ 0 & 1 & 0 \\ 0 & 0 & -1 \end{pmatrix} \begin{pmatrix} x \\ y \\ z \end{pmatrix}
+\\[3em]
+\text{rotation d'angle \(\theta\) d'axe $(Oz)$} &
+\begin{pmatrix} x \\ y \\ z \end{pmatrix} \mapsto 
+\begin{pmatrix} \cos \theta & -\sin \theta & 0 \\ \sin \theta & \cos \theta & 0 \\ 0 & 0 & 1 \end{pmatrix} \begin{pmatrix} x \\ y \\ z \end{pmatrix}
+\end{array}
+\]
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\subsection{Propriétés des applications linéaires}
+
+\begin{itemize}
+	\item $f : \Rr^p \to \Rr^n$ est linéaire ssi 
+\[\forall \lambda,\mu \in \Rr, \forall u,v \in \Rr^p, \; 
+f(\lambda u + \mu v) = \lambda f(u) + \mu f(v)
+\]
+
+  \item $\Mat(f \circ g) = \Mat(f) \times \Mat(g)$
+  
+  \item Si \(f\) est bijective, $\Mat(f^{-1}) = \Mat(f)^{-1}$.
+  
+\end{itemize}
+
+
+\end{multicols}
+
+\end{document}

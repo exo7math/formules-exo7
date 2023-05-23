@@ -1,0 +1,7 @@
+﻿\begin{tikzpicture}[scale=1]
+
+\shade [ball color=blue!50] (0,0) circle (1);
+%\node[circle,shading=ball,scale=10] (ball) at (0,0) {};
+\draw (0,0) -- (20:1) node[midway, above, sloped] {$r$};
+
+\end{tikzpicture}

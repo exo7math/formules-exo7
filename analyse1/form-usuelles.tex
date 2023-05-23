@@ -1,0 +1,293 @@
+\documentclass[10pt,class=article,crop=false]{standalone}
+\usepackage{../exo7formules}
+
+
+\begin{document}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section{Fonctions usuelles}
+
+\begin{multicols}{2}
+	
+
+%-----------------------------------------
+\subsection{Logarithme et exponentielle}
+
+
+\textbf{Logarithme}
+\index{logarithme}
+\sauteligne
+Le \defi{logarithme  néperien} $\ln : ]0,+\infty[ \to \Rr$.
+\begin{proposition}
+\begin{enumerate}
+	\item $\ln (a \times b) = \ln a + \ln b$ (pour tout $a,b >0$),
+	\item $\ln(\frac 1 a) = - \ln a$,
+	\item $\ln(a^n) = n \ln a$, (pour tout $n \in \Nn$)
+	\item $\ln$ est une fonction continue, strictement croissante et définit une bijection de
+	$]0,+\infty[$ sur $\Rr$,
+	\item $\ln'(x) = \frac 1x$ pour tout $x>0$,
+	\item $\ln(1) = 0$, $\ln(e)=1$,
+	\item $\lim_{x\to +\infty} \frac{\ln x}{x} = 0$,
+	\item $\lim_{x\to0}\frac{\ln(1+x)}{x} = 1$,
+	\item la fonction $\ln$ est concave et $\ln x \le x-1$ (pour tout $x>0$).
+\end{enumerate}
+\end{proposition}
+
+\myfigure{0.7}{
+	\tikzinput{fig_usuelles02}
+}
+
+\begin{itemize}
+	\item Le \defi{logarithme en base $a$}\index{logarithme!en base quelconque} 
+	$\log_a(x) = \frac{\ln(x)}{\ln(a)}$.
+	De sorte que $\log_a(a)=1$.
+	
+	\item Pour $a=10$ on obtient le \defi{logarithme décimal}\index{logarithme!decimal@décimal} $\log_{10}$ qui vérifie
+	$\log_{10} (10)=1$ (et donc $\log_{10}(10^n)=n$).
+	\mybox{$x=10^y \iff y = \log_{10}(x)$}
+	
+	\item En informatique intervient le logarithme en base $2$ : $\log_2(2^n)=n$.
+\end{itemize}
+
+
+
+
+\textbf{Exponentielle}
+
+La fonction \defi{exponentielle}\index{exponentielle}, notée $\exp : \Rr \to   ]0,+\infty[$ est la bijection réciproque de $\ln : ]0,+\infty[ \to \Rr$.
+Pour $x \in \Rr$ on note aussi $e^x$ pour $\exp x$.
+
+\myfigure{0.7}{
+	\tikzinput{fig_usuelles03}
+}
+
+
+
+
+\begin{proposition}
+	La fonction exponentielle vérifie les propriétés suivantes :
+	\begin{enumerate}
+		% \item \myboxinline{$\exp(\ln x) = x$ pour tout $x >0$} et
+		% \myboxinline{$\ln(\exp x) = x$ pour tout $x \in \Rr$}
+		
+		\item $\exp(a+b) = \exp(a) \times \exp(b)$
+		
+		\item $\exp(nx) = (\exp x)^n$
+		
+		\item $\exp : \Rr \to   ]0,+ \infty[$ est une fonction continue, strictement croissante vérifiant
+		$\lim_{x\to-\infty} \exp x = 0$ et $\lim_{x\to +\infty} \exp = +\infty$.
+		
+		\item $\exp(1) = e \simeq 2,718\ldots$
+		
+		\item $\lim_{x\to +\infty} \frac{\exp x}{x} = +\infty$,
+		
+		\item La fonction exponentielle est dérivable et $\exp' x = \exp x$, pour tout $x\in \Rr$. 
+		Elle est convexe et $\exp x \ge 1+x$.
+	\end{enumerate}
+	
+\end{proposition}
+
+Lien logarithme/exponentielle :
+
+\myboxinline{$\exp(\ln x) = x$ pour tout $x >0$} et
+\myboxinline{$\ln(\exp x) = x$ pour tout $x \in \Rr$}
+
+Pour $x \in \Rr$ et $y>0$ :
+\mybox{$y = \exp(x) \iff x = \ln(y)$}
+
+%---------------------------------------------------------------
+\textbf{Puissance}
+
+Par définition, pour $a>0$ et $b\in \Rr$,
+\mybox{$\displaystyle a^b = \exp\big(b \ln a\big)$}
+
+\begin{remarque*}
+	\sauteligne
+	\begin{itemize}
+		\item $\sqrt a = a^\frac12 = \exp\big( \frac12 \ln a\big)$
+		\item $\sqrt[n] a = a^\frac1n = \exp\big( \frac1n \ln a\big)$ (la \defi{racine $n$-ième}\index{racine@racine $n$-ème} de $a$)
+		\item Les fonctions $x \mapsto a^x$ s'appellent aussi des fonctions exponentielles et
+		se ramènent systématiquement à la fonction exponentielle classique
+		par l'égalité $a^x = \exp(x \ln a)$. Il ne faut surtout pas les confondre avec les fonctions puissances
+		$x \mapsto x^a$.
+	\end{itemize}
+\end{remarque*}
+
+
+
+	Soit $x,y >0$ et $a,b\in \Rr$.
+$$x^{a+b} = x^ax^b
+\qquad
+x^{-a}=\frac{1}{x^a}
+\qquad
+(xy)^a  = x^ay^a
+\qquad
+(x^a)^b = x^{ab}$$
+$$\ln(x^a) = a \ln x$$
+
+
+
+
+%-----------------------------------------
+\subsection{Fonctions circulaires inverses}
+
+%---------------------------------------------------------------
+\textbf{Arccosinus}
+
+La restriction
+$\cos_| : [0,\pi] \to [-1,1]$
+est une bijection.
+Sa bijection réciproque est la fonction \defi{arccosinus}\index{arccosinus} :
+$$\arccos : [-1,1] \to [0,\pi]$$
+
+\myfigure{0.8}{
+	\tikzinput{fig_usuelles05}
+}
+\myfigure{1}{
+	\tikzinput{fig_usuelles06}
+}
+
+
+\mybox{$
+	\begin{array}{cl}
+		\displaystyle \cos\big(\arccos(x)\big) = x &  \forall x \in [-1,1]\\
+		\displaystyle \arccos\big(\cos(x)\big) = x &  \forall x \in [0,\pi] \\
+	\end{array}
+	$}
+
+\mybox{$\text{Si } \quad x\in [0,\pi] \qquad \cos(x)=y \iff x = \arccos y$}
+
+\mybox{$\displaystyle \arccos'(x) = \frac{-1}{\sqrt{1-x^2}} \qquad \forall x \in {}]-1,1[$}
+
+
+
+
+%---------------------------------------------------------------
+\textbf{Arcsinus}
+
+La restriction
+$\sin_| : [-\tfrac\pi2,+\tfrac\pi2] \to [-1,1]$
+est une bijection\index{sinus}.
+Sa bijection réciproque est la fonction \defi{arcsinus}\index{arcsinus} :
+$$\arcsin : [-1,1] \to [-\tfrac\pi2,+\tfrac\pi2]$$
+
+\myfigure{0.8}{
+	\tikzinput{fig_usuelles07}
+}
+
+\myfigure{1}{
+	\tikzinput{fig_usuelles08}
+}
+
+
+\mybox{$
+	\begin{array}{cl}
+		\displaystyle \sin\big(\arcsin(x)\big) = x &  \forall x \in [-1,1]\\
+		\displaystyle \arcsin\big(\sin(x)\big) = x &  \forall x \in [-\frac\pi2,+\frac\pi2] \\
+	\end{array}
+	$}
+
+\mybox{$\text{Si } \quad  x\in [-\frac\pi2,+\frac\pi2] \qquad \sin(x)=y \iff x = \arcsin y$}
+
+
+\mybox{$\displaystyle \arcsin'(x) = \frac{1}{\sqrt{1-x^2}} \qquad \forall x \in {}]-1,1[$}
+
+
+%---------------------------------------------------------------
+\textbf{Arctangente}
+
+La restriction
+$\tan_| : ]-\tfrac\pi2,+\tfrac\pi2[ \to \Rr$
+est une bijection\index{tangente}.
+Sa bijection réciproque est la fonction \defi{arctangente}\index{arctangente} :
+$$\arctan : \Rr \to ]-\tfrac\pi2,+\tfrac\pi2[$$
+
+
+\myfigure{0.4}{
+	\tikzinput{fig_usuelles09}
+}
+\myfigure{0.6}{
+	\tikzinput{fig_usuelles10}
+}
+
+
+\mybox{$
+	\begin{array}{cl}
+		\displaystyle \tan\big(\arctan(x)\big) = x &  \forall x \in \Rr\\
+		\displaystyle \arctan\big(\tan(x)\big) = x &  \forall x \in {}]-\frac\pi2,+\frac\pi2[ \\
+	\end{array}
+	$}
+
+\mybox{$\text{Si } \quad x\in {}]-\frac\pi2,+\frac\pi2[ \qquad \tan(x)=y \iff x = \arctan y$}
+
+
+\mybox{$\displaystyle \arctan'(x) = \frac{1}{1+x^2} \qquad \forall x \in \Rr$}
+
+
+%-----------------------------------------
+\subsection{Fonctions hyperboliques et hyperboliques inverses}
+
+%---------------------------------------------------------------
+% \textbf{Cosinus hyperbolique et son inverse}
+
+Pour $x\in \Rr$, le \defi{cosinus hyperbolique}\index{cosinus hyperbolique} est :
+\mybox{$\displaystyle \ch x = \frac{e^x+e^{-x}}{2}$}
+
+La restriction $\ch_| : [0,+\infty[ \to [1,+\infty[$ est une bijection.
+Sa bijection réciproque est $\Argch : [1,+\infty[ \to [0,+\infty[$.
+
+
+\myfigure{0.7}{
+	\tikzinput{fig_usuelles11}
+}
+\myfigure{0.6}{
+	\tikzinput{fig_usuelles12}
+}
+
+
+
+%---------------------------------------------------------------
+% \textbf{Sinus hyperbolique et son inverse}
+
+Pour $x\in \Rr$, le \defi{sinus hyperbolique}\index{sinus hyperbolique} est :
+\mybox{$\displaystyle \sh x = \frac{e^x-e^{-x}}{2}$}
+
+$\sh : \Rr \to \Rr$ est une fonction continue, dérivable, strictement
+croissante vérifiant $\lim_{x\to -\infty} \sh x = -\infty$
+et $\lim_{x\to +\infty} \sh x = +\infty$, c'est donc une bijection.
+Sa bijection réciproque est $\Argsh : \Rr \to \Rr$.
+
+\begin{proposition}
+	\sauteligne
+	\begin{itemize}
+		\item $\ch^2 x - \sh^2 x =1$
+		\item $\ch' x = \sh x$, $\sh'x = \ch x$
+		\item $\Argsh : \Rr \to \Rr$ est strictement croissante et continue.
+		\item $\Argsh$ est dérivable  et $\Argsh'x=\frac{1}{\sqrt{x^2+1}}$.
+		\item $\Argsh x = \ln\big(x+ \sqrt{x^2+1}\big)$
+	\end{itemize}
+\end{proposition}
+
+
+
+%---------------------------------------------------------------
+% \textbf{Tangente hyperbolique et son inverse}
+
+
+Par définition la \defi{tangente hyperbolique}\index{tangente hyperbolique} est :
+\mybox{$\displaystyle \tanh x = \frac{\sh x}{\ch x}$}
+
+La fonction $\tanh : \Rr \to ]-1,1[$ est une bijection, on note
+$\Argth : {}]-1,1[\to\Rr$ sa bijection réciproque.
+
+%
+%\myfigure{0.9}{
+%	\tikzinput{fig_usuelles13}
+%	\tikzinput{fig_usuelles14}
+%}
+
+
+
+\end{multicols}
+
+\end{document}	

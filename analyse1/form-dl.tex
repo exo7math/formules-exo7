@@ -1,0 +1,283 @@
+\documentclass[10pt,class=article,crop=false]{standalone}
+\usepackage{../exo7formules}
+
+
+\begin{document}
+	
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section{Développements limités}
+
+\begin{multicols}{2}
+
+%-----------------------------------------
+\subsection{Formules de Taylor}
+
+Les trois formules de Taylor s'écrivent sous la forme
+$f(x) = T_n(x) + R_n(x)$
+où $T_n(x)$ est toujours le même polynôme de Taylor :
+$$T_n(x) =f(a)+f'(a)(x-a)+\frac{f''(a)}{2!}(x-a)^2+\cdots
++\frac{f^{(n)}(a)}{n!}(x-a)^n.$$
+
+C'est l'expression du reste $R_n(x)$ qui change :
+
+\textbf{Taylor-Young} (la plus utile), $f$ de classe $\mathcal{C}^{n}$ :
+$$R_n(x) = (x-a)^n\epsilon(x) \quad \text{ avec } \epsilon(x) \xrightarrow[x\to a]{} 0$$
+
+\textbf{Taylor avec reste intégral}, $f$ de classe $\mathcal{C}^{n+1}$ :
+$$R_n(x) = \int_a^x \frac{f^{(n+1)}(t)}{n!}(x-t)^ndt$$
+
+\textbf{Taylor avec reste $f^{(n+1)}(c)$}, $f$ est $n+1$ fois dérivable :
+$$R_n(x) = \frac{f^{(n+1)}(c)}{(n+1)!}(x-a)^{n+1}$$
+
+
+
+
+\textbf{Notations.}
+
+\begin{itemize}
+	\item  $f : I \to \Rr$ est une fonction de \defi{classe $\mathcal{C}^n$} si $f$ est $n$ fois dérivable sur $I$ et $f^{(n)}$ est continue.
+	\item \og \defi{petit o} \fg{}. $o((x-a)^n)$ est une fonction telle que $\lim_{x\to a}\frac{o((x-a)^n)}{(x-a)^n}=0$.
+	Donc le reste $(x-a)^n\epsilon(x)$ où $\epsilon(x) \xrightarrow[x\to 0]{} 0$
+	est noté $o((x-a)^n)$.
+\end{itemize}	
+
+
+\textbf{Formule de Taylor-Young au voisinage de $0$.}
+
+$$f(x)= f(0)+f'(0)x+f''(0)\frac{x^2}{2!}+\cdots
++f^{(n)}(0)\frac{x^n}{n!} + o(x^n)$$
+
+\textbf{Approximations.}
+
+Les restes sont de plus en plus petits lorsque $n$ croît.
+Les graphes des polynômes $T_1, T_2, T_3,\ldots$ s'approchent de plus en plus du graphe de $f$. Ceci n'est vrai qu'autour de la valeur $a$ (Ci-dessous $f(x) = \ln(1+x)$ en $a=0$).
+
+\myfigure{0.6}{
+	\tikzinput{fig_dl02}
+}
+
+
+Approximation numérique de $\sin(0,01)$.
+La formule de Taylor pour $f(x)=\sin x$ en $a=0$ à l'ordre $3$  :
+$f(x)=0+1\cdot x +0\cdot \frac{x^2}{2!}-1\frac{x^3}{3!} + o(x^3)$,
+Pour $x=0,01$ :
+$\sin(0,01) \simeq 0,01 - \frac{(0,01)^3}{6}=0,00999983333\ldots$
+	
+
+
+
+
+
+%-----------------------------------------
+\subsection{Développements limités au voisinage d'un point}
+
+Soit $f : I \to \Rr$ une fonction sur $I$ un intervalle ouvert.
+Pour $a\in I$ et $n\in \Nn$, on dit que $f$ admet un
+\defi{développement limité}\index{developpement limite@développement limité} (\defi{DL}) au point $a$ et à l'ordre $n$, s'il existe
+des réels $c_0, c_1,\ldots,c_n$ tels que pour tout $x\in I$ :
+$$f(x)=c_0+c_1 (x-a)+\cdots+c_n(x-a)^n+o((x-a)^n).$$
+
+La formule de Taylor-Young fournit des DL
+en posant, pour $k=0,1,\ldots,n$ :
+\mybox{$c_k = \frac{f^{(k)}(a)}{k!}$}
+
+
+\begin{proposition}
+Si $f$ admet un DL alors ce DL est unique.
+\end{proposition}
+
+Exemple : Si $f$ est paire (resp. impaire) alors la partie polynomiale de son DL en $0$
+ne contient que des monômes de degrés pairs (resp. impairs).
+
+
+%---------------------------------------------------------------
+\textbf{DL des fonctions usuelles à l'origine}
+
+\begin{center}
+\mybox{$\exp x=1+\frac{x}{1!}+\frac{x^2}{2!}+\frac{x^3}{3!}+\cdots+\frac{x^n}{n!}
++x^n\epsilon(x)$}
+
+\smallskip
+
+$\ch x=1+\frac{x^2}{2!}+\frac{x^4}{4!}+\cdots+\frac{x^{2n}}{(2n)!}
++x^{2n+1}\epsilon(x)$
+
+\smallskip
+
+$\sh x=\frac{x}{1!}+\frac{x^3}{3!}+\frac{x^5}{5!}+\cdots
++\frac{x^{2n+1}}{(2n+1)!}
++x^{2n+2}\epsilon(x)$
+
+\smallskip
+
+$\cos x=1-\frac{x^2}{2!}+\frac{x^4}{4!}-\cdots+(-1)^n\frac{x^{2n}}{(2n)!}
++x^{2n+1}\epsilon(x)$
+
+\smallskip
+
+$\sin x=\frac{x}{1!}-\frac{x^3}{3!}+\frac{x^5}{5!}-\cdots
++(-1)^n\frac{x^{2n+1}}{(2n+1)!}
++x^{2n+2}\epsilon(x)$
+
+\smallskip
+
+\mybox{$\ln(1+x)=x-\frac{x^2}{2}+\frac{x^3}{3}-\cdots
++(-1)^{n-1}\frac{x^{n}}{n} +x^{n}\epsilon(x)$}
+
+%\smallskip
+
+\mybox{$(1+x)^{\alpha}=1+\alpha x+\frac{\alpha(\alpha-1)}{2!}x^2+\cdots
++\frac{\alpha(\alpha-1)...(\alpha-n+1)}{n!}x^n+x^n\epsilon(x)$}
+
+% \smallskip
+
+${\displaystyle \frac{1}{1+x}}=1-x+x^2-x^3+\cdots+(-1)^nx^n+x^n\epsilon(x)$
+
+\smallskip
+
+${\displaystyle \frac{1}{1-x}} = 1+x+x^2+\cdots+x^n+x^n\epsilon(x)$
+
+\smallskip
+
+$\sqrt{1+x}  =\ \ 1 + \frac{x}{2} - \frac{1}{8}x^2+ \cdots +
+(-1)^{n-1} \frac{1\cdot1\cdot3\cdot5\cdots(2n-3)}{2^n n!}x^n\ \  + x^n\epsilon(x)$
+\end{center}
+
+
+%---------------------------------------------------------------
+\textbf{DL des fonctions en un point quelconque}
+
+On ramène le problème en $0$ avec le changement de variables $h=x-a$.
+
+Exemple : DL de $f(x)=\exp x$ en $1$.
+On pose $h=x-1$. Si $x$ est proche de $1$ alors $h$ est proche de $0$.
+$\exp x 
+= \exp( 1+ (x-1) ) 
+= \exp(1) \exp (x-1) 
+= e \exp h 
+= e \left(1+h+ \frac{h^2}{2!} + \cdots  \right)
+= e \left(1+(x-1)+\frac{(x-1)^2}{2!}+\cdots \right)$.
+
+
+%-----------------------------------------
+\subsection{Opérations sur les développements limités}
+
+%---------------------------------------------------------------
+\textbf{Somme, produit, composition.}
+Soient $f$ et $g$ ayant des DL en $0$ à l'ordre $n$ :
+
+$f(x)= C(x) + o(x^n) =c_0+c_1x + \cdots +c_nx^n + x^n\epsilon_1(x)$
+
+$g(x)=D(c)+o(x^n)=d_0+d_1x + \cdots +d_nx^n + x^n\epsilon_2(x)$
+
+
+
+\begin{proposition}
+	\sauteligne
+	\begin{itemize}
+		\item $(f+g)(x)=C(x)+D(x) + o(x^n)$
+		
+		\item $(f \times g)(x) = C(x) \times D(x) + o(x^n)$ 
+		
+		\item Si $g(0)=0$ (c'est-à-dire $d_0=0$),
+		$(f \circ g)(x) = C(D(x)) + o(x^n)$ 
+	\end{itemize}
+\end{proposition}
+
+Pour le produit et la composition, il faut en plus 
+\defi{tronquer} la partie polynomiale à l'ordre $n$, c-à-d conserver seulement
+les monômes de degré $\le n$.
+
+
+%---------------------------------------------------------------
+\textbf{Division.}
+Le DL d'un quotient se ramène au calcul de l'inverse $\frac{1}{1+u}$ :
+$$\frac{1}{1+u} = 1-u+u^2-u^3+\cdots$$
+
+%---------------------------------------------------------------
+\textbf{Intégration.}
+Soit $f$ une fonction de classe $\mathcal{C}^n$ dont le DL
+en $0$ à l'ordre $n$ est $f(x)=c_0+c_1x+c_2x^2+\cdots+c_nx^n+o(x^n)$.
+\begin{theoreme}
+	Notons $F$ une primitive de $f$.
+	Alors $F$ admet un DL en $0$ à l'ordre $n+1$ obtenu en intégrant terme à terme :
+$$
+		F(x)=F(0)+c_0 x + c_1\frac{x^2}{2}+ c_2\frac{x^3}{3}+\cdots 
+		 +c_n\frac{x^{n+1}}{n+1}+o(x^{n+1})  
+$$
+\end{theoreme}
+
+Cela signifie que l'on intègre la partie polynomiale terme à terme pour obtenir le DL de $F(x)$ à la constante $F(0)$ près.
+
+
+
+
+
+%-----------------------------------------
+\subsection{Applications des développements limités}
+
+
+%---------------------------------------------------------------
+\textbf{Calculs de limites.} 
+Les DL sont très efficaces pour lever des formes indéterminées !
+
+%---------------------------------------------------------------
+\textbf{Position d'une courbe par rapport à sa tangente}
+
+\begin{proposition}
+	Soit $f : I \to \Rr$ une fonction admettant un DL en $a$ :
+	$f(x)=c_0+c_1(x-a)+c_k(x-a)^k+(x-a)^k\epsilon(x)$,
+	où $c_k \neq 0$.
+	Alors l'équation de la tangente à la courbe de $f$ en $a$ est : $y=c_0+c_1(x-a)$ et
+	la position de la courbe par rapport à la tangente pour $x$ proche de $a$ est
+	donnée par le signe $f(x)-y$, c'est-à-dire le signe de $c_k(x-a)^k$.
+\end{proposition}
+
+
+%Il y a $3$ cas possibles.
+\begin{itemize}
+	\item Si ce signe est positif alors la courbe est au-dessus de la tangente.
+	\item Si ce signe est négatif alors la courbe est en dessous de la tangente.
+	\item Si ce signe change alors la courbe traverse
+la tangente au point d'abscisse $a$. C'est un \defi{point d'inflexion}\index{point d'inflexion}.	
+\end{itemize}	
+	\myfigure{0.4}{
+		\tikzinput{fig_dl03}
+		\tikzinput{fig_dl04}
+		\tikzinput{fig_dl05}				
+	}
+
+
+%---------------------------------------------------------------
+\textbf{Développement limité en $+\infty$ (développement asymptotique)}
+
+$f : {}]x_0,+\infty[ \to \Rr$ admet un \defi{DL en $+\infty$}\index{developpement limite@développement limité!en l'infini@en $+\infty$} à l'ordre $n$
+s'il existe des réels $c_0,c_1,\ldots,c_n$ tels que
+$f(x)=c_0+\frac{c_1}{x}+\cdots+\frac{c_n}{x^n}
++\frac{1}{x^n}\epsilon\big(\frac{1}{x}\big)$
+où $\epsilon\big(\frac{1}{x}\big)$ tend vers $0$ quand $x\to+\infty$.
+
+Cela équivaut à ce que $x \to f(\frac{1}{x})$ admet un DL en $0^+$ à l'ordre $n$.
+
+
+\begin{proposition}
+	Si 
+	$\frac{f(x)}{x}= a_0 +\frac{a_1}{x}+\frac{a_k}{x^k}+\frac{1}{x^k}\epsilon(\frac{1}{x}),$
+	où $a_k \neq 0$.
+	Alors $\lim_{x\to+\infty} f(x)-(a_0x+a_1) =0$ (resp. $x\to -\infty$) : la droite $y= a_0x+a_1$ est une 
+	\defi{asymptote}\index{asymptote}
+	à la courbe de $f$ en $+\infty$ (ou $-\infty$) et la position de la courbe par rapport à
+	l'asymptote est donnée par le signe de $f(x)-y$, c'est-à-dire le signe de $\frac{a_k}{x^{k-1}}$.
+\end{proposition}
+
+% \myfigure{0.6}{
+% 	\tikzinput{fig_dl08}
+% }
+
+
+
+\end{multicols}
+
+\end{document}
+
+

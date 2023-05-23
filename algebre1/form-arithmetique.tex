@@ -1,0 +1,266 @@
+\documentclass[10pt,class=article,crop=false]{standalone}
+\usepackage{../exo7formules}
+
+
+\begin{document}
+	
+	
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section{Arithmétique}
+
+\begin{multicols}{2}
+	
+	
+%-----------------------------------------
+\subsection{Division euclidienne et pgcd}
+
+Soient $a,b \in \Zz$. On dit que $b$ \defi{divise}\index{divisibilite@divisibilité} $a$ et on note $b | a$ s'il existe $q \in \Zz$ tel que $a = bq$.
+
+\begin{theoreme}[Division euclidienne]
+	\index{division euclidienne}
+	Soit $a\in \Zz$ et $b\in \Nn\setminus \{0\}$.
+	Il \evidence{existe} des entiers $q,r \in \Zz$ tels que
+	\mybox{$a=bq+r \qquad \text{ et } \qquad  0 \le r < b$}
+	De plus $q$ et $r$ sont \evidence{uniques}.
+\end{theoreme}
+
+Terminologie : $q$ est le \defi{quotient}\index{quotient} et $r$ est le \defi{reste}\index{reste}.
+
+
+Nous avons donc l'équivalence : $r=0$ si et seulement si $b$ divise $a$.
+
+
+
+%---------------------------------------------------------------
+\textbf{Pgcd de deux entiers}
+
+	Soient $a,b\in\Zz$ deux entiers, non tous les deux nuls.
+	Le plus grand entier qui divise à la fois $a$ et $b$ s'appelle
+	le \defi{plus grand diviseur commun}\index{pgcd} de $a$, $b$
+	et se note $\pgcd(a,b)$.
+	
+
+
+%---------------------------------------------------------------
+\textbf{Algorithme d'Euclide}
+
+\begin{lemme}
+	\label{lem:algoeuclide}
+	Soient $a,b \in \Nn^*$. \'Ecrivons la division euclidienne $a=bq+r$.
+	Alors
+	\mybox{$\pgcd(a,b)=\pgcd(b,r)$}
+\end{lemme}
+
+
+
+\textbf{Algorithme d'Euclide.}
+\index{algorithme d'Euclide}
+
+On souhaite calculer le pgcd de $a,b \in \Nn^*$. On peut supposer $a \ge b$.
+On calcule des divisions euclidiennes successives. Le pgcd sera le dernier reste
+non nul :
+\begin{itemize}
+	\item division de $a$ par $b$, $a=bq_1+r_1$. Par le lemme, $\pgcd(a,b)=\pgcd(b,r_1)$ et
+	si $r_1=0$ alors $\pgcd(a,b)=b$ sinon on continue :
+	\item $b=r_1 q_2 + r_2$,  \quad $\pgcd(a,b)= \pgcd(b,r_1)=\pgcd(r_1,r_2)$,
+	\item $r_1 = r_2 q_3 + r_3$, \quad $\pgcd(a,b)=\pgcd(r_2,r_3)$,
+	\item \ldots
+\end{itemize}
+
+
+%---------------------------------------------------------------
+\textbf{Nombres premiers entre eux}
+
+	Deux entiers $a,b$ sont
+	\defi{premiers entre eux}\index{nombre!premiers entre eux}
+	si $\pgcd(a,b)=1$.
+
+
+
+Si deux entiers $a,b \in \Zz$ ne sont pas premiers entre eux, on peut s'y ramener en divisant par $d = \pgcd(a,b)$.
+$$\left\{\begin{array}{ll} a &= \ a'd \\ b &=\  b'd \\ \end{array} \quad \text{ avec }\quad  a',b' \in \Zz \text{ et } \pgcd(a',b')=1 \right.$$
+
+
+%-----------------------------------------
+\subsection{Théorème de Bézout}
+
+%---------------------------------------------------------------
+%\subsection{Théorème de Bézout}
+
+\begin{theoreme}[Théorème de Bézout]
+	\index{theoreme@théorème!de Bézout}
+	Soient $a,b$ des entiers. Il existe
+	des entiers $u,v \in \Zz$ tels que
+	\mybox{$au+bv=\pgcd(a,b)$}
+\end{theoreme}
+
+Les entiers $u,v$ sont des \defi{coefficients de Bézout}\index{coefficients de Bezout@coefficients de Bézout}.
+Ils s'obtiennent en \og remontant \fg{} l'algorithme d'Euclide.
+
+
+%---------------------------------------------------------------
+%\subsection{Corollaires du théorème de Bézout}
+
+\begin{corollaire}
+	Si $d|a$ et $d|b$ alors $d | \pgcd(a,b)$.
+\end{corollaire}
+
+
+
+\begin{corollaire}
+	Soient $a, b$ deux entiers. $a$ et $b$ sont premiers entre eux
+	\textbf{si et seulement si} il existe $u,v \in \Zz$ tels que
+	\mybox{$au+bv=1$}
+\end{corollaire}
+
+Remarque. Si on trouve deux entiers $u',v'$ tels que $au'+bv'=d$, cela n'implique
+	\textbf{pas} que $d=\pgcd(a,b)$. On sait seulement alors que $\pgcd(a,b)|d$.
+	
+\begin{corollaire}[Lemme de Gauss]
+	\index{lemme!de Gauss}
+	Soient $a,b,c \in \Zz$.
+	\mybox{Si \ \ $a | bc$ \ \  et \ \  $\pgcd(a,b)=1$ \ \  alors \ \  $a|c$}
+\end{corollaire}
+
+
+%---------------------------------------------------------------
+\textbf{\'Equations $ax+by=c$}
+%\label{ssec:dioph}
+
+\begin{proposition}
+	\label{prop:dioph}
+	Considérons l'équation
+	\begin{equation}
+		\label{eq:bezout}
+		\tag{E}
+		ax+by=c
+	\end{equation}
+	où $a,b,c \in \Zz$.
+	\begin{enumerate}
+		\item L'équation (\ref{eq:bezout}) possède des solutions $(x,y)\in \Zz^2$ si et seulement si
+		$\pgcd(a,b) | c$.
+		\item Si $\pgcd(a,b) | c$ alors il existe même une infinité de solutions entières et elles sont exactement les
+		$(x,y) = (x_0+ \alpha k, y_0 + \beta k)$ avec $x_0,y_0,\alpha,\beta \in \Zz$ fixés et $k$ parcourant $\Zz$.
+	\end{enumerate}
+\end{proposition}
+
+
+%---------------------------------------------------------------
+\textbf{ppcm}
+
+
+	Le $\text{ppcm}(a,b)$ (\defi{plus petit multiple commun}\index{ppcm})
+	est le plus petit entier $\ge 0$ divisible par $a$ et par $b$.
+
+
+\begin{proposition}
+	Si $a,b$ sont des entiers (non tous les deux nuls) alors
+	\mybox{$\pgcd(a,b) \times \text{ppcm}(a,b) = |ab|$}
+\end{proposition}
+
+\begin{proposition}
+	Si $a|c$ et $b|c$ alors $\text{ppcm}(a,b)|c$.
+\end{proposition}
+
+
+
+%-----------------------------------------
+\subsection{Nombres premiers}
+
+	Un \defi{nombre premier}\index{nombre!premier} $p$ est un entier $\ge 2$ dont les seuls diviseurs
+	positifs sont $1$ et $p$.
+
+
+\begin{proposition}
+	Il existe une infinité de nombres premiers.
+\end{proposition}
+
+
+Remarque. Si un nombre $n$ n'est pas premier alors un de ses facteurs est $\le \sqrt{n}$.
+
+\begin{proposition}[Lemme d'Euclide]
+	\index{lemme!d'Euclide}
+	Soit $p$ un nombre premier.
+	Si $p | ab$ alors $p|a$ ou $p | b$.
+\end{proposition}
+
+\begin{theoreme}[Décomposition en facteurs premiers]
+	Soit $n \ge 2$ un entier. Il existe des nombres premiers $p_1 < p_2 < \cdots < p_r$
+	et des exposants entiers $\alpha_1, \alpha_2, \dots, \alpha_r \ge 1$ tels que :
+	$$n = p_1^{\alpha_1} \times p_2^{\alpha_2} \times \cdots \times p_r^{\alpha_r}.$$
+	De plus les $p_i$ et les $\alpha_i$ ($i=1,\ldots,r$) sont uniques.
+\end{theoreme}
+
+
+%-----------------------------------------
+\subsection{Congruences}
+
+
+	Soit $n \ge 2$ un entier. On dit que $a$ est \defi{congru}\index{congruence} à $b$ \defi{modulo}\index{modulo} $n$,
+	si $n$ divise $b-a$.
+	On note alors
+	$$a \equiv b \pmod n.$$
+
+
+On note aussi parfois $a=b \pmod n$ ou $a \equiv b [n]$.
+Une autre formulation est
+\mybox{$a \equiv b \pmod n \quad \iff \quad \exists k \in \Zz \quad a = b +kn.$}
+
+Remarquez que $n$ divise $a$ si et seulement si $a\equiv 0 \pmod n$.
+
+\begin{proposition}
+	\sauteligne
+	\begin{enumerate}
+		\item La relation \og congru modulo $n$ \fg{} est une relation d'équivalence :
+		\begin{itemize}
+			\item (Réflexivité) $a \equiv a \pmod n$,
+			\item (Symétrie) si $a \equiv b \pmod n$ alors $b \equiv a \pmod n$,
+			\item (Transitivité) si $a \equiv b \pmod n$ et $b \equiv c \pmod n$ alors $a \equiv c \pmod n$.
+		\end{itemize}
+		\item Si $a \equiv b \pmod n$ et $c \equiv d \pmod n$ alors
+		$a+c \equiv b+d \pmod n$.
+		\item Si $a \equiv b \pmod n$ et $c \equiv d \pmod n$ alors
+		$a\times c \equiv b \times d \pmod n$.
+		\item Si $a \equiv b \pmod n$ alors pour tout $k \ge 0$, $a^k \equiv b^k \pmod n$.
+	\end{enumerate}
+\end{proposition}
+
+
+
+%---------------------------------------------------------------
+\textbf{\'Equation de congruence $ax \equiv b \pmod n$}
+
+\begin{proposition}
+	Soit $a \in \Zz^*$, $b \in \Zz$ fixés et $n \ge 2$.
+	Considérons l'équation
+	\myboxinline{$ax \equiv b \pmod n$} d'inconnue $x \in \Zz$ :
+	\begin{enumerate}
+		\item Il existe des solutions si et seulement si $\pgcd(a,n) | b$.
+		\item Les solutions sont de la forme $x = x_0 + \ell \frac{n}{\pgcd(a,n)}$, $\ell \in \Zz$
+		où $x_0$ est une solution particulière. Il existe donc $\pgcd(a,n)$ classes de solutions.
+	\end{enumerate}
+\end{proposition}
+
+
+%---------------------------------------------------------------
+%\subsection{Petit théorème de Fermat}
+
+\begin{theoreme}[Petit théorème de Fermat]
+	\index{theoreme@théorème! de Fermat (petit)}
+	Si $p$ est un nombre premier et $a \in \Zz$ alors
+	\mybox{$a^p \equiv a \pmod p$}
+\end{theoreme}
+
+\begin{corollaire}
+	Si $p$ ne divise pas $a$ alors
+	\mybox{$a^{p-1} \equiv 1 \pmod p$}
+\end{corollaire}
+
+
+
+\end{multicols}
+
+\end{document}
+
+
+

@@ -1,0 +1,319 @@
+\documentclass[10pt,class=article,crop=false]{standalone}
+\usepackage{../exo7formules}
+
+
+\begin{document}
+	
+	
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section{Les suites}
+
+\begin{multicols}{2}
+	
+
+%-----------------------------------------
+\subsection{Premières définitions}
+
+Une \defi{suite}\index{suite} est une application $u:\Nn\to \Rr$.
+Pour $n\in \Nn$, on note $u(n)$ par $u_n$ et on l'appelle $n$-ème{} \defi{terme} ou \defi{terme général} de la suite.
+
+Soit $(u_n)_{n\in \Nn}$ une suite.
+	\begin{itemize}
+		\item $(u_n)_{n\in \Nn}$ est \defi{majorée}\index{suite!majoree@majorée} si \quad $\exists M \in \Rr \quad \forall n\in \Nn \quad u_n \leq M$.
+		\item $(u_n)_{n\in \Nn}$ est \defi{minorée}\index{suite!minoree@minorée} si \quad $\exists m \in \Rr \quad  \forall n\in \Nn \quad u_n \geq m$.
+		\item $(u_n)_{n\in \Nn}$ est \defi{bornée}\index{suite!bornee@bornée} si elle est majorée et minorée, ce qui revient à dire :
+		\quad $\exists M \in \Rr \quad  \forall n\in \Nn \quad |u_n| \leq M.$
+	\end{itemize}
+
+	\begin{itemize}
+		\item $(u_n)_{n\in \Nn}$ est \defi{croissante}\index{suite!croissante} si \quad $\forall n\in \Nn \quad u_{n+1} \ge u_n $.
+		\item $(u_n)_{n\in \Nn}$ est \defi{strictement croissante} si \quad $\forall n\in \Nn \quad u_{n+1} > u_n$.
+		\item $(u_n)_{n\in \Nn}$ est \defi{décroissante}\index{suite!decroissante@décroissante} si \quad $\forall n\in \Nn \quad u_{n+1} \le u_n$.
+		\item $(u_n)_{n\in \Nn}$ est \defi{strictement décroissante} si \quad $\forall n\in \Nn \quad u_{n+1} < u_n$.
+		\item $(u_n)_{n\in \Nn}$ est \defi{monotone}\index{suite!monotone} si elle est croissante ou décroissante.
+	\end{itemize}
+
+
+
+\begin{remarque*}
+	\sauteligne
+	\begin{itemize}
+		\item $(u_n)_{n\in \Nn}$ est croissante si et seulement si $\forall n\in \Nn \quad  u_{n+1}-u_n \geq 0$.
+		\item Si $(u_n)_{n\in \Nn}$ avec $u_n>0$ est
+		croissante si et seulement si $\forall n\in \Nn \quad \frac{u_{n+1}}{u_n} \geq 1$.
+	\end{itemize}
+\end{remarque*}
+
+
+%-----------------------------------------
+%\subsection{Limite}	
+
+\begin{definition}
+\begin{itemize}
+	\item 
+	La suite $(u_n)_{n\in \Nn}$ a pour \defi{limite}\index{suite!limite}\index{limite} $\ell\in \Rr$ si :
+	pour tout $\epsilon >0$, il existe un entier naturel $N$ tel que si $n\geq N$ alors
+	$\lvert u_n-\ell\rvert\leq\epsilon$ :
+	\mybox{$\forall \epsilon >0 \quad \exists N \in \Nn \quad
+		\forall n \in \Nn \qquad
+		\left( n\geq N \implies \lvert u_n-\ell\rvert\leq\epsilon \right)$}
+	
+	\item La suite $(u_n)_{n\in \Nn}$ \defi{tend vers $+\infty$} si :
+	\[ \forall A >0 \quad \exists N \in \Nn \quad
+	\forall n \in \Nn \qquad \left( n\geq N \implies u_n\geq A \right)\]
+	
+	\item 	Une suite $(u_n)_{n\in \Nn}$ est \defi{convergente}\index{suite!convergente}\index{convergence} si elle admet une limite \evidence{finie}.
+	Elle est \defi{divergente}\index{suite!divergente}\index{divergence} sinon (c'est-à-dire soit la suite tend vers $\pm \infty$,
+	soit elle n'admet pas de limite).
+\end{itemize}
+\end{definition}
+
+\begin{proposition}
+	Si une suite est convergente, sa limite est unique.
+\end{proposition}
+
+
+
+%---------------------------------------------------------------
+%\subsection{Propriétés des limites}
+
+\begin{proposition}
+$\lim_{n\to +\infty}u_n=\ell\iff \lim_{n\to +\infty}(u_n-\ell)=0 \iff \lim_{n\to +\infty}\lvert u_n-\ell\rvert =0$,
+\end{proposition}
+
+
+\begin{proposition}[Opérations sur les limites]
+	\label{prop:suitelimite}
+	Soient $(u_n)_{n\in \Nn}$ et $(v_n)_{n\in \Nn}$ deux suites convergentes.
+	\begin{enumerate}
+		\item Si $\lim_{n\to +\infty}u_n=\ell$, où $\ell\in \Rr$, alors pour $\lambda \in \Rr$ on a $\lim_{n\to +\infty}\lambda u_n=\lambda \ell$.
+		\item Si $\lim_{n\to +\infty}u_n=\ell$ et $\lim_{n\to +\infty}v_n=\ell'$, où $\ell,\ell'\in \Rr$, alors
+		$$
+			\lim_{n\to +\infty}\left(u_n+v_n\right)=\ell+\ell' \qquad\qquad
+			\lim_{n\to +\infty}\left(u_n\times v_n\right)=\ell\times \ell'
+		$$
+		\item Si $\lim_{n\to +\infty}u_n=\ell$ où $\ell\in \Rr^*= \Rr\backslash \left\{0\right\}$
+		alors $u_n\neq 0 $ pour $n$ assez grand et $\lim_{n\to +\infty}\frac{1}{u_n}=\frac{1}{\ell}$.
+	\end{enumerate}
+\end{proposition}
+
+
+
+
+\begin{proposition}[Opérations sur les limites infinies]
+	\label{prop:suiteinfty}
+	Soient $(u_n)_{n\in \Nn}$ et $(v_n)_{n\in \Nn}$ deux suites telles que $\lim_{n\to +\infty}v_n=+\infty$.
+	\begin{enumerate}
+		\item  $\lim_{n\to +\infty}\frac{1}{v_n}=0$
+		\item Si $(u_n)_{n\in \Nn}$ est minorée alors  $\lim_{n\to +\infty}\left(u_n+v_n\right)=+\infty$.
+		\item Si $(u_n)_{n\in \Nn}$ est minorée par un nombre $\lambda>0$
+		alors $\lim_{n\to +\infty}\left(u_n\times v_n\right)=+\infty$.
+		\item Si $\lim_{n\to +\infty}u_n= 0$ et $u_n>0$ pour $n$ assez
+		grand alors $\lim_{n\to +\infty}\frac{1}{u_n}=+\infty$.
+	\end{enumerate}
+\end{proposition}
+
+
+
+
+%---------------------------------------------------------------
+%\subsection{Limite et inégalités}
+
+\begin{proposition}
+	\label{prop:lim_ineg}
+	\sauteligne
+	\begin{enumerate}
+		\item Soient $(u_n)_{n\in \Nn}$ et $(v_n)_{n\in \Nn}$ deux suites convergentes
+		telles que : $\forall n \in \Nn$, $u_n\leq v_n$. Alors
+		\[\lim_{n\to +\infty} u_n \leq \lim_{n\to +\infty} v_n\]
+		\item  Soient $(u_n)_{n\in \Nn}$ et $(v_n)_{n\in \Nn}$ deux suites telles que
+		$\lim_{n\to +\infty} u_n=+\infty$ et  $\forall n \in \Nn$, $v_n \geq u_n$.
+		Alors $\lim_{n\to +\infty} v_n=+\infty$.
+		\item Théorème des  \og gendarmes \fg{}\index{theoreme@théorème!des gendarmes} : si $(u_n)_{n\in \Nn}$,
+		$(v_n)_{n\in \Nn}$ et $(w_n)_{n\in \Nn}$ sont trois suites telles que
+		\[ \forall n \in \Nn \quad u_n\leq v_n\leq w_n \]
+		et $\lim_{n\to +\infty}u_n=\ell=\lim_{n\to +\infty}w_n$, alors la suite $(v_n)_{n\in \Nn}$
+		est convergente et $\lim_{n\to +\infty} v_n=\ell$.
+	\end{enumerate}
+\end{proposition}
+
+%-----------------------------------------
+\subsection{Exemples remarquables}
+
+%---------------------------------------------------------------
+\textbf{Suite géométrique}
+
+\begin{proposition}[Suite géométrique]
+	On fixe un réel $a$. Soit $(u_n)_{n\in \Nn}$ la suite de terme général : $u_n=a^n$.
+	\begin{enumerate}
+		\item Si $a=1$, on a pour tout $n\in \Nn$ : $u_n=1$.
+		\item Si $a>1$, alors $\lim_{n\to +\infty} u_n= +\infty$.
+		\item Si $-1<a<1$, alors $\lim_{n\to +\infty} u_n= 0$.
+		\item Si $a\le-1$, la suite $(u_n)_{n\in \Nn}$ diverge.
+	\end{enumerate}
+\end{proposition}
+
+
+%---------------------------------------------------------------
+\textbf{Série géométrique}
+
+\begin{proposition}[Série géométrique]
+	\index{serie geometrique@série géométrique}
+	Soit $a$ un réel, $a\neq 1$. En notant $\sum_{k=0}^na^k=1+a+a^2+\cdots+a^n$, on a :
+	\mybox{$\displaystyle \sum_{k=0}^na^k=\frac{1-a^{n+1}}{1-a} $}
+	
+\end{proposition}
+
+
+	Si $a\in {}]-1,1[$ et $(u_n)_{n\in \Nn}$ est la suite de terme général :
+	$u_n= \sum_{k=0}^na^k$, alors $\lim_{n\to +\infty} u_n= \frac{1}{1-a}$.	
+	Ces formules sont aussi valables si $a\in \Cc\setminus\{1\}$.
+	Si $a=1$, alors $1+a+a^2+\cdots+a^n=n+1$.
+
+
+
+%---------------------------------------------------------------
+% \textbf{Suites telles que $\left|\frac{u_{n+1}}{u_n}\right|<\ell<1$ }
+
+\begin{theoreme}
+	Soit  $(u_n)_{n\in \Nn}$ une suite de réels non nuls. On suppose qu'il existe un réel $\ell$
+	%tel que $0< l <1$ et
+	tel que pour tout entier naturel $n$ (ou seulement à partir d'un certain rang) on ait :
+	$ \left | \frac{u_{n+1}}{u_n}\right |  <\ell<1.$
+	Alors $\lim_{n\to +\infty} u_n= 0$.	
+\end{theoreme}
+
+
+
+\begin{corollaire}
+	Soit  $(u_n)_{n\in \Nn}$ une suite de réels non nuls.
+	\mybox{Si $\lim_{n\to +\infty}\frac{u_{n+1}}{u_n}=  0$, alors $\lim_{n\to +\infty} u_n= 0$.}
+\end{corollaire}
+
+\begin{exemple}
+	Soit $a\in \Rr$. Alors $\lim_{n\to +\infty} \frac{a^n}{n!} =0$.
+\end{exemple}
+
+
+
+
+
+%-----------------------------------------
+\subsection{Théorèmes de convergence}
+
+
+\begin{proposition}
+	Toute suite convergente est bornée.
+\end{proposition}
+
+
+\begin{theoreme}
+	\label{thm:suite_croiss_maj}
+	\sauteligne
+	\mybox{Toute suite croissante et majorée est convergente.}
+\end{theoreme}
+
+\begin{remarque*}
+	Et aussi :
+	\begin{itemize}
+		\item Toute suite décroissante et minorée est convergente.
+		\item Une suite croissante et qui n'est pas majorée tend vers $+\infty$.
+		\item Une suite décroissante et qui n'est pas minorée tend vers $-\infty$.
+	\end{itemize}
+\end{remarque*}
+
+
+\begin{definition}
+	Les suites $(u_n)_{n\in \Nn}$ et $(v_n)_{n\in \Nn}$ sont dites \defi{adjacentes}\index{suite!adjacente} si
+	\begin{enumerate}
+		\item $(u_n)_{n\in \Nn}$ est croissante et $(v_n)_{n\in \Nn}$ est décroissante,
+		\item pour tout $n\geq 0$, on a $u_n\leq v_n$,
+		\item $\lim_{n\to +\infty} (v_n -u_n) = 0$.
+	\end{enumerate}
+\end{definition}
+
+\begin{theoreme}
+	\sauteligne
+	\mybox{Si les suites $(u_n)_{n\in \Nn}$ et $(v_n)_{n\in \Nn}$ sont adjacentes, \\
+		elles convergent vers la même limite.}
+\end{theoreme}
+
+Les termes de la suite sont ordonnés ainsi :
+$$u_0 \le u_1 \le u_2 \le \cdots \le u_n \le \cdots \cdots \le v_n\le \cdots \le v_2 \le v_1 \le v_0$$
+
+
+%\subsection{Théorème de Bolzano-Weierstrass}
+
+\begin{definition}
+	Soit $(u_n)_{n\in \Nn}$ une suite. Une \defi{suite extraite}\index{suite!extraite} ou
+	\defi{sous-suite}\index{sous-suite} de  $(u_n)_{n\in \Nn}$ est une suite de la forme
+	$(u_{\phi(n)})_{n\in \Nn}$, où $\phi : \Nn \to \Nn$ est une application strictement croissante.
+\end{definition}
+
+
+\begin{proposition}
+	Soit $(u_n)_{n\in \Nn}$ une suite. Si $\lim_{n\to +\infty}u_n=\ell$, alors
+	pour toute suite extraite $(u_{\phi(n)})_{n\in \Nn}$ on a $\lim_{n\to +\infty} u_{\phi(n)}=\ell$.
+\end{proposition}
+
+
+\begin{corollaire}
+	Soit $(u_n)_{n\in \Nn}$ une suite. Si elle admet une sous-suite divergente,
+	ou bien si elle admet deux sous-suites convergeant vers des limites distinctes, alors elle diverge.
+\end{corollaire}
+
+Exemple. La suite de terme $u_n=(-1)^n$ diverge.
+
+\begin{theoreme}[Théorème de Bolzano-Weierstrass]
+	\index{theoreme@théorème!de Bolzano-Weierstrass}
+	\label{thm:Bolzano_Weierstrass}
+	Toute suite bornée admet une sous-suite convergente.
+\end{theoreme}
+
+
+
+%-----------------------------------------
+\subsection{Suites récurrentes}
+
+
+Soit $f : \Rr \to \Rr$ une fonction. Une \defi{suite récurrente}\index{suite!recurrente@récurrente} 
+est :
+$$u_0 \in \Rr \quad \text{ et } \quad u_{n+1} = f(u_n) \ \ \text{ pour } n \ge 0.$$
+
+\begin{proposition}
+	\label{prop:fll}
+	Si $f$ est une fonction continue et la suite récurrente $(u_n)$ converge vers $\ell$, alors
+	$\ell$ est une solution de l'équation :
+	\mybox{$f(\ell)=\ell$}
+\end{proposition}
+
+
+\begin{proposition}[Cas d'une fonction croissante]
+	\label{prop:fcroissante}
+	Soit $f : [a,b] \to [a,b]$ une fonction continue et \evidence{croissante},
+	alors quel que soit $u_0 \in [a,b]$, la suite récurrente $(u_n)$ est
+	monotone et converge vers $\ell \in [a,b]$ vérifiant \myboxinline{$f(\ell)=\ell$}.
+\end{proposition}
+
+Pour appliquer cette proposition, il faut vérifier que $f([a,b]) \subset [a,b]$.
+
+
+\begin{proposition}[Cas d'une fonction décroissante]
+	Soit $f : [a,b] \to [a,b]$ une fonction continue et \evidence{décroissante}.
+	Soit $u_0 \in [a,b]$ et la suite récurrente $(u_n)$ définie par $u_{n+1}=f(u_n)$. Alors :
+	\begin{itemize}
+		\item La sous-suite $(u_{2n})$ converge vers une limite $\ell$  vérifiant $f\circ f(\ell)=\ell$.
+		\item La sous-suite $(u_{2n+1})$ converge vers une limite $\ell'$ vérifiant $f\circ f(\ell')=\ell'$.
+	\end{itemize}
+\end{proposition}
+
+
+
+
+\end{multicols}
+
+\end{document}
+
+
+
+

@@ -1,0 +1,248 @@
+\documentclass[10pt,class=article,crop=false]{standalone}
+\usepackage{../exo7formules}
+
+
+\begin{document}
+
+\newcommand{\assertion}[1]{{\og\emph{#1}\fg}} % pour chapitre logique
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section{Logique et raisonnements}
+
+\begin{multicols}{2}
+	
+
+%-----------------------------------------
+\subsection{Logique}
+
+
+
+
+Une \defi{assertion}\index{assertion} est une phrase soit vraie, soit fausse, pas les deux en même temps.
+
+%--------------
+\textbf{Et logique.}
+L'assertion \assertion{$P$ \defi{et} $Q$}\index{et logique@\og et \fg{} logique} est vraie si $P$ est vraie et $Q$ est vraie. L'assertion \assertion{$P$ et $Q$} est fausse sinon.
+
+Sa \defi{table de vérité}\index{table de verite@table de vérité} :
+\begin{figure}[H]
+	\centering
+	\begin{tabular}{c|c|c}
+		\textcolor{olive}{$P$} $\backslash$ \textcolor{blue}{$Q$} & \textcolor{blue}{V} & \textcolor{blue}{F} \\ \hline
+		\textcolor{olive}{V} & \textcolor{red}{V} & \textcolor{red}{F} \\ \hline
+		\textcolor{olive}{F} & \textcolor{red}{F} & \textcolor{red}{F} \\
+	\end{tabular}
+
+	{Table de vérité de \assertion{$P$ et $Q$}}
+\end{figure}
+
+%--------------
+\textbf{Ou logique.}
+L'assertion \assertion{$P$ \defi{ou} $Q$}\index{ou logique@\og ou \fg{} logique} est vraie si l'une (au moins) des deux assertions $P$ ou $Q$ est vraie.
+L'assertion \assertion{$P$ ou $Q$} est fausse si les deux assertions $P$ et $Q$ sont fausses.
+
+\begin{figure}[H]
+	\centering
+	\begin{tabular}{c|c|c}
+		\textcolor{olive}{$P$} $\backslash$ \textcolor{blue}{$Q$}  & \textcolor{blue}{V} & \textcolor{blue}{F} \\ \hline
+		\textcolor{olive}{V} & \textcolor{red}{V} & \textcolor{red}{V} \\ \hline
+		\textcolor{olive}{F} & \textcolor{red}{V} & \textcolor{red}{F} \\
+	\end{tabular}
+	
+	{Table de vérité de \assertion{$P$ ou $Q$}}
+\end{figure}
+
+
+L'assertion \assertion{\defi{non} $P$}\index{négation} est vraie si $P$ est fausse, et fausse si $P$ est vraie.
+
+\begin{figure}[H]
+	\centering
+	\begin{tabular}{c|c|c}
+		\textcolor{blue}{$P$}  &  \textcolor{blue}{V} &  \textcolor{blue}{F} \\ \hline
+		\textcolor{red}{non $P$}    & \textcolor{red}{F} & \textcolor{red}{V} \\
+	\end{tabular}
+	
+	{Table de vérité de \assertion{non $P$}}
+\end{figure}
+
+
+%--------------
+\textbf{L'implication $\implies$}
+
+
+La définition mathématique est la suivante :
+\mybox{
+	L'assertion \assertion{(non $P$) ou $Q$} est notée \assertion{$P \implies Q$}\index{implication}\index{$\implies$}.
+}
+
+\begin{figure}[H]
+	\centering
+	\begin{tabular}{c|c|c}
+		\textcolor{olive}{$P$} $\backslash$ \textcolor{blue}{$Q$}  & \textcolor{blue}{V} & \textcolor{blue}{F} \\ \hline
+		\textcolor{olive}{V} & \textcolor{red}{V} & \textcolor{red}{F} \\ \hline
+		\textcolor{olive}{F} & \textcolor{red}{V} & \textcolor{red}{V} \\
+	\end{tabular}
+	
+	{Table de vérité de \assertion{$P \implies Q$}}
+\end{figure}
+
+
+%--------------
+\textbf{L'équivalence $\iff$}
+
+
+L'\defi{équivalence} est définie par :
+\mybox{
+	\assertion{$P \iff Q$}\index{equivalence@équivalence}\index{$\iff$}  est l'assertion \assertion{($P \implies Q$) \  et \  ($Q \implies P$)}.
+}
+
+\begin{figure}[H]
+	\centering
+	\begin{tabular}{c|c|c}
+		\textcolor{olive}{$P$} $\backslash$ \textcolor{blue}{$Q$}  & \textcolor{blue}{V} & \textcolor{blue}{F} \\ \hline
+		\textcolor{olive}{V} & \textcolor{red}{V} & \textcolor{red}{F} \\ \hline
+		\textcolor{olive}{F} & \textcolor{red}{F} & \textcolor{red}{V} \\
+	\end{tabular}
+	
+	{Table de vérité de \assertion{$P \iff Q$}}
+\end{figure}
+
+
+\begin{proposition}
+	\label{prop:log}
+	Soient $P, Q, R$ trois assertions.
+	Nous avons les équivalences (vraies) suivantes :
+	\begin{enumerate}
+		\item \emph{$P \iff \text{ non}(\text{non}(P))$}
+		\item \emph{$(P \text{ et } Q) \iff (Q \text{ et } P)$}
+		\item \emph{$(P \text{ ou } Q) \iff (Q \text{ ou } P)$}
+		\item \emph{$\text{non}(P \text{ et } Q)  \iff  (\text{non } P)  \text{ ou } (\text{non }Q)$}
+		\item \emph{$\text{non}(P \text{ ou } Q)  \iff  (\text{non } P)  \text{ et } (\text{non }Q)$}
+		\item \emph{$\big(P \text{ et } (Q \text{ ou } R)  \big)   \iff
+			(P \text{ et } Q) \text{ ou } (P \text{ et }  R)$}
+		\item \emph{$\big(P \text{ ou } (Q \text{ et } R)  \big)   \iff
+			(P \text{ ou } Q) \text{ et } (P \text{ ou }  R)$}
+		\item  \assertion{$P \implies Q$}  $\iff$ \assertion{$\text{non}(Q) \implies \text{non}(P)$}
+	\end{enumerate}
+\end{proposition}
+
+
+%---------------------------------------------------------------
+%\subsection{Quantificateurs}
+\index{quantificateur}
+
+%--------------
+\textbf{Le quantificateur $\forall$ : \assertion{pour tout}}
+\index{$\forall$}
+
+L'assertion
+$$\forall x \in E \quad P(x)$$
+est une assertion vraie lorsque les assertions $P(x)$ sont vraies pour tous les éléments $x$
+de l'ensemble $E$.
+
+
+%--------------
+\textbf{Le quantificateur $\exists$ : \assertion{il existe}}
+\index{$\exists$}
+
+L'assertion
+$$\exists x \in E \quad P(x)$$
+est une assertion vraie lorsque l'on peut trouver au moins un $x$ de $E$ pour lequel $P(x)$ est vraie.
+
+
+%--------------
+\textbf{La négation des quantificateurs}
+
+\mybox{
+	La négation de \assertion{$\forall x \in E \quad P(x)$} \ \ est \ \
+	\assertion{$\exists x \in E \quad \text{non } P(x)$} .
+}
+
+
+
+\mybox{
+	La négation de \assertion{$\exists x \in E \quad P(x)$} \ \ est \ \ \assertion{$\forall x \in E \quad \text{non } P(x)$}.
+}
+
+
+
+L'ordre des quantificateurs est très important.
+
+
+
+%-----------------------------------------
+\subsection{Raisonnements}
+
+
+%---------------------------------------------------------------
+\textbf{Raisonnement direct}
+
+On veut montrer que l'assertion \assertion{$P \implies Q$} est vraie.
+On suppose que $P$ est vraie et on montre qu'alors $Q$ est vraie.
+C'est la méthode à laquelle vous êtes le plus habitué.
+
+\smallskip
+
+%---------------------------------------------------------------
+\textbf{Cas par cas}
+
+Si l'on souhaite vérifier une assertion $P(x)$ pour tous les $x$ dans un ensemble $E$, on
+montre l'assertion pour les $x$ dans une partie $A$ de $E$, puis pour les $x$
+n'appartenant pas à $A$. C'est la méthode de \defi{disjonction}\index{disjonction} ou du \defi{cas par cas}.
+
+\smallskip
+
+%---------------------------------------------------------------
+\textbf{Contraposée}
+
+Le raisonnement par \defi{contraposition}\index{contraposition} est basé sur l'équivalence suivante :
+\mybox{
+	L'assertion \assertion{$P \implies Q$}  \  est équivalente à \  \assertion{$\text{non}(Q) \implies \text{non}(P)$}.
+}
+
+Donc si l'on souhaite montrer l'assertion \assertion{$P \implies Q$}, on montre en fait
+que si $\text{non}(Q)$ est vraie alors $\text{non}(P)$ est vraie.
+
+
+
+\smallskip
+
+%---------------------------------------------------------------
+\textbf{Absurde}
+
+Le \defi{raisonnement par l'absurde}\index{absurde} pour montrer \assertion{$P \implies Q$}  repose sur le principe suivant :
+on suppose à la fois que $P$ est vraie et que $Q$ est fausse et on cherche une contradiction.
+Ainsi si $P$ est vraie alors $Q$ doit être vraie et donc \assertion{$P \implies Q$} est vraie.
+
+
+\smallskip
+
+%---------------------------------------------------------------
+\textbf{Contre-exemple}
+
+Si l'on veut montrer qu'une assertion du type \assertion{$\forall x \in E \quad P(x)$} est fausse alors il suffit de trouver $x \in E$ tel que $P(x)$
+soit fausse. 
+Trouver un tel $x$ c'est trouver un \defi{contre-exemple}.
+
+
+\smallskip
+
+%---------------------------------------------------------------
+\textbf{Récurrence}
+
+Le \defi{principe de récurrence}\index{recurrence@récurrence} permet de montrer qu'une assertion $P(n)$, dépendant de $n$,
+est vraie pour tout $n \in \Nn$.
+La démonstration se déroule en trois étapes :
+\begin{itemize}
+	\item \evidence{initialisation} : on prouve $P(0)$.
+	\item \evidence{hérédité}\index{heredite@hérédité} : qui commence par \og{}Je fixe $n\ge 0$ et je suppose que l'assertion $P(n)$ vraie. je vais montrer que 
+l'assertion  $P(n+1)$ (au rang suivant) est vraie\ldots\fg{}
+   \item \evidence{conclusion} : par le principe de récurrence $P(n)$ est vraie pour tout $n\in\Nn$.
+\end{itemize}
+
+
+\end{multicols}
+
+\end{document}	
+
+

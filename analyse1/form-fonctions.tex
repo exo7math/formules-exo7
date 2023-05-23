@@ -1,0 +1,423 @@
+\documentclass[10pt,class=article,crop=false]{standalone}
+\usepackage{../exo7formules}
+
+
+\begin{document}
+	
+	
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section{Limites et fonctions continues}
+
+\begin{multicols}{2}
+	
+	
+%-----------------------------------------
+\subsection{Notions de fonction}
+	
+
+Une \defi{fonction} est une application
+$f:U\to \Rr$, où $U$ est une partie de $\Rr$ appelé \defi{domaine de définition}. 
+
+Le \defi{graphe}\index{graphe} d'une fonction $f:U\to \Rr$ est la partie $\Gamma_f$
+de $\Rr^2$ définie par $\Gamma_f=\big\{(x,f(x)) \ \vert \ x\in U\big\}$.
+\myfigure{0.5}{
+	\tikzinput{fig_fonctionsA03}
+}
+
+
+\begin{itemize}
+	\item $f$ est \defi{majorée}\index{fonction!majoree@majorée} sur $U$ si \ $\exists M\in\Rr \ \ \forall x\in U \ f(x)\leq M$ ;
+	\item $f$ est \defi{minorée}\index{fonction!minoree@minorée} sur $U$ si \ $\exists m\in\Rr \ \ \forall x\in U \ f(x)\geq m$ ;
+	\item $f$ est \defi{bornée}\index{fonction!bornee@bornée} sur $U$ si $f$ est à la fois majorée et minorée sur $U$,
+	c'est-à-dire si \ $\exists M\in\Rr \ \forall x\in U \ \ |f(x)|\leq M$.
+\end{itemize}
+
+Voici le graphe d'une fonction bornée (minorée par $m$ et majorée par $M$).
+\myfigure{0.5}{
+	\tikzinput{fig_fonctions1}
+}
+
+
+\begin{itemize}
+	\item $f$ est \defi{croissante}\index{fonction!croissante} sur $U$ si\ 
+	\myboxinline{$\forall x,y\in U \quad x\leq y \implies f(x)\leq f(y)$}
+	
+	
+	\item $f$ est \defi{strictement croissante} si \ 
+	$\forall x,y\in U \quad  x< y \implies f(x)< f(y)$
+	
+	\item $f$ est \defi{décroissante}\index{fonction!decroissante@décroissante}  si
+	\ $\forall x,y\in U \quad  x\leq y \implies f(x)\geq f(y)$
+	
+	\item $f$ est \defi{strictement décroissante} si
+	\ $\forall x,y\in U \quad  x< y \implies f(x)> f(y)$
+	
+	\item $f$ est \defi{monotone}\index{fonction!monotone}  sur $U$ si
+	$f$ est croissante ou décroissante  sur $U$.
+\end{itemize}
+
+Un exemple de fonction croissante (et même strictement croissante) :
+\myfigure{0.45}{
+\tikzinput{fig_fonctions2}
+}
+
+
+Soit $f:I\to \Rr$ une fonction définie sur un intervalle $I$ symétrique par rapport à $0$.
+\begin{itemize}
+	\item $f$ est \defi{paire}\index{fonction!paire} si \ $\forall x\in I \ \ f(-x)=f(x)$,
+	\item $f$ est \defi{impaire}\index{fonction!impaire} si \ $\forall x\in I \ \ f(-x)=-f(x)$.
+\end{itemize}
+
+\begin{itemize}
+\item $f$ est paire si et seulement si son graphe est symétrique par rapport à l'axe des ordonnées (figure de gauche).
+\item $f$ est impaire si et seulement si son graphe est symétrique par rapport à l'origine (figure de droite).
+\end{itemize}
+
+\myfigure{0.5}{
+\tikzinput{fig_fonctions3}
+}
+
+
+Exemple.
+La fonction définie sur $\Rr$ par $x\mapsto x^{2n}$ ($n\in\Nn$) est paire.
+La fonction définie sur $\Rr$ par $x\mapsto x^{2n+1}$ ($n\in\Nn$) est impaire.
+
+
+
+Soit $f:\Rr \to \Rr$ une fonction et $T$ un nombre réel, $T>0$.
+La fonction $f$ est \defi{périodique}\index{fonction!periodique@périodique} de période $T$ si 
+$\forall x\in\Rr \ \  f(x+T)=f(x)$.
+
+
+\myfigure{0.6}{
+\tikzinput{fig_fonctionsA06}
+}
+
+Exemples. Les fonctions sinus et cosinus sont $2\pi$-périodiques. La fonction tangente est $\pi$-périodique.
+
+
+
+%-----------------------------------------
+\subsection{Limites}
+
+
+\textbf{Limite en un point}
+
+Soit $f:I\to\Rr$ une fonction définie sur un intervalle $I$ de $\Rr$.
+Soit $x_0\in\Rr$ un point de $I$ ou une extrémité de $I$.
+
+\begin{definition}
+	Soit $\ell\in\Rr$. On dit que \defi{$f$ a pour limite $\ell$ en $x_0$}\index{limite}\index{fonction!limite} si
+	\mybox{$
+		\forall \epsilon>0 \quad \exists \delta>0 \quad \forall x\in I \quad \vert x-x_0\vert <\delta
+		\implies \vert f(x)-\ell\vert <\epsilon
+		$}
+\end{definition}
+
+
+\myfigure{0.6}{
+	\tikzinput{fig_fonctions4}
+}
+
+
+\begin{itemize}
+	\item L'inégalité $\vert x-x_0\vert <\delta$ équivaut à $x \in {}]x_0 - \delta, x_0+\delta[$.
+	L'inégalité $\vert f(x)-\ell\vert <\epsilon$ équivaut à $f(x) \in {}]\ell - \epsilon, \ell+\epsilon[$.
+	
+	\item L'ordre des quantificateurs est important, on ne peut pas échanger le $\forall \epsilon$ avec le $\exists \delta$.
+\end{itemize}
+
+
+Soit $f$ une fonction définie sur un ensemble de la forme $]a,x_0[{} \cup  {}]x_0,b[$.
+\begin{definition}
+	On dit que \defi{$f$ a pour limite $+\infty$ en $x_0$}\index{limite}\index{fonction!limite} si
+	\[
+	\forall A>0 \quad \exists \delta>0 \quad \forall x\in I \quad \vert x-x_0\vert <\delta \implies f(x)>A
+	\]
+	% On note alors $\displaystyle\lim_{x\to x_0}f(x)=+\infty$.
+\end{definition}
+
+
+\textbf{Limite en l'infini}
+
+Soit $f:I\to \Rr$ définie sur un intervalle de la forme $I={}]a,+\infty[$.
+
+\begin{definition}
+	\sauteligne
+	\begin{itemize}
+		\item Soit $\ell\in\Rr$. On dit que \defi{$f$ a pour limite $\ell$ en $+\infty$}\index{limite}\index{fonction!limite} si
+		\[
+		\forall \epsilon>0 \quad \exists B>0 \quad \forall x\in I \quad x>B \implies \vert f(x)-\ell\vert <\epsilon
+		\]
+
+		\item On dit que \defi{$f$ a pour limite $+\infty$ en $+\infty$} si
+		\[
+		\forall A>0 \quad \exists B>0 \quad \forall x\in I \quad x>B \implies  f(x)>A
+		\]
+
+	\end{itemize}
+\end{definition}
+
+
+%\myfigure{0.5}{
+%	\tikzinput{fig_fonctions5}
+%}
+
+
+\begin{proposition}\sauteligne
+	\index{limite!unicite@unicité}
+	\mybox{Si une fonction admet une limite, alors cette limite est unique.}
+\end{proposition}
+
+
+
+Soient deux fonctions $f$ et $g$ et $x_0 \in \Rr$ ou $x_0=\pm\infty$.
+
+\begin{proposition}
+	Si \  $\displaystyle\lim_{x_0} f=\ell\in\Rr$ \  et \  $\displaystyle\lim_{x_0} g=\ell'\in\Rr$, alors :
+	\begin{itemize}
+		\item $\displaystyle\lim_{x_0} (\lambda\cdot f)=\lambda\cdot \ell$ \ pour tout $\lambda\in\Rr$
+		\item $\displaystyle\lim_{x_0} (f+g) = \ell+\ell'$
+		\item $\displaystyle\lim_{x_0} (f\times g) = \ell\times \ell'$
+		\item si $\ell\neq 0$, alors $\displaystyle\lim_{x_0} \frac1f = \frac1\ell$
+	\end{itemize}
+	De plus, si $\displaystyle\lim_{x_0} f=+\infty$ (ou $-\infty$) alors $\displaystyle\lim_{x_0} \frac1f = 0$.
+\end{proposition}
+
+
+
+\begin{proposition}
+	Si $\displaystyle\lim_{x_0} f=\ell$ et $\displaystyle\lim_\ell g=\ell'$, alors
+	$\displaystyle\lim_{x_0} g\circ f=\ell'$.
+\end{proposition}
+
+
+Formes indéterminées : $+\infty-\infty$ ; $0\times \infty$ ;
+$\dfrac\infty\infty$ ; $\dfrac00$ ; $1^\infty$ ; $\infty^0$.
+
+
+\begin{proposition}
+	\sauteligne
+	\begin{itemize}
+		\item Si $f\leq g$ et si $\displaystyle\lim_{x_0} f=\ell\in\Rr$ et $\displaystyle\lim_{x_0} g=\ell'\in\Rr$, alors $\ell\leq \ell'$.
+		\item Si $f\leq g$ et si $\displaystyle\lim_{x_0} f=+\infty$, alors  $\displaystyle\lim_{x_0} g=+\infty$.
+		\item Théorème des gendarmes\index{theoreme@théorème!des gendarmes}
+		\mybox{Si $f\leq g\leq h$ et si $\displaystyle\lim_{x_0} f=\displaystyle\lim_{x_0} h=\ell\in\Rr$, alors $g$ a une limite en $x_0$ et $\displaystyle\lim_{x_0} g=\ell$.}
+	\end{itemize}
+\end{proposition}
+
+\myfigure{0.6}{
+	\tikzinput{fig_fonctionsA12}
+}
+
+	
+%-----------------------------------------
+\subsection{Continuité en un point}
+
+
+
+Soit $I$ un intervalle de $\Rr$ et $f:I\to\Rr$ une fonction.
+\begin{itemize}
+	\item $f$ est \defi{continue en un point $x_0\in I$}\index{fonction!continue}\index{continuite@continuité} si
+	\mybox{$
+		\forall \epsilon>0 \quad \exists \delta>0 \quad \forall x\in I \quad \vert x-x_0\vert <\delta
+		\implies \vert f(x)-f(x_0)\vert <\epsilon
+		$}
+	c'est-à-dire si $f$ admet une limite en $x_0$ (cette limite vaut alors nécessairement $f(x_0)$).
+	
+	\item $f$ est \defi{continue sur $I$} si $f$ est continue en tout point de $I$.
+\end{itemize}
+
+
+%\myfigure{0.6}{
+%\tikzinput{fig_fonctions4bis}
+%}
+
+
+
+
+\begin{proposition}
+Soient $f,g:I\to\Rr$ continues en un point $x_0\in I$. Alors
+\begin{itemize}
+	\item $\lambda\cdot f$ est continue en $x_0$ (pour tout $\lambda\in\Rr$),
+	\item $f+g$ est continue en $x_0$,
+	\item $f\times g$ est continue en $x_0$,
+	\item si $f(x_0)\neq 0$, alors $\frac1f$ est continue en $x_0$.
+\end{itemize}
+\end{proposition}
+
+\begin{proposition}
+Soient $f:I\to\Rr$ et $g:J\to\Rr$ avec $f(I)\subset J$.
+Si $f$ est continue en un point $x_0\in I$ et si $g$ est continue en $f(x_0)$,
+alors $g\circ f$ est continue en $x_0$.
+\end{proposition}
+
+%---------------------------------------------------------------
+\textbf{Prolongement par continuité}
+
+Soit $I$ un intervalle, $x_0$ un point de $I$ et $f:I\setminus\{x_0\}\to\Rr$ une fonction.
+\begin{itemize}
+\item  On dit que $f$ est \defi{prolongeable par continuité}\index{prolongement par continuite@prolongement par continuité}
+en $x_0$ si $f$ admet une
+limite finie en $x_0$. Notons alors $\ell=\displaystyle\lim_{x_0} f$.
+\item On définit alors la fonction $\tilde f:I\to\Rr$ en posant pour tout $x\in I$
+\[
+\tilde f(x) =
+\begin{cases}
+	f(x) &\text{ si } x\neq x_0\\
+	\ell &\text{ si } x=x_0.
+\end{cases}
+\]
+Alors $\tilde f$ est continue en $x_0$ et on l'appelle le \defi{prolongement par continuité} de $f$ en $x_0$.
+\end{itemize}
+
+\myfigure{0.6}{
+\tikzinput{fig_fonctionsA15}
+}
+
+
+
+
+
+
+%---------------------------------------------------------------
+\textbf{Suites et continuité}
+
+\begin{proposition}
+Soit $f:I\to\Rr$ une fonction et $x_0$ un point de $I$. Alors :
+\mybox{$
+	f \text{ est continue en } x_0 \ \iff \
+	\begin{matrix}
+		\text{pour toute suite $(u_n)$ qui converge vers } x_0\\
+		\text{la suite $(f(u_n))$ converge vers } f(x_0)
+	\end{matrix}
+	$}
+\end{proposition}
+
+En particulier : si $f$ est continue sur $I$ et si $(u_n)$ est
+une suite convergente de limite $\ell$, alors $(f(u_n))$ converge vers $f(\ell)$.
+On l'utilise pour l'étude des suites récurrentes $u_{n+1}= f(u_n)$ : si $f$ est
+continue et $u_n\to \ell$, alors $f(\ell)=\ell$.
+
+
+
+
+	
+%-----------------------------------------
+\subsection{Continuité sur un intervalle}
+	
+	
+\begin{theoreme}[Théorème des valeurs intermédiaires]
+	\index{theoreme@théorème!des valeurs intermediaires@des valeurs intermédiaires}
+	Soit $f:[a,b]\to\Rr$ une fonction continue sur un segment.
+	\mybox{Pour tout réel $y$ compris entre $f(a)$ et $f(b)$,\\ il existe $c\in[a,b]$ tel que $f(c)=y$.}
+\end{theoreme}
+
+
+\myfigure{0.4}{
+	\tikzinput{fig_fonctions7}
+}
+
+
+\begin{corollaire}
+	\index{theoreme@théorème!des valeurs intermediaires@des valeurs intermédiaires}
+	Soit $f:[a,b]\to\Rr$ une fonction continue sur un segment.
+	\mybox{Si $f(a)\cdot f(b)<0$, alors il existe $c\in {}]a,b[$ tel que $f(c)=0$.}
+\end{corollaire}
+
+\myfigure{0.5}{
+	\tikzinput{fig_fonctionsA16}
+}
+
+
+Exemple. Tout polynôme de degré impair a au moins une racine réelle.
+
+
+\begin{corollaire}~
+	\mybox{Soit $f:I\to\Rr$ une fonction continue sur un intervalle $I$.
+		Alors $f(I)$ est un intervalle.}
+\end{corollaire}
+
+Attention ! Il serait faux de croire que l'image par une fonction $f$ de l'intervalle $[a,b]$
+soit l'intervalle $[f(a),f(b)]$.
+
+
+
+\begin{theoreme}[Fonctions continues sur un segment]
+	Soit $f:[a,b]\to\Rr$ une fonction continue sur un segment.
+	Alors il existe deux réels $m$ et $M$ tels que $f([a,b])=[m,M]$.
+	Autrement dit, l'image d'un segment par une fonction continue est un segment.
+\end{theoreme}
+
+
+\myfigure{0.6}{
+	\tikzinput{fig_fonctionsA20}
+}
+
+\mybox{Si $f$ est continue sur $[a,b]$ alors $f$ est bornée sur $[a,b]$, et elle atteint ses bornes.}
+
+
+
+
+	
+%-----------------------------------------
+\subsection{Fonctions monotones et bijections}
+
+
+	Soit $f:E\to F$ une fonction, où $E$ et $F$ sont des parties de $\Rr$.
+	\begin{itemize}
+		\item $f$ est \defi{injective} si $\forall x,x'\in E \ \ f(x)=f(x') \implies x=x'$ ;
+		\item $f$ est \defi{surjective} si $\forall y\in F \ \ \exists x\in E \ \ y=f(x)$ ;
+		\item $f$ est \defi{bijective} si $f$ est à la fois injective et surjective,
+		c'est-à-dire si $\forall y\in F \ \ \exists! x\in E \ \ y=f(x)$.
+	\end{itemize}
+
+Graphe d'une fonction injective (à gauche), surjective (à droite).
+\myfigure{0.45}{
+	\tikzinput{fig_fonctions10}
+}
+
+\begin{proposition}
+	Si $f :  E \to F$ est une fonction bijective alors il existe une
+	unique application $g : F \to E$ telle que $g\circ f = \id_E$ et $f\circ g = \id_F$.
+	La fonction $g$ est la \defi{bijection réciproque} de $f$ et se note $f^{-1}$.
+\end{proposition}
+
+
+	\begin{itemize}
+		\item On rappelle que l'\defi{identité}, $\id_E : E \to E$ est  définie par $x \mapsto x$.
+		
+		\item $g \circ f = \id_E$ se reformule ainsi : $\forall x \in E\quad  g\big(f(x)\big) = x$.
+		
+		\item  Alors que $f \circ g = \id_F$  s'écrit : $\forall y \in F\quad  f\big(g(y)\big) = y$.
+		
+		\item Dans un repère orthonormé les graphes des fonctions $f$ et $f^{-1}$ sont symétriques
+		par rapport à la droite $(y=x)$.
+	\end{itemize}
+	
+
+
+
+
+\begin{theoreme}[Théorème de la bijection]
+	\index{theoreme@théorème!de la bijection}
+	Soit $f:I\to \Rr$ une fonction définie sur un intervalle $I$ de $\Rr$. Si $f$ est continue
+	et strictement monotone sur $I$, alors
+	\begin{enumerate}
+		\item $f$ établit une bijection de l'intervalle $I$ dans l'intervalle image $J=f(I)$,
+		\item la fonction réciproque $f^{-1}:J\to I$ est continue et strictement monotone
+		sur $J$ et elle a le même sens de variation que $f$.
+	\end{enumerate}
+\end{theoreme}
+
+\myfigure{0.5}{
+	\tikzinput{fig_fonctionsA19}
+}
+
+
+
+\end{multicols}
+
+\end{document}
+
+

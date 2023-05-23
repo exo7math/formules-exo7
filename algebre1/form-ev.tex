@@ -1,0 +1,435 @@
+\documentclass[10pt,class=article,crop=false]{standalone}
+\usepackage{../exo7formules}
+
+
+\begin{document}
+	
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section{Espaces vectoriels}
+
+\begin{multicols}{2}
+	
+$\Kk$ désigne un corps, par exemple $\Rr$.
+
+%-----------------------------------------
+\subsection{Espace vectoriel (début)}
+
+
+\begin{definition}
+	Un \defi{$\Kk$-espace vectoriel}\index{espace vectoriel} est un ensemble non vide $E$ muni :
+	\begin{itemize}
+		\item d'une loi de composition interne, c'est-à-dire
+		d'une application de $E \times E$ dans $E$ :
+		$$\begin{array}{rcl}
+			E \times E & \to & E\\
+			(u, v) & \mapsto & u+v
+		\end{array}$$
+		
+		\item d'une loi de composition externe,
+		c'est-à-dire d'une application de $\Kk \times E$ dans $E$ :
+		$$\begin{array}{rcl}
+			\Kk \times E & \to & E\\
+			(\lambda, u ) & \mapsto & \lambda \cdot u
+		\end{array}$$
+	\end{itemize}
+	
+	qui vérifient les propriétés suivantes :
+	\begin{enumerate}
+		\item $u + v = v + u$ \quad (pour tous $u,v \in E$)
+		\item $u + (v+w) = (u+v) +w$ \quad (pour tous $u,v,w \in E$)
+		\item Il existe un \defi{élément neutre}\index{element neutre@élément neutre} $0_E \in E$ tel que $u + 0_E = u$ \quad (pour tout $u \in E$)
+		\item Tout $u \in E$ admet un \defi{symétrique} $u'$ tel que $u + u' = 0_E$.
+		Cet élément $u'$ est noté $-u$.
+		\item $1 \cdot u = u$ \quad (pour tout $u \in E$)
+		\item $\lambda \cdot (\mu \cdot u) = (\lambda\mu )\cdot u$ \quad (pour tous $\lambda, \mu \in \Kk$, $u \in E$)
+		\item $\lambda \cdot (u+v) = \lambda \cdot u + \lambda \cdot v$ \quad (pour tous $\lambda \in \Kk$, $u,v \in E$)
+		\item $(\lambda + \mu ) \cdot u = \lambda \cdot u + \mu \cdot u$ \quad (pour tous $\lambda,\mu \in \Kk$, $u \in E$)
+	\end{enumerate}
+\end{definition}
+
+
+Exemple fondamental : $E=\Rr^n$ est un $\Kk$-espace vectoriel.
+\begin{itemize}
+	\item Addition : $(x_1, \dots , x_n)+(x'_1, \dots , x'_n) = (x_1+x'_1, \dots , x_n+x'_n)$. 
+	\item Multiplication par un scalaire : $\lambda \cdot (x_1, \dots , x_n)=(\lambda x_1,\dots ,  \lambda x_n)$.
+    \item L'élément neutre : vecteur nul $(0,0, \dots, 0)$.
+    \item Le symétrique de $(x_1, \dots , x_n)$ est $(-x_1, \dots , -x_n)$, que l'on note $-(x_1, \dots , x_n)$.
+\end{itemize}		
+
+
+
+
+%-----------------------------------------
+\subsection{Espace vectoriel (fin)}
+
+Vocabulaire :
+\begin{itemize}
+	\item Un élément de $E$ est un \defi{vecteur}.
+	\item Un élément de $\Kk$ est un \defi{scalaire}.
+	\item L'élément neutre $0_E$ s'appelle le \defi{vecteur nul}\index{vecteur!nul}. Il est unique.
+	\item Pour chaque $u\in E$, son \defi{symétrique} (ou \defi{opposé}) $-u$ est unique.
+\end{itemize}
+
+\begin{proposition}
+	Soit $E$ un espace vectoriel sur un corps $\Kk$. Soient $u \in E$ et $\lambda \in \Kk$.
+	Alors on a:
+	\begin{enumerate}
+		\item $0 \cdot u = 0_E$
+		\item $\lambda \cdot 0_E = 0_E$
+		\item $(-1)\cdot u = -u$
+		\item \myboxinline{$\lambda \cdot u = 0_E \iff \lambda = 0$ \ ou \ $u = 0_E$}
+	\end{enumerate}
+\end{proposition}
+
+
+Exemple. L'espace vectoriel $\mathcal{F}(\Rr, \Rr)$ des fonctions de $\Rr$ dans $\Rr$.		
+\begin{itemize}
+	\item Soient $f$ et $g$ deux éléments de $\mathcal{F}(\Rr, \Rr)$. La fonction $f+g$ est définie par  : $(f+g)(x)=f(x)+g(x)$ (pour tout $x\in\Rr$).
+	\item Soit $\lambda \in \Rr$. La fonction
+	$\lambda \cdot f$ est définie par $(\lambda \cdot f) (x)=\lambda \times f (x)$ (pour tout $x\in\Rr$).
+	\item L'élément neutre est la fonction nulle, définie par $f(x)=0$ pour tout $x\in\Rr$.
+	\item Le symétrique de $f$ est $-f$ définie $(-f)(x) = -f(x)$ (pour tout $x\in\Rr$).
+\end{itemize}
+	
+
+Autres exemples :
+\begin{itemize}
+	\item L'ensemble $\mathcal{S}$des suites réelles $(u_n)_{n\in \Nn}$ est un $\Rr$-espace vectoriel.
+	\item L'ensemble $M_{n,p}(\Rr)$ des matrices à $n$ lignes et $p$ colonnes à coefficients dans $\Rr$ est un $\Rr$-espace vectoriel.
+	\item L'ensemble $\Rr[X]$ des polynômes est un espace vectoriel. 
+\end{itemize}
+
+
+%-----------------------------------------
+\subsection{Sous-espace vectoriel (début)}
+
+\begin{definition}
+Soit $E$ un $\Kk$-espace vectoriel. Une partie $F$ de $E$
+est appelée un \defi{sous-espace vectoriel}\index{sous-espace vectoriel} si :
+\begin{itemize}
+	\item $0_E \in F$,
+	
+	\item $u+v \in F$ \  pour tous $u,v \in F$ ($F$ est stable pour l'addition),
+	
+	\item $\lambda \cdot u \in F$ pour tout $\lambda \in \Kk$ et tout $u \in F$ ($F$ est
+	stable pour la multiplication par un scalaire).
+\end{itemize}
+\end{definition}
+
+Exemples :
+\begin{itemize}
+	\item L'ensemble des fonctions continues sur $\Rr$ est un sous-espace vectoriel
+	de l'espace vectoriel des fonctions de $\Rr$ dans $\Rr$. 
+	
+	\item L'ensemble des suites réelles convergentes est un
+	sous-espace vectoriel de l'espace vectoriel des suites réelles.
+	
+	\item Soit $A \in M_{n,p}(\Rr)$.
+	Soit $AX = 0$ un système d'équations linéaires homogènes à $p$ variables.
+	Alors l'ensemble des vecteurs solutions est un sous-espace vectoriel de $\Rr^p$.
+\end{itemize}
+
+\textbf{Un sous-espace vectoriel est lui-même un espace vectoriel.}
+\begin{theoreme}
+	\label{th:sevisev}
+	Soient $E$ un $\Kk$-espace vectoriel et $F$ un sous-espace vectoriel de $E$.
+	Alors $F$ est lui-même un $\Kk$-espace vectoriel pour les lois
+	induites par $E$.
+\end{theoreme}
+
+
+\textbf{Méthodologie.}
+Pour répondre à une question du type \og L'ensemble $F$ est-il un espace vectoriel ? \fg, une façon efficace de procéder est de trouver un espace vectoriel $E$ qui contient $F$, puis prouver que $F$ est un sous-espace vectoriel de $E$.
+
+
+%-----------------------------------------
+\subsection{Sous-espace vectoriel (milieu)}
+
+Soit $n\ge1$ un entier, soient  $v_1, v_2, \ldots, v_n$, $n$  vecteurs d'un espace vectoriel $E$.
+Tout vecteur de la forme
+$$u=\lambda_1 v_1+\lambda_2v_2+ \cdots + \lambda_n v_n$$
+est appelé \defi{combinaison linéaire}\index{combinaison lineaire@combinaison linéaire} des vecteurs $v_1, v_2, \ldots, v_n$.
+Les scalaires $\lambda_1, \lambda_2, \ldots , \lambda_n \in \Kk$ sont appelés \defi{coefficients} de la combinaison linéaire.
+
+
+Remarque : si $n=1$, alors $u=\lambda_1 v_1$ et on dit que $u$ est \defi{colinéaire}\index{vecteur!colinéaire} à $v_1$.
+
+
+
+\begin{theoreme}%[Caractérisation d'un sous-espace par la notion de combinaison linéaire]
+	Soient $E$ un $\Kk$-espace vectoriel et $F$ une partie non vide de $E$.
+	$F$ est un sous-espace vectoriel de $E$ si et seulement si
+	$$\lambda u + \mu v \in F \qquad \text{pour tout } u,v \in F \quad \text{ et tout } \lambda, \mu \in \Kk.$$
+%	Autrement dit si et seulement si toute combinaison linéaire de deux éléments de $F$ appartient à $F$.
+\end{theoreme}
+
+
+
+\begin{proposition}[Intersection de deux sous-espaces]
+	\index{sous-espace vectoriel!intersection}
+	Soient $F,G$ deux sous-espaces vectoriels d'un $\Kk$-espace vectoriel $E$.
+	L'intersection $F \cap G$ est un sous-espace vectoriel de $E$.
+\end{proposition}
+
+
+La réunion de deux sous-espaces vectoriels de $E$ n'est pas en général un sous-espace vectoriel de $E$.
+
+
+%-----------------------------------------
+\subsection{Sous-espace vectoriel (fin)}
+
+
+
+\begin{definition}[Somme de deux sous-espaces]
+	\index{sous-espace vectoriel!somme}
+	Soient $F$ et $G$ deux sous-espaces vectoriels d'un $\Kk$-espace vectoriel $E$.
+	L'ensemble de tous les éléments $u+v$, où $u$ est un élément de
+	$F$ et $v$ un élément de $G$, est appelé \defi{somme} des sous-espaces vectoriels
+	$F$ et $G$. Cette somme est notée  $F+G$. On a donc
+	$$F+G=\big\{u+v \mid u \in F, v \in G \big\}.$$
+\end{definition}
+
+\myfigure{0.5}{
+	\tikzinput{fig_ev06}
+}
+
+\begin{proposition}
+	\sauteligne
+	\begin{enumerate}
+		\item $F+G$ est un sous-espace vectoriel de $E$.
+		\item $F+G$ est le plus petit sous-espace vectoriel contenant à la fois $F$ et $G$.
+	\end{enumerate}
+\end{proposition}
+
+
+\begin{definition}[Somme directe de deux sous-espaces]
+	Soient $F$ et $G$ deux sous-espaces vectoriels de $E$.
+	$F$ et $G$ sont en 
+	\defi{somme directe}\index{sous-espace vectoriel!somme directe}\index{somme directe}\index{sous-espace vectoriel!supplementaire@supplémentaire} dans $E$ si :
+	\begin{itemize}
+		\item $F \cap G = \{ 0_E \}$,
+		\item $F+G=E$.
+	\end{itemize}
+	On note alors $F \oplus G=E$\index{$\oplus$} et on dit que $F$ et $G$ sont des sous-espaces vectoriels \defi{supplémentaires} dans $E$.
+\end{definition}
+
+\begin{proposition}
+	\label{prop:directeunique}
+	$F$ et $G$ sont supplémentaires dans $E$ si et seulement si tout
+	élément de $E$ s'écrit d'une manière \evidence{unique}
+	comme la somme d'un élément de $F$ et d'un élément de $G$.
+\end{proposition}
+
+
+Exemple. 
+	Dans le $\Rr$-espace vectoriel $\mathcal{F}(\Rr,\Rr)$
+	des fonctions de $\Rr$ dans $\Rr$, le sous-espace
+	vectoriel des fonctions paires $\mathcal{P}$ et le sous-espace
+	vectoriel des fonctions impaires $\mathcal{I}$ sont supplémentaires :
+	$\mathcal{P}\oplus\mathcal{I}=\mathcal{F}(\Rr,\Rr)$.
+
+
+\begin{theoreme}[Sous-espace engendré]
+	\label{th:engendre}
+	Soit  $\{v_1, \dots , v_n\}$ un ensemble fini de vecteurs d'un
+	$\Kk$-espace vectoriel $E$.
+	Alors :
+	\begin{itemize}
+		\item L'ensemble des combinaisons linéaires des vecteurs
+		$\{v_1, \dots , v_n\}$ est un sous-espace vectoriel de $E$,
+		appelé \defi{sous-espace engendré par $v_1, \dots , v_n$}\index{sous-espace vectoriel!engendre@engendré} et noté $\Vect (v_1, \dots , v_n )$.
+		
+		Ainsi :
+		$u \in \Vect( v_1, \dots , v_n ) \quad \Longleftrightarrow \quad
+			\text{il existe} \ \lambda_1, \dots , \lambda_n \in \Kk \quad \text{tels que} \quad
+			u=\lambda_1v_1+ \dots+\lambda_nv_n$
+		
+		\item C'est le plus petit sous-espace vectoriel de $E$
+		contenant les vecteurs  $v_1, \ldots , v_n$ (si	$F$ est un sous-espace vectoriel de $E$ contenant aussi les vecteurs $v_1, \ldots , v_n$ alors $\Vect (v_1, \dots , v_n ) \subset F$).
+		
+	\end{itemize}
+	
+\end{theoreme}
+
+
+%-----------------------------------------
+\subsection{Application linéaire (début)}
+
+\begin{definition}
+	Soient $E$ et $F$ deux $\Kk$-espaces vectoriels.
+	Une application $f$ de $E$ dans $F$ est une \defi{application
+		linéaire}\index{application lineaire@application linéaire} si elle satisfait aux deux conditions suivantes :
+	\begin{enumerate}
+		\item $f(u+v)=f(u)+f(v)$, pour tous $u, v \in  E$ ;
+		\item $f(\lambda \cdot u)=\lambda \cdot f(u)$, pour tout $u \in E$ et tout $\lambda \in \Kk$.
+	\end{enumerate}
+\end{definition}
+
+L'application $f$ est linéaire si et seulement si,
+pour tous $u,v \in E$ et pour tous $\lambda, \mu \in \Kk$,
+\mybox{$f(\lambda u + \mu v)=\lambda f(u)+\mu f(v)$}
+Plus généralement, une application linéaire $f$ préserve les combinaisons linéaires.
+
+Exemple. 
+Pour une matrice fixée $A \in M_{n,p}(\Rr)$,
+l'application $f : \Rr^p \longrightarrow \Rr^n$ définie par
+$f(X) = AX$ est une application linéaire.
+
+
+\begin{proposition}
+	Si $f$ est une application linéaire de $E$ dans $F$, alors :
+	\begin{itemize}
+		\item $f(0_{E})=0_{F}$,
+		\item $f(-u)=-f(u)$, pour tout $u \in E$.
+	\end{itemize}
+\end{proposition}
+
+Vocabulaire :
+\begin{itemize}
+	\item L'\,\defi{application identité}\index{identite@identité}, notée $\id_E$ :
+	$f : E \longrightarrow E$, $f(u) = u$ pour tout $u \in E$.
+	
+	\item Une application linéaire de $E$ dans $F$ est
+	aussi appelée \defi{morphisme} ou \defi{homomorphisme} d'espaces vectoriels.
+	L'ensemble des applications linéaires de $E$ dans $F$ est noté $\mathcal{L}(E,F)$.
+	
+	\item Une application linéaire de $E$ dans $E$ est appelée \defi{endomorphisme}\index{endomorphisme} de $E$.
+	L'ensemble des endomorphismes de $E$ est noté  $\mathcal{L}(E)$.
+\end{itemize}
+
+%-----------------------------------------
+\subsection{Application linéaire (milieu)}
+
+
+
+\textbf{Symétrie centrale et homothétie.}
+
+Soit $E$ un $\Kk$-espace vectoriel.
+$s : E \to E$, $s(u)=-u$ est linéaire et s'appelle la \defi{symétrie centrale}.
+Pour $\lambda \in \Kk$, $h_\lambda : E \to E$, $h_\lambda(u)= \lambda u$ est linéaire et s'appelle  l'\defi{homothétie}\index{homothetie@homothétie} de rapport $\lambda$.
+
+
+\myfigure{0.6}{
+	\tikzinput{fig_ev12-1}
+	\qquad
+	\tikzinput{fig_ev12-2}
+}
+
+
+
+\textbf{Projection.}
+
+Soient $E$ un $\Kk$-espace vectoriel et $F$ et $G$ deux sous-espaces
+vectoriels supplémentaires dans $E$, c'est-à-dire $E = F \oplus G$.
+Tout vecteur $u$ de $E$ s'écrit de façon unique  $u=v+w$ avec $v \in F$ et $w \in G$.
+La \defi{projection}\index{projection} sur $F$ parallèlement à $G$ est l'application $p : E \to E$
+définie par $p(u)=v$.
+
+\myfigure{0.6}{
+	\tikzinput{fig_ev13}
+}
+
+\begin{itemize}
+	\item Une projection est une application linéaire.
+	\item Une projection $p$ vérifie l'égalité $p^2=p$.
+	Note : $p^2=p$ signifie $p\circ p = p$, c'est-à-dire pour tout $u\in E$ :
+	$p\big(p(u)\big) = p(u)$.
+\end{itemize}
+
+
+%-----------------------------------------
+\subsection{Application linéaire (fin)}
+
+%-------------------------------------------------------
+\textbf{Image}
+
+Rappels. Soient $E$ et $F$ deux ensembles et $f$ une application de $E$ dans $F$. Soit $A \subset  E$. L'\defi{image directe} de $A$ par $f$ est l'ensemble des images par $f$ des éléments de $A$, appelé $f(A)=\big\{ f(x)  \mid x\in A \big\}$. C'est un sous-ensemble de $F$.
+
+
+Soit maintenant $E$ et $F$ des $\Kk$-espaces vectoriels
+et $f : E \to F$ une application linéaire.
+
+$f(E)$ s'appelle l'\defi{image}\index{image}\index{application lineaire@application linéaire!image} de l'application linéaire $f$ et est noté $\Im f$.
+
+
+\begin{proposition}
+	\sauteligne
+	\begin{enumerate}
+		\item $\Im f$ est un sous-espace vectoriel de $F$.
+		\item Plus généralement, si $E'$ est un sous-espace vectoriel de $E$, alors $f(E')$ est un sous-espace vectoriel de $F$.
+	\end{enumerate}
+\end{proposition}
+
+Par définition de l'image directe : \\
+\centerline{$f$ est surjective si et seulement si $\Im f = F$.}
+
+
+%-------------------------------------------------------
+\textbf{Noyau}
+
+
+\begin{definition}[Définition du noyau]
+	\index{noyau}\index{application lineaire@application linéaire!noyau}
+	Soient $E$ et $F$ deux $\Kk$-espaces vectoriels et $f$ une application linéaire de $E$ dans $F$.
+	Le \defi{noyau} de $f$, noté  $\Ker(f)$, est l'ensemble des
+	éléments de $E$ dont l'image est $0_{F}$ :
+	\mybox{$\Ker (f)=\big\{x \in E \mid f(x)=0_{F}\big\}$}
+	
+	Autrement dit, le noyau est l'image réciproque du vecteur nul de l'espace d'arrivée :
+	$\Ker(f) = f^{-1} \{0_F\}$.
+\end{definition}
+
+
+
+\begin{proposition}
+	Le noyau de $f$ est un sous-espace vectoriel de $E$.
+\end{proposition}
+
+
+Exemple. 
+Un plan $\mathcal{P}$ d'équation $(ax+by+cz=0)$,
+est un sous-espace vectoriel de $\Rr^3$. 
+En effet c'est le noyau de l'application linéaire $f : \Rr^3 \to \Rr$ définie par $f(x,y,z)=ax+by+cz$.
+
+\begin{theoreme}[Caractérisation des applications linéaires injectives]
+	\sauteligne
+	\mybox{$f$ injective \quad $\iff \quad \Ker(f) = \big\{0_E\big\}$}
+\end{theoreme}
+En particulier, pour montrer que $f$ est injective, il suffit de vérifier que : \\
+\centerline{si $f(x)=0_F$ alors $x=0_E$.}
+
+%-------------------------------------------------------
+\textbf{L'espace vectoriel $\mathcal{L}(E,F)$}
+
+\begin{proposition}
+	L'ensemble des applications linéaires entre deux $\Kk$-espaces vectoriels $E$ et $F$, noté $\mathcal{L}(E,F)$ est un $\Kk$-espace vectoriel.
+\end{proposition}
+
+%-------------------------------------------------------
+\textbf{Composition et inverse d'applications linéaires}
+
+
+\begin{proposition}[Composée de deux applications linéaires]
+	Soient $E, F, G$  trois $\Kk$-espaces vectoriels, $f$ une application linéaire de $E$ dans $F$ et $g$ une application linéaire de $F$ dans $G$. Alors  $g \circ f$ est une application linéaire de $E$ dans $G$.
+\end{proposition}
+
+Soient $E$ et $F$ deux $\Kk$-espaces vectoriels.
+
+\begin{itemize}
+	\item Une application linéaire bijective de $E$ sur $F$ est appelée
+	\defi{isomorphisme}\index{isomorphisme} d'espaces vectoriels. Les deux espaces vectoriels $E$ et $F$ sont alors dits \defi{isomorphes}.
+	
+	\item Un endomorphisme bijectif de $E$ (c'est-à-dire une application linéaire bijective de $E$ dans $E$) est appelé \defi{automorphisme}\index{automorphisme} de $E$. L'ensemble des automorphismes de $E$ est noté $GL(E)$.
+\end{itemize}
+
+
+\end{multicols}
+
+\end{document}
+
+
+
+
+
+
+
