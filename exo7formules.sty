@@ -107,6 +107,45 @@
 \hypersetup{colorlinks=true, linkcolor=blue, urlcolor=blue}
 
 % ----------------------------------------------------------------------
+% section numérotée ou pas
+%\usepackage[explicit,pagestyles]{titlesec}
+\usepackage{titlesec}
+
+\ifstandalone % Style section si on compile un seul : pas numéro
+  \renewcommand{\thesubsection}{\arabic{subsection}}
+\fi
+
+\titleformat{\section}
+{\normalfont\LARGE\bfseries}% format
+{}% label
+{0pt}% sep
+{\ifstandalone % Style section si on compile un seul : pas numéro
+	\else % Style section si on compile dans livre
+	\thesection.~
+	\fi
+}
+\titleformat{name=\section,numberless}
+{\normalfont\LARGE\bfseries}% format
+{}% label
+{0pt}% sep
+{}
+\titleformat{\subsection}
+{\normalfont\large\bfseries}% format
+{}% label
+{0pt}% sep
+{\ifstandalone % Style section si on compile un seul : pas numéro
+	\thesubsection.~
+	\else % Style section si on compile dans livre
+	\thesubsection.~
+	\fi
+}
+\titleformat{name=\subsection,numberless}
+{\normalfont\large\bfseries}% format
+{}% label
+{0pt}% sep
+{}
+
+% ----------------------------------------------------------------------
 % Personnalisation pour les théorèmes,...
 
 \newtheoremstyle{formuleexo7}% name
